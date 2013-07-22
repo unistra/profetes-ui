@@ -24,9 +24,9 @@ class XsltExtension extends \Twig_Extension
     public function xsltTransform($xml, $xslt, $params = array()) 
     {
         $out = '';
-        $xmldoc = new DOMDocument;
-        $xsldoc = new DOMDocument;
-        $processor = new XSLTProcessor;
+        $xmldoc = new \DOMDocument;
+        $xsldoc = new \DOMDocument;
+        $processor = new \XSLTProcessor;
 
         if (is_file($xslt) && is_readable($xslt)) {
             $xslt = file_get_contents($xslt);
