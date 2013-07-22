@@ -1,6 +1,6 @@
 <?php
 
-namespace Unistra\UtilBundle\Twig;
+namespace Unistra\UtilBundle\Twig\Extensions;
 
 class XsltExtension extends \Twig_Extension
 {
@@ -43,6 +43,12 @@ class XsltExtension extends \Twig_Extension
 
         $out = $processor->transformToXML($xmldoc);
         return $out;
+    }
+
+
+    public function getName()
+    {
+        return 'unistra_xslt_extension';
     }
 
 } 
