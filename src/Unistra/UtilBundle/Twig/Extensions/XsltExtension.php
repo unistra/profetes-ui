@@ -29,9 +29,10 @@ class XsltExtension extends \Twig_Extension
         $processor = new \XSLTProcessor;
 
         if (is_file($xslt) && is_readable($xslt)) {
-            $xslt = file_get_contents($xslt);
+            $xsldoc->load($xslt);
+        } else {
+            $xsldoc->loadXML($xslt);
         }
-        $xsldoc->loadXML($xslt);
         $xmldoc->loadXML($xml);
         $processor->importStyleSheet($xsldoc);
 
