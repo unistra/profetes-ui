@@ -1,0 +1,3 @@
+unistra_profetes_homepage:
+    pattern:    /
+    defaults:   { _controller: UnistraProfetesBundle:Default:index }
