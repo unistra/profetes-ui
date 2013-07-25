@@ -1,0 +1,5 @@
+parameters:
+    existdb.wsdl:       "http://ofxml.u-strasbg.fr/exist/services/Query?wsdl"
+    existdb.username:   username
+    existdb.password:   password
+

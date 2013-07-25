@@ -1,3 +1,4 @@
+/src/Unistra/ProfetesBundle/Resources/config/parameters.yml
 /web/bundles/
 /app/bootstrap*
 /app/cache/*
