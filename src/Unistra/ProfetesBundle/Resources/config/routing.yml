@@ -1,3 +1,8 @@
 unistra_profetes_homepage:
     pattern:    /
     defaults:   { _controller: UnistraProfetesBundle:Default:index }
+
+unistra_profetes_fiche:
+    pattern:    /diplome/{id}
+    defaults:   { _controller: UnistraProfetesBundle:Fiche:index }
+
