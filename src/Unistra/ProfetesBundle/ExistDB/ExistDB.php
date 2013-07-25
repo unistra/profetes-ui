@@ -84,6 +84,8 @@ class ExistDB
                 $idparts[4],
                 $idparts[5]
             );
+        } else {
+            throw new \Exception(sprintf('Resource %s does not exist', $id), 404);
         }
     }
 }
