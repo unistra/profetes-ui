@@ -35,7 +35,7 @@ class FormationCDM
         {
             $xsl = file_get_contents($xsl);
         }
-        $this->xsl_dom = new DOMDocument();
+        $this->xsl_dom = new \DOMDocument();
         $this->xsl_dom->loadXML($xsl);
 
         $xsltprocessor = new \XSLTProcessor;
