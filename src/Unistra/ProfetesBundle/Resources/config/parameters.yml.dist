@@ -3,3 +3,5 @@ parameters:
     existdb.username:   username
     existdb.password:   password
 
+    unistra_profetes.xsl.fiche: fiche.xsl
+
