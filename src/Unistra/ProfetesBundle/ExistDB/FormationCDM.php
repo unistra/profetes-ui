@@ -68,5 +68,18 @@ class FormationCDM
         return $xpath->query($title)->item(0)->nodeValue;
     }
 
+    
+    public function getSearchword()
+    {
+        $searchwords = array();
+        $xpath = new \DOMXPath($this->formation_dom);
+        $xpath->registerNameSpace('cdm', 'http://cdm-fr.fr/2006/CDM-frSchema');
+        $searchword = "//cdm:program/cdm:searchword";
+        $nodes = $xpath->query($searchword);
+        foreach ($nodes as $node) {
+            $searchwords[] = $node->textContent;
+        }
+        return implode(', ', $searchwords);
+    }
 }
 
