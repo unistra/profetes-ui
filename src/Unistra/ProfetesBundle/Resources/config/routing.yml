@@ -1,9 +1,9 @@
 unistra_profetes_homepage:
-    pattern:    /
+    path:       /
     defaults:   { _controller: UnistraProfetesBundle:Default:index }
 
 unistra_profetes_fiche:
-    pattern:    /diplome/{id}.{_format}
+    path:       /diplome/{id}.{_format}
     defaults:   { _controller: UnistraProfetesBundle:Fiche:index, _format: html }
     requirements:
         id:     ^fr-rne-06\d{5}[a-z]-pr-\w+-\w+$
