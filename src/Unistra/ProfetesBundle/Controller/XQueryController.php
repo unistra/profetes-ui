@@ -10,7 +10,6 @@ class XQueryController extends Controller
 
     public function composanteAction($id)
     {
-        $formations = array();
         $exist_db = $this->get('exist_db');
         $xquery = $exist_db->loadXQueryFromFile(
             sprintf('%s/%s',
