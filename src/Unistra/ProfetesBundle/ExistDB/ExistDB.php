@@ -106,6 +106,16 @@ class ExistDB
         return $xquery;
     }
 
+    public function getPrettyId($id)
+    {
+        return str_replace('_', '-', strtolower($id));
+    }
+
+    public function getOriginalId($id)
+    {
+        return str_replace('-', '_', strtoupper($id));
+    }
+
     protected function connect()
     {
         if ($this->wsdl) {
