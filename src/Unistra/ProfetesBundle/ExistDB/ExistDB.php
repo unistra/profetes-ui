@@ -101,8 +101,10 @@ class ExistDB
             } else {
                 $xml .= $result . "\n";
             }
+            return $xml;
         }
-        return $xml;
+
+        return '';
     }
 
     /**
