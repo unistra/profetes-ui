@@ -1,6 +1,6 @@
 <?php
 
-namespace Unistra\UtilBundle\Twig\Extensions;
+namespace Unistra\UtilBundle\Twig\Extension;
 
 class XsltExtension extends \Twig_Extension
 {
@@ -21,7 +21,7 @@ class XsltExtension extends \Twig_Extension
      * @param array $params des paramètres à passer au processeur
      * @return string le flux transformé
      */
-    public function xsltTransform($xml, $xslt, $params = array()) 
+    public function xsltTransform($xml, $xslt, $params = array())
     {
         $out = '';
         $xmldoc = new \DOMDocument;
@@ -52,4 +52,4 @@ class XsltExtension extends \Twig_Extension
         return 'unistra_xslt_extension';
     }
 
-} 
+}

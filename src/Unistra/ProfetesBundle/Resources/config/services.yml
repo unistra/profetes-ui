@@ -6,3 +6,8 @@ services:
         class:      Unistra\ProfetesBundle\ExistDB\ExistDB
         arguments:  [ %existdb.wsdl%, %existdb.username%, %existdb.password% ]
 
+    twig.extension.unistra_xslt_extension:
+        class:      Unistra\UtilBundle\Twig\Extension\XsltExtension
+        tags:
+            - { name: twig.extension }
+
