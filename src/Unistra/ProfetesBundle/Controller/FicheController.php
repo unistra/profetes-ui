@@ -38,7 +38,7 @@ class FicheController extends Controller
      * Elle sert à "calculer" le chemin à préfixer à l'id des fiches diplômes
      * qui est passé en paramètre au XSLT pour fabriquer les URL des fiches.
      *
-     * Au cas où elle était appelée, elle renvoie une erreur 404.
+     * Au cas où elle était appelée, elle renverrait une erreur 404.
      */
     public function repertoireAction()
     {
