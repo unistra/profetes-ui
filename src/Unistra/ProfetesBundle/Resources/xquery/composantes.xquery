@@ -7,10 +7,10 @@ let $composante := distinct-values(collection('/db/CDM-2009')/cdm:CDM/cdm:orgUni
 let $types := distinct-values(collection('/db/CDM-2009')/cdm:CDM[cdm:orgUnit/cdm:orgUnit/@id = $composante_id]/cdm:program/cdm:level/cdm:subBlock/cdm:subBlock)
 
 
-return <types><composante>{$composante}</composante>{
+return <types-diplome><composante>{$composante}</composante>{
 
 for $type in $types
   let $formations := collection('/db/CDM-2009')/cdm:CDM[cdm:orgUnit/cdm:orgUnit/@id = $composante_id]/cdm:program[cdm:level/cdm:subBlock/cdm:subBlock = $type]
   order by $type
-  return <type name="{$type}">{for $formation in $formations order by $formation return <formation><id>{replace(lower-case($formation/@id), '_', '-')}</id><nom>{$formation/cdm:programName/cdm:text[@language = 'fr-FR']/text()}</nom></formation>}</type>
-}</types>
+  return <type-diplome name="{$type}">{for $formation in $formations order by $formation/cdm:programName/cdm:text[@language='fr-FR']/text() return <formation><id>{replace(lower-case($formation/@id), '_', '-')}</id><nom>{$formation/cdm:programName/cdm:text[@language = 'fr-FR']/text()}</nom></formation>}</type-diplome>
+}</types-diplome>

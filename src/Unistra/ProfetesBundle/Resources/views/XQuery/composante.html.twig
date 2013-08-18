@@ -3,11 +3,6 @@
 {% block title %}Liste des formations par composante{% endblock %}
 
 {% block body %}
-<h1>Liste des formations de {{ composante }}</h1>
-<ul>
-    <li>Formation 1</li>
-    <li>Formation 2</li>
-</ul>
-{{ formations | raw }}
+    {{ formations | xslt_transform(xsl, { 'path': '/formations/diplome/' }) | raw }}
 {% endblock %}
 

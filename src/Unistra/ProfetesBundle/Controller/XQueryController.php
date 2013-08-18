@@ -22,6 +22,7 @@ class XQueryController extends Controller
         return $this->render('UnistraProfetesBundle:XQuery:composante.html.twig', array(
             'formations' => $xml,
             'composante' => $id,
+            'xsl'        => $this->container->getParameter('unistra_profetes.xsl.path') . '/composante.xsl',
         ));
     }
 
