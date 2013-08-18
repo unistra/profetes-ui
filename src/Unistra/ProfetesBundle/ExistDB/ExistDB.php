@@ -34,6 +34,13 @@ class ExistDB
         return $this->connectionId;
     }
 
+    /**
+     * Récupère une fiche diplome de la base eXist à partir de son id
+     *
+     * @param string $id id de la fiche à retourner
+     *
+     * @return string la fiche au format XML CDM-fr
+     */
     public function getResource($id)
     {
         $path = $this->makePath($id);
@@ -59,6 +66,15 @@ class ExistDB
         return $formation;
     }
 
+    /**
+     * Execute une requête XQuery dans la base eXist et retourne le résultat
+     *
+     * @param string $xquery la requête XQuery
+     * @param int $start offset du premier résultat
+     * @param int $howmany nombre max de résultats à retourner
+     *
+     * @return string résultat retourné par la base eXist
+     */
     public function getXQuery($xquery, $start = 1, $howmany = 1000)
     {
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
@@ -89,6 +105,19 @@ class ExistDB
         return $xml;
     }
 
+    /**
+     * Charge une requête XQuery à partir d'un fichier sur le disque
+     *
+     * Le fichier peut contenir des placeholders qui seront remplacés par des
+     * paramètres passés sous forme de tableau dans $params.
+     * Ces placeholders sont sous la forme {{{d}}} où d est un nombre et la clé
+     * de l'entrée du tableau.
+     *
+     * @param string $xqueryFile Fichier xquery à charger
+     * @param array|null $params tableau de paramètres à remplacer dans le xquery
+     *
+     * @return string|null la requête xquery
+     */
     public function loadXQueryFromFile($xqueryFile, $params = null)
     {
         if (is_file($xqueryFile) && is_readable($xqueryFile)) {
@@ -106,11 +135,21 @@ class ExistDB
         return $xquery;
     }
 
+    /**
+     * Convertit les Id du format CDM au format d'affichage
+     *
+     * FR_RNE_0673021V_PR_LV103_204 => fr-rne-0673021v-pr-lv103-204
+     */
     public function getPrettyId($id)
     {
         return str_replace('_', '-', strtolower($id));
     }
 
+    /**
+     * Convertit les Id du format d'affichage au format CDM
+     *
+     * fr-rne-0673021v-pr-lv103-204 => FR_RNE_0673021V_PR_LV103_204
+     */
     public function getOriginalId($id)
     {
         return str_replace('-', '_', strtoupper($id));
@@ -128,6 +167,12 @@ class ExistDB
         }
     }
 
+    /**
+     * Détermine le chemin d'une ressource à partir de son ID
+     *
+     * fr-rne-0673021v-pr-lv103-204 =>
+     * /db/CDM/WSDiplomeCDM-0673021V-FRAN-LV103-204
+     */
     protected function makePath($id)
     {
         $pattern = '/^fr-rne-06\d{5}[a-z]-pr-\w+-\w+$/';
