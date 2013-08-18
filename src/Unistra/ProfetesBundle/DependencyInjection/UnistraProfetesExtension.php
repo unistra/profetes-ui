@@ -25,5 +25,6 @@ class UnistraProfetesExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
         $container->setParameter('unistra_profetes.xsl.path', __DIR__ . '/../Resources/xsl');
+        $container->setParameter('unistra_profetes.xquery.path', __DIR__ . '/../Resources/xquery');
     }
 }

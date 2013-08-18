@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Liste des formations par composante{% endblock %}
+
+{% block body %}
+<h1>Liste des formations de {{ composante }}</h1>
+<ul>
+    <li>Formation 1</li>
+    <li>Formation 2</li>
+</ul>
+{{ formations | raw }}
+{% endblock %}
+

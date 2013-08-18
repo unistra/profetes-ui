@@ -9,3 +9,7 @@ unistra_profetes_fiche:
         id:     ^fr-rne-06\d{5}[a-z]-pr-\w+-\w+$
         _format:    html|xml
 
+unistra_profetes_composante:
+    path:       /composante/{id}
+    defaults:   { _controller: UnistraProfetesBundle:XQuery:composante }
+
