@@ -9,6 +9,10 @@ unistra_profetes_fiche:
         id:     ^fr-rne-06\d{5}[a-z]-pr-\w+-\w+$
         _format:    html|xml
 
+_unistra_profetes_repertoire_fiche:
+    path:       /diplome/
+    defaults:   { _controller: UnistraProfetesBundle:Fiche:repertoire }
+
 unistra_profetes_composante:
     path:       /composante/{id}
     defaults:   { _controller: UnistraProfetesBundle:XQuery:composante }

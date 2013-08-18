@@ -23,6 +23,7 @@ class XQueryController extends Controller
             'formations' => $xml,
             'composante' => $id,
             'xsl'        => $this->container->getParameter('unistra_profetes.xsl.path') . '/composante.xsl',
+            'path'       => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
         ));
     }
 
