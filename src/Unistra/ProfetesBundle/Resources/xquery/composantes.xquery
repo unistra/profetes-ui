@@ -1,6 +1,6 @@
 declare namespace cdm="http://cdm-fr.fr/2006/CDM-frSchema";
 
-let $composante_id := '{{{1}}}'
+let $composante_id := '{{{composante}}}'
 
 let $composante := distinct-values(collection('/db/CDM-2009')/cdm:CDM/cdm:orgUnit/cdm:orgUnit[@id = $composante_id]/cdm:orgUnitName/cdm:text)
 

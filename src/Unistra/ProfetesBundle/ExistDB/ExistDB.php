@@ -112,7 +112,7 @@ class ExistDB
      *
      * Le fichier peut contenir des placeholders qui seront remplacés par des
      * paramètres passés sous forme de tableau dans $params.
-     * Ces placeholders sont sous la forme {{{d}}} où d est un nombre et la clé
+     * Ces placeholders sont sous la forme {{{param}}} où param est la clé
      * de l'entrée du tableau.
      *
      * @param string $xqueryFile Fichier xquery à charger
@@ -129,8 +129,8 @@ class ExistDB
         }
 
         if ($params && is_array($params)) {
-            foreach ($params as $paramNumber => $paramValue) {
-                $xquery = str_replace('{{{' . $paramNumber . '}}}', $paramValue, $xquery);
+            foreach ($params as $paramName => $paramValue) {
+                $xquery = str_replace('{{{' . $paramName . '}}}', $paramValue, $xquery);
             }
         }
 
