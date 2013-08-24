@@ -79,9 +79,8 @@ class ExistDB
      *
      * @return string résultat retourné par la base eXist
      */
-    public function getXQuery($xquery, $cacheDirName, $useCache = true, $start = 1, $howmany = 1000)
+    public function getXQuery($xquery, $useCache = true, $start = 1, $howmany = 1000)
     {
-        $this->cacheDirName = $cacheDirName;
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 
         if ($useCache && $cacheContent = $this->loadXQueryFromCache($xquery)) {
@@ -167,6 +166,24 @@ class ExistDB
         return str_replace('-', '_', strtoupper($id));
     }
 
+    public function getCacheDir()
+    {
+        return $this->cacheDirName;
+    }
+
+    public function setCacheDir($cacheDir)
+    {
+        if (substr($cacheDir, -1) == '/') {
+            $cacheDir = substr($cacheDir, 0, -1);
+        }
+        if (is_dir($cacheDir) && is_readable($cacheDir) && is_writable($cacheDir))
+        {
+            $this->cacheDirName = $cacheDir;
+        } else {
+            throw new \Exception(sprintf('%s is not a valid cache directory', $cacheDir));
+        }
+    }
+
     protected function connect()
     {
         if ($this->wsdl) {
@@ -211,7 +228,7 @@ class ExistDB
     protected function loadXQueryFromCache($xquery)
     {
         $fileName = md5($xquery);
-        $fileName = $this->cacheDirName . '/' . $fileName;
+        $fileName = $this->getCacheDir() . '/' . $fileName;
         if (is_file($fileName) && is_readable($fileName)) {
             if ((time() - filemtime($fileName)) < $this->cacheMaxAge) {
                 $cachedQuery = file_get_contents($fileName);
@@ -230,7 +247,7 @@ class ExistDB
     protected function saveXQueryToCache($xquery, $queryResult)
     {
         $fileName = md5($xquery);
-        $fileName = $this->cacheDirName . '/' . $fileName;
+        $fileName = $this->getCacheDir() . '/' . $fileName;
         file_put_contents($fileName, $queryResult);
     }
 }

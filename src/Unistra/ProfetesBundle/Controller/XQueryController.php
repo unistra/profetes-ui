@@ -17,7 +17,8 @@ class XQueryController extends Controller
                 $xqueryPath,
                 $this->container->getParameter('unistra_profetes.xquery.composante')),
             array('composante' => $exist_db->getOriginalId($id)));
-        $xml = $exist_db->getXQuery($xquery, $xqueryPath);
+        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $xml = $exist_db->getXQuery($xquery);
 
         return $this->render('UnistraProfetesBundle:XQuery:composante.html.twig', array(
             'formations' => $xml,
