@@ -11,11 +11,13 @@ class XQueryController extends Controller
     public function composanteAction($id)
     {
         $exist_db = $this->get('exist_db');
+        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
         $xquery = $exist_db->loadXQueryFromFile(
             sprintf('%s/%s',
-                $this->container->getParameter('unistra_profetes.xquery.path'),
+                $xqueryPath,
                 $this->container->getParameter('unistra_profetes.xquery.composante')),
             array('composante' => $exist_db->getOriginalId($id)));
+        $exist_db->setCacheDir($xqueryPath . '/cache');
         $xml = $exist_db->getXQuery($xquery);
 
         return $this->render('UnistraProfetesBundle:XQuery:composante.html.twig', array(

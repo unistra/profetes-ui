@@ -5,4 +5,5 @@
 /app/logs/*
 /vendor/
 /app/config/parameters.yml
+cache/
 

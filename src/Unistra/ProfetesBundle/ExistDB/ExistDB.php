@@ -13,6 +13,8 @@ class ExistDB
     private $password   = '';
     private $soapClient;
     private $connectionId;
+    private $cacheDirName;
+    private $cacheMaxAge;
 
 
     public function __construct($wsdl, $username = 'guest', $password = 'guest')
@@ -20,6 +22,8 @@ class ExistDB
         $this->wsdl = $wsdl;
         $this->username = $username;
         $this->password = $password;
+
+        $this->cacheMaxAge = 60 * 60 * 24 * 7; #7 days
 
         $this->connect();
     }
@@ -75,9 +79,13 @@ class ExistDB
      *
      * @return string résultat retourné par la base eXist
      */
-    public function getXQuery($xquery, $start = 1, $howmany = 1000)
+    public function getXQuery($xquery, $useCache = true, $start = 1, $howmany = 1000)
     {
         $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+
+        if ($useCache && $cacheContent = $this->loadXQueryFromCache($xquery)) {
+            return $xml . $cacheContent;
+        }
 
         $queryParams = array(
             'sessionId'     => $this->connectionId,
@@ -101,6 +109,7 @@ class ExistDB
             } else {
                 $xml .= $result . "\n";
             }
+            $this->saveXQueryToCache($xquery, $result);
             return $xml;
         }
 
@@ -157,6 +166,24 @@ class ExistDB
         return str_replace('-', '_', strtoupper($id));
     }
 
+    public function getCacheDir()
+    {
+        return $this->cacheDirName;
+    }
+
+    public function setCacheDir($cacheDir)
+    {
+        if (substr($cacheDir, -1) == '/') {
+            $cacheDir = substr($cacheDir, 0, -1);
+        }
+        if (is_dir($cacheDir) && is_readable($cacheDir) && is_writable($cacheDir))
+        {
+            $this->cacheDirName = $cacheDir;
+        } else {
+            throw new \Exception(sprintf('%s is not a valid cache directory', $cacheDir));
+        }
+    }
+
     protected function connect()
     {
         if ($this->wsdl) {
@@ -182,6 +209,7 @@ class ExistDB
             $idparts = explode('-', strtoupper($id));
             #format: /db/CDM/WSDiplomeCDM-0673021V-FRAN-PS103-202.xml pour
             #fr-rne-0673021v-pr-ps103-202
+
             return sprintf('%s/WSDiplomeCDM-%s-FRAN-%s-%s.xml',
                 '/db/CDM-2009',
                 $idparts[2],
@@ -191,6 +219,36 @@ class ExistDB
         } else {
             throw new \Exception(sprintf('Resource %s does not exist', $id), 404);
         }
+    }
+
+    /**
+     * Détermine si une version en cache peut être utilisée
+     *
+     */
+    protected function loadXQueryFromCache($xquery)
+    {
+        $fileName = md5($xquery);
+        $fileName = $this->getCacheDir() . '/' . $fileName;
+        if (is_file($fileName) && is_readable($fileName)) {
+            if ((time() - filemtime($fileName)) < $this->cacheMaxAge) {
+                $cachedQuery = file_get_contents($fileName);
+
+                return $cachedQuery;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Enregistre le résultat de la requête en cache
+     *
+     */
+    protected function saveXQueryToCache($xquery, $queryResult)
+    {
+        $fileName = md5($xquery);
+        $fileName = $this->getCacheDir() . '/' . $fileName;
+        file_put_contents($fileName, $queryResult);
     }
 }
 
