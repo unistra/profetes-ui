@@ -8,6 +8,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class XQueryController extends Controller
 {
 
+    public function composantesAction()
+    {
+        return $this->render('UnistraProfetesBundle:XQuery:composantes.html.twig');
+    }
+
     public function composanteAction($id)
     {
         $exist_db = $this->get('exist_db');
