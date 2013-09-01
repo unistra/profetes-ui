@@ -68,7 +68,7 @@ class FormationCDM
         return $xpath->query($title)->item(0)->nodeValue;
     }
 
-    
+
     public function getSearchword()
     {
         $searchwords = array();
