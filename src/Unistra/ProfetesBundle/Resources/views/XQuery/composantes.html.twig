@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Liste des composantes{% endblock %}
+
+{% block body %}
+        <div id="content-header">
+            <div id="breadcrumb">
+                <ul class="breadcrumb">
+                    <li><a href="#">Études et insertion</a> <span class="divider"> › </span></li>
+                    <li><a href="#">Nos formations</a> <span class="divider"> › </span></li>
+                    <li><a href="#">Diplômes</a> <span class="divider"> › </span></li>
+                    <li class="active">Liste des composantes</li>
+                </ul>
+            </div>
+            <h1 id="page-title">Liste des composantes</h1>
+        </div>
+
+        <div id="main-content" class="row-fluid">
+            {{ xml | xslt_transform(xsl, { 'path': path }) | raw }}
+        </div>
+{% endblock %}
+
