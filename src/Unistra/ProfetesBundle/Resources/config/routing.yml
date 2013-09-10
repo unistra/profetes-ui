@@ -27,3 +27,7 @@ unistra_profetes_composante:
     requirements:
         id:     ^fr-rne-06\d{5}[a-z]-or-\w{3}$
 
+unistra_profetes_par_type_diplome:
+    path:       /type-diplome/{typeDeDiplome}
+    defaults:   { _controller: UnistraProfetesBundle:XQuery:parTypeDeDiplome }
+

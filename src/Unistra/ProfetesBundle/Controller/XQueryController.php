@@ -39,4 +39,25 @@ class XQueryController extends Controller
         ));
     }
 
+
+    public function parTypeDeDiplomeAction($typeDeDiplome)
+    {
+        $exist_db = $this->get('exist_db');
+        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
+        $xquery = $exist_db->loadXQueryFromFile(
+            sprintf('%s/%s',
+                $xqueryPath,
+                'par-type-de-diplome.xquery'),
+            array('type-de-diplome' => $typeDeDiplome));
+        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $xml = $exist_db->getXQuery($xquery);
+
+        return $this->render('UnistraProfetesBundle:XQuery:par-type-de-diplome.html.twig', array(
+            'formations'    => $xml,
+            'xsl'           => $this->container->getParameter('unistra_profetes.xsl.path') . '/par-type-de-diplome.xsl',
+            'path'          => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
+            'typeDeDiplome' => $typeDeDiplome,
+        ));
+    }
+
 }
