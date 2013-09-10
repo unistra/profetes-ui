@@ -60,4 +60,24 @@ class XQueryController extends Controller
         ));
     }
 
+    public function parSecteurActiviteAction($secteurActivite)
+    {
+        $exist_db = $this->get('exist_db');
+        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
+        $xquery = $exist_db->loadXQueryFromFile(
+            sprintf('%s/%s',
+                $xqueryPath,
+                'par-secteur-activite.xquery'),
+            array('secteur-activite'    => $secteurActivite));
+        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $xml = $exist_db->getXQuery($xquery);
+
+        return $this->render('UnistraProfetesBundle:XQuery:par-secteur-activite.html.twig', array(
+            'formations'    => $xml,
+            'xsl'           => $this->container->getParameter('unistra_profetes.xsl.path') . '/par-secteur-activite.xsl',
+            'path'          => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
+            'secteurActivite'   => $secteurActivite,
+        ));
+    }
+
 }

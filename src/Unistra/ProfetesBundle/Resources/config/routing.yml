@@ -31,3 +31,7 @@ unistra_profetes_par_type_diplome:
     path:       /type-diplome/{typeDeDiplome}
     defaults:   { _controller: UnistraProfetesBundle:XQuery:parTypeDeDiplome }
 
+unistra_profetes_par_secteur_activite:
+    path:       /secteur-activite/{secteurActivite}
+    defaults:   { _controller: UnistraProfetesBundle:XQuery:parSecteurActivite }
+
