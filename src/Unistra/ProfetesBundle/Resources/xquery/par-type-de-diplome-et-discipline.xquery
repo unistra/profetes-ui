@@ -7,6 +7,7 @@ let $discipline := '{{{discipline}}}'
 return <formations>{
 
 for $formation in collection('/db/CDM-2009')/cdm:CDM[cdm:orgUnit/@id = $unistra]/cdm:program[(cdm:level/cdm:subBlock/cdm:extension/order/@n = $type-de-diplome) and (cdm:qualification/cdm:qualificationDescription/cdm:subBlock[@userDefined = 'champsDisciplinairesUNERA'] = $discipline)]
+order by $formation/cdm:programName/cdm:text[@language = 'fr-FR']
 return <formation id="{replace(lower-case($formation/@id), '_', '-')}">{$formation/cdm:programName/cdm:text[@language = 'fr-FR']/text()}</formation>
 
 }</formations>
