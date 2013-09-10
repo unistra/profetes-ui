@@ -139,6 +139,7 @@ class ExistDB
 
         if ($params && is_array($params)) {
             foreach ($params as $paramName => $paramValue) {
+                $paramValue = str_replace("'", "''", $paramValue);
                 $xquery = str_replace('{{{' . $paramName . '}}}', $paramValue, $xquery);
             }
         }
