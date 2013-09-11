@@ -2,11 +2,17 @@
 
 {% block title %}Recherche assistée{% endblock %}
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('bundles/unistraprofetes/js/profetes.js') }}"></script>
+{% endblock %}
 
-{% block stylesheets %}{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/unistraprofetes/css/profetes.css') }}">
+{% endblock %}
 
 {% block body %}
+<div id="contenu">
     <!-- Les 3 scenarios de recherche -->
     <div id="scenario" class="pHid">
         <p>Sélectionner un scénario de recherche&#160;: </p>
@@ -63,5 +69,5 @@
 
     <!-- div pour l'affichage des sélections de diplômes -->
     <div id="res" class="pHid">&#160;</div>
-
+</div>
 {% endblock %}

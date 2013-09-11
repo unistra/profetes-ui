@@ -35,3 +35,7 @@ unistra_profetes_par_secteur_activite:
     path:       /secteur-activite/{secteurActivite}
     defaults:   { _controller: UnistraProfetesBundle:XQuery:parSecteurActivite }
 
+unistra_profetes_recherche_assistee:
+    path:       /recherche-assistee/
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:index }
+
