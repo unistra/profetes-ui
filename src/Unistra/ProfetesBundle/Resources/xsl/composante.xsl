@@ -7,17 +7,29 @@
     <xsl:param name="path"/>
 
     <xsl:template match="/">
-        <xsl:apply-templates select="/types-diplome/type-diplome"/>
+        <div class="accordion" id="accordion2">
+            <xsl:apply-templates select="/types-diplome/type-diplome"/>
+        </div>
     </xsl:template>
 
     <xsl:template match="types-diplome/type-diplome">
-        <h3><xsl:value-of select="@name"/></h3>
         <xsl:if test="count(formation)">
-            <ul>
-                <xsl:for-each select="formation">
-                    <li><a href="{$path}{id}"><xsl:value-of select="nom"/></a></li>
-                </xsl:for-each>
-            </ul>
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{generate-id(.)}">
+                        <h3><xsl:value-of select="@name"/></h3>
+                    </a>
+                </div>
+                <div id="collapse{generate-id(.)}" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                        <ul>
+                            <xsl:for-each select="formation">
+                                <li><a href="{$path}{id}"><xsl:value-of select="nom"/></a></li>
+                            </xsl:for-each>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </xsl:if>
     </xsl:template>
 
