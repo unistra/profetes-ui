@@ -1,0 +1,20 @@
+unistra_profetes_ra_index:
+    path:       /
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:index }
+
+unistra_profetes_ra_types_diplomes:
+    path:       /types-diplomes
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:listeTypesDiplomes }
+
+unistra_profetes_ra_disc_par_type_diplome:
+    path:       /t/{typeDeDiplome}/disciplines
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:disciplinesParTypeDeDiplome }
+    requirements:
+        typeDeDiplome:  \d+
+
+unistra_profetes_ra_disc_et_type_diplome:
+    path:       /t/{typeDeDiplome}/d/{discipline}
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:parDisciplineEtTypeDeDiplome }
+    requirements:
+        typeDeDiplome:  \d+
+
