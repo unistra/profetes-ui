@@ -50,9 +50,13 @@ class ScenarioController extends Controller
             sprintf('%s/%s', $xqueryPath, 'par-type-de-diplome-et-discipline.xquery'),
             array('type-de-diplome' => $typeDeDiplome, 'discipline' => $discipline));
         $exist_db->setCacheDir($xqueryPath . '/cache');
-        $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
+        $xml = $exist_db->getXQuery($xquery);
 
-        return new Response($xml);
+        return $this->render('UnistraProfetesBundle:Scenario:formations.html.twig', array(
+            'formations'    => $xml,
+            'xsl'           => $this->container->getParameter('unistra_profetes.xsl.path') . '/par-scenario.xsl',
+            'path'          => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
+        ));
     }
 
 }
