@@ -10,6 +10,7 @@
             <ul class="liste-diplomes">
                 <xsl:for-each select="/formations/formation">
                     <li>
+                        <xsl:attribute name="class"><xsl:value-of select="@ead"/></xsl:attribute>
                         <a href="{$path}{@id}"><xsl:value-of select="."/></a>
                     </li>
                 </xsl:for-each>
