@@ -17,9 +17,8 @@ class ScenarioController extends Controller
     public function listeTypesDiplomesAction()
     {
         $exist_db = $this->get('exist_db');
-        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
         $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $xqueryPath, 'liste-types-de-diplomes.xquery')
+            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-types-de-diplomes.xquery')
         );
         $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
@@ -31,9 +30,8 @@ class ScenarioController extends Controller
     public function disciplinesParTypeDeDiplomeAction($typeDeDiplome)
     {
         $exist_db = $this->get('exist_db');
-        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
         $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $xqueryPath, 'liste-disciplines-par-type-de-diplome.xquery'),
+            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-disciplines-par-type-de-diplome.xquery'),
             array('type-de-diplome' => $typeDeDiplome)
         );
         $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
@@ -45,9 +43,8 @@ class ScenarioController extends Controller
     public function parDisciplineEtTypeDeDiplomeAction($discipline, $typeDeDiplome)
     {
         $exist_db = $this->get('exist_db');
-        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
         $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $xqueryPath, 'par-type-de-diplome-et-discipline.xquery'),
+            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'par-type-de-diplome-et-discipline.xquery'),
             array('type-de-diplome' => $typeDeDiplome, 'discipline' => $discipline));
         $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery);
@@ -62,9 +59,8 @@ class ScenarioController extends Controller
     public function listeDisciplinesAction()
     {
         $exist_db = $this->get('exist_db');
-        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
         $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $xqueryPath, 'liste-disciplines.xquery')
+            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-disciplines.xquery')
         );
         $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
@@ -75,9 +71,8 @@ class ScenarioController extends Controller
     public function typesDiplomesParDisciplineAction($discipline)
     {
         $exist_db = $this->get('exist_db');
-        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
         $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $xqueryPath, 'liste-types-de-diplomes-par-discipline.xquery'),
+            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-types-de-diplomes-par-discipline.xquery'),
             array('discipline' => $discipline)
         );
         $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
@@ -89,9 +84,8 @@ class ScenarioController extends Controller
     public function listeObjectifsProfessionnelsAction()
     {
         $exist_db = $this->get('exist_db');
-        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
         $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $xqueryPath, 'liste-objectifs-professionnels.xquery')
+            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-objectifs-professionnels.xquery')
         );
         $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
@@ -102,9 +96,8 @@ class ScenarioController extends Controller
     public function typesDiplomesParObjProAction($objectifProfessionnel)
     {
         $exist_db = $this->get('exist_db');
-        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
         $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $xqueryPath, 'liste-types-de-diplomes-par-objectif-professionnel.xquery'),
+            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-types-de-diplomes-par-objectif-professionnel.xquery'),
             array('objectif-professionnel' => $objectifProfessionnel)
         );
         $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
@@ -116,9 +109,8 @@ class ScenarioController extends Controller
     public function parObjectifProfessionnelEtTypeDeDiplomeAction($objectifProfessionnel, $typeDeDiplome)
     {
         $exist_db = $this->get('exist_db');
-        $xqueryPath = $this->container->getParameter('unistra_profetes.xquery.path');
         $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $xqueryPath, 'par-type-de-diplome-et-objectif-professionnel.xquery'),
+            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'par-type-de-diplome-et-objectif-professionnel.xquery'),
             array('type-de-diplome' => $typeDeDiplome, 'objectif-professionnel' => $objectifProfessionnel));
         $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery);
