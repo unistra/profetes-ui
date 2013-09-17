@@ -21,7 +21,7 @@ class ScenarioController extends Controller
         $xquery = $exist_db->loadXQueryFromFile(
             sprintf('%s/%s', $xqueryPath, 'liste-types-de-diplomes.xquery')
         );
-        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
 
         return new Response($xml);
@@ -36,7 +36,7 @@ class ScenarioController extends Controller
             sprintf('%s/%s', $xqueryPath, 'liste-disciplines-par-type-de-diplome.xquery'),
             array('type-de-diplome' => $typeDeDiplome)
         );
-        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
 
         return new Response($xml);
@@ -49,7 +49,7 @@ class ScenarioController extends Controller
         $xquery = $exist_db->loadXQueryFromFile(
             sprintf('%s/%s', $xqueryPath, 'par-type-de-diplome-et-discipline.xquery'),
             array('type-de-diplome' => $typeDeDiplome, 'discipline' => $discipline));
-        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery);
 
         return $this->render('UnistraProfetesBundle:Scenario:formations.html.twig', array(
@@ -66,7 +66,7 @@ class ScenarioController extends Controller
         $xquery = $exist_db->loadXQueryFromFile(
             sprintf('%s/%s', $xqueryPath, 'liste-disciplines.xquery')
         );
-        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
 
         return new Response($xml);
@@ -80,7 +80,7 @@ class ScenarioController extends Controller
             sprintf('%s/%s', $xqueryPath, 'liste-types-de-diplomes-par-discipline.xquery'),
             array('discipline' => $discipline)
         );
-        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
 
         return new Response($xml);
@@ -93,7 +93,7 @@ class ScenarioController extends Controller
         $xquery = $exist_db->loadXQueryFromFile(
             sprintf('%s/%s', $xqueryPath, 'liste-objectifs-professionnels.xquery')
         );
-        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
 
         return new Response($xml);
@@ -107,7 +107,7 @@ class ScenarioController extends Controller
             sprintf('%s/%s', $xqueryPath, 'liste-types-de-diplomes-par-objectif-professionnel.xquery'),
             array('objectif-professionnel' => $objectifProfessionnel)
         );
-        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
 
         return new Response($xml);
@@ -120,7 +120,7 @@ class ScenarioController extends Controller
         $xquery = $exist_db->loadXQueryFromFile(
             sprintf('%s/%s', $xqueryPath, 'par-type-de-diplome-et-objectif-professionnel.xquery'),
             array('type-de-diplome' => $typeDeDiplome, 'objectif-professionnel' => $objectifProfessionnel));
-        $exist_db->setCacheDir($xqueryPath . '/cache');
+        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery);
 
         return $this->render('UnistraProfetesBundle:Scenario:formations.html.twig', array(

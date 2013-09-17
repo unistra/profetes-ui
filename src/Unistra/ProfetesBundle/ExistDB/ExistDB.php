@@ -188,6 +188,8 @@ class ExistDB
         if (is_dir($cacheDir) && is_readable($cacheDir) && is_writable($cacheDir))
         {
             $this->cacheDirName = $cacheDir;
+        } else if (mkdir($cacheDir, 0777, true)) {
+            $this->cacheDirName = $cacheDir;
         } else {
             throw new \Exception(sprintf('%s is not a valid cache directory', $cacheDir));
         }
