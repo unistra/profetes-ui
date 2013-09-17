@@ -79,9 +79,11 @@ class ExistDB
      *
      * @return string résultat retourné par la base eXist
      */
-    public function getXQuery($xquery, $useCache = true, $start = 1, $howmany = 1000)
+    public function getXQuery($xquery, $options = array())
     {
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        $withXmlProlog = (array_key_exists('withXmlProlog', $options) ? $options['withXmlProlog'] : true);
+        $useCache = (array_key_exists('useCache', $options) ? $options['useCache'] : true);
+        $xml = '';
 
         if ($useCache && $cacheContent = $this->loadXQueryFromCache($xquery)) {
             return $xml . $cacheContent;
@@ -95,8 +97,8 @@ class ExistDB
 
         $retrieveParams = array(
             'sessionId'     => $this->connectionId,
-            'start'         => $start,
-            'howmany'       => $howmany,
+            'start'         => (array_key_exists('start', $options) ? $options['start'] : 1),
+            'howmany'       => (array_key_exists('howmany', $options) ? $options['howmany'] : 1000),
             'indent'        => true,
             'xinclude'      => true,
             'highlight'     => true,
@@ -109,8 +111,14 @@ class ExistDB
             } else {
                 $xml .= $result . "\n";
             }
-            $this->saveXQueryToCache($xquery, $result);
-            return $xml;
+            if ($useCache) {
+                $this->saveXQueryToCache($xquery, $result);
+            }
+            if ($withXmlProlog) {
+                return '<?xml version="1.0" encoding="utf-8"?>' . "\n" . $xml;
+            } else {
+                return $xml;
+            }
         }
 
         return '';
@@ -179,6 +187,8 @@ class ExistDB
         }
         if (is_dir($cacheDir) && is_readable($cacheDir) && is_writable($cacheDir))
         {
+            $this->cacheDirName = $cacheDir;
+        } else if (mkdir($cacheDir, 0777, true)) {
             $this->cacheDirName = $cacheDir;
         } else {
             throw new \Exception(sprintf('%s is not a valid cache directory', $cacheDir));

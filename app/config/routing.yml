@@ -1,4 +1,4 @@
 unistra_profetes:
     resource: "@UnistraProfetesBundle/Resources/config/routing.yml"
-    prefix:   /formations
+    prefix:   /profetes-v2
 

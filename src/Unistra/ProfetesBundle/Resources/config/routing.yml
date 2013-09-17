@@ -35,3 +35,7 @@ unistra_profetes_par_secteur_activite:
     path:       /secteur-activite/{secteurActivite}
     defaults:   { _controller: UnistraProfetesBundle:XQuery:parSecteurActivite }
 
+unistra_profetes_recherche_assistee:
+    prefix:     /recherche-assistee
+    resource:   "@UnistraProfetesBundle/Resources/config/routing-rech-assistee.yml"
+
