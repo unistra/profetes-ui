@@ -6,4 +6,4 @@ parameters:
     unistra_profetes.xsl.fiche:             fiche.xsl
     unistra_profetes.xquery.composante:     composante.xquery
 
-    unistra_profetes.xquery.cache_dir:      %kernel.cache_dir%/xquery
+    unistra_profetes.xquery.cache_dir:      %kernel.cache_dir%/unistraprofetes-xquery
