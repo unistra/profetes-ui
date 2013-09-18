@@ -1,18 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block title %}Formations par type de diplôme{% endblock %}
+{% block breadcrumb %}Par type de diplôme{% endblock %}
 
 {% block body %}
-    <div id="content-header">
-        <div id="breadcrumb">
-            <ul class="breadcrumb">
-                <li><a href="#">Études et insertion</a> <span class="divider"> › </span></li>
-                <li><a href="#">Nos formations</a> <span class="divider"> › </span></li>
-                <li><a href="#">Diplômes</a> <span class="divider"> › </span></li>
-                <li class="active">Par type de diplôme</li>
-            </ul>
+    <div class="chapo">&nbsp;</div>
+    <div id="content-mapping">
+        <div class="csc-default">
+            {{ formations | xslt_transform(xsl, { 'path': path }) | raw }}
         </div>
-        <h1 id="page-title">{{ typeDeDiplome }}</h1>
-        {{ formations | xslt_transform(xsl, { 'path': path }) | raw }}
     </div>
 {% endblock %}

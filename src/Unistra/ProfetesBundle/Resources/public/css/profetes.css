@@ -1,50 +1,56 @@
-div#contenu div#res li {
+div#content-mapping div#res li {
   padding: 5px 0 2px 18px;
+  background-repeat: no-repeat;
+  background-position: left 6px;
 }
 
-div#contenu div#res li.ead-aucune {
+div#content-mapping ul.liste-diplomes {
+    list-style-type: none;
+}
+
+div#content-mapping div#res li.ead-aucune {
   background-image: url(/fileadmin/templates/unistra/images/icones/ead-non.png);
 }
 
-div#contenu div#res li.ead-partielle {
+div#content-mapping div#res li.ead-partielle {
   background-image: url(/fileadmin/templates/unistra/images/icones/ead-p.png);
 }
 
-div#contenu div#res li.ead-complete {
+div#content-mapping div#res li.ead-complete {
   background-image: url(/fileadmin/templates/unistra/images/icones/ead-c.png);
 }
 
-div#contenu .pHid {
+div#content-mapping .pHid {
   display: none;
 }
 
-div#contenu select {
+div#content-mapping select {
   width: 100%;
 }
 
-div#contenu label {
+div#content-mapping label {
   font-weight: bold;
 }
 
-div#contenu div#scenario {
+div#content-mapping div#scenario {
   margin: 0 0 15px 0;
 }
 
-div#contenu div#scenario ul {
+div#content-mapping div#scenario ul {
   list-style-type: none;
   margin: 0;
   padding:0;
   height: 100px;
 }
 
-div#contenu div#scenario ul li {
+div#content-mapping div#scenario ul li {
   margin: 0;
   padding:0;
   float: left;
   display: inline;
 }
 
-div#contenu div#scenario ul li a {
+div#content-mapping div#scenario ul li a {
   display: block;
   margin: 0 8px 0 0;
   padding: 10px 20px 10px 5px;
@@ -56,24 +62,24 @@ div#contenu div#scenario ul li a {
   background: #f3f3f3 url(../../images/profetes/unchecked.gif) no-repeat right bottom;
 }
 
-div#contenu div#scenario ul li a:hover {
+div#content-mapping div#scenario ul li a:hover {
   border: 1px solid #647e91;
   background: #e7e7e7 url(../../images/profetes/unchecked_over.gif) no-repeat right bottom;
 }
 
 
-div#contenu div#scenario ul li a span {
+div#content-mapping div#scenario ul li a span {
   font-size: 1.3em;
   color: #415a6d;
   font-weight: bold;
 }
 
-div#contenu div#scenario ul li a.checked {
+div#content-mapping div#scenario ul li a.checked {
   border: 1px solid #04a008;
   background: #e5f1e5 url(../../images/profetes/checked.gif) no-repeat right bottom;
 }
 
-div#contenu p.pdf {
+div#content-mapping p.pdf {
   background: url(http://www.unistra.fr/typo3/gfx/fileicons/pdf.gif) no-repeat scroll transparent;
   padding: 10px 35px 10px;
 }

@@ -1,73 +1,77 @@
 {% extends '::base.html.twig' %}
 
 {% block title %}Recherche assistée{% endblock %}
+{% block breadcrumb %}Recherche assistée{% endblock %}
 
 {% block javascripts %}
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-    <script type="text/javascript" src="{{ asset('bundles/unistraprofetes/js/profetes.js') }}"></script>
+    <script type="text/javascript" src="http://www.unistra.fr/fileadmin/templates/unistra/scripts/profetes.js"></script>
 {% endblock %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="http://www.unistra.fr/fileadmin/templates/unistra/styles/profetes/profetes.css">
+    <link rel="stylesheet" type="text/css" href="http://www.unistra.fr/fileadmin/templates/unistra/styles/profetes/profetes.css">
 {% endblock %}
 
 {% block body %}
-<div id="contenu">
-    <!-- Les 3 scenarios de recherche -->
-    <div id="scenario" class="pHid">
-        <p>Sélectionner un scénario de recherche&#160;: </p>
-        <ul>
-            <li><a href="#" id="scen1" class="checked">par<br />
-                <span>niveau de diplôme</span><br />puis par<br />
-                <span>discipline enseignée</span></a></li>
-            <li><a href="#" id="scen2">par<br />
-                <span>discipline enseignée</span><br />puis par<br />
-                <span>niveau de diplôme</span></a></li>
-            <li><a href="#" id="scen3">par<br /><span>objectif professionnel</span>
-                <br />puis par<br /><span>niveau de diplôme</span></a></li>
-        </ul>
+    <div class="chapo">&nbsp;</div>
+    <div id="content-mapping">
+        <div class="csc-default">
+            <!-- Les 3 scenarios de recherche -->
+            <div id="scenario" class="pHid">
+                <p>Sélectionner un scénario de recherche&#160;: </p>
+                <ul>
+                    <li><a href="#" id="scen1" class="checked">par<br />
+                        <span>niveau de diplôme</span><br />puis par<br />
+                        <span>discipline enseignée</span></a></li>
+                    <li><a href="#" id="scen2">par<br />
+                        <span>discipline enseignée</span><br />puis par<br />
+                        <span>niveau de diplôme</span></a></li>
+                    <li><a href="#" id="scen3">par<br /><span>objectif professionnel</span>
+                        <br />puis par<br /><span>niveau de diplôme</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Premier scenario -->
+            <form action="" method="get" id="fScen1" class="pHid">
+                <p id="pLev1"><label for="cboLev1">Type ou niveau de diplôme&#160;:</label><br />
+                    <select id="cboLev1" name="cboLev1" class="cbo1">
+                        <option value="" selected="selected">Sélectionnez un type ou niveau de diplôme</option>
+                    </select></p>
+                <p id="pDisc1"><label for="cboDisc1">Discipline&#160;:</label><br />
+                    <select id="cboDisc1" name="cboDisc1" class="cbo2">
+                        <option value="" selected="selected">Sélectionnez une discipline</option>
+                    </select></p>
+            </form>
+
+            <!-- Deuxième scenario -->
+            <form action="" method="get" id="fScen2" class="pHid">
+                <p id="pDisc2"><label for="cboDisc2">Discipline&#160;:</label><br />
+                    <select id="cboDisc2" name="cboDisc2" class="cbo1">
+                        <option value="" selected="selected">Sélectionnez une discipline</option>
+                    </select></p>
+                <p id="pLev2"><label for="cboLev2">Type ou niveau de diplôme&#160;:</label><br />
+                    <select id="cboLev2" name="cboLev2" class="cbo2">
+                        <option value="" selected="selected">Sélectionnez un type ou niveau de diplôme</option>
+                    </select></p>
+            </form>
+
+            <!-- Troisième scenario -->
+            <form action="" method="get" id="fScen3" class="pHid">
+                <p id="pProf3"><label for="cboProf3">Objectif professionnel&#160;:</label><br />
+                    <select id="cboProf3" name="cboProf3" class="cbo1">
+                        <option value="" selected="selected">Sélectionnez un objectif professionnel</option>
+                    </select></p>
+                <p id="pLev3"><label for="cboLev3">Type ou niveau de diplôme&#160;:</label><br />
+                    <select id="cboLev3" name="cboLev3" class="cbo2">
+                        <option value="" selected="selected">Sélectionnez un type ou niveau de diplôme</option>
+                    </select></p>
+            </form>
+
+            <!-- légendes des icones ead -->
+            <p class="legende pHid" >Enseignement pouvant être suivi à distance :<br/><img src="/fileadmin/templates/unistra/images/icones/ead-c.png" width="16" height="16" alt="Enseignement complètement à distance"/>  intégralement <img src="/fileadmin/templates/unistra/images/icones/ead-p.png" width="16" height="16" alt="Enseignement partiellement à distance"/> partiellement <img src="/fileadmin/templates/unistra/images/icones/ead-non.png" width="16" height="16" alt="Pas d'enseignement à distance"/> non</p>
+
+            <!-- div pour l'affichage des sélections de diplômes -->
+            <div id="res" class="pHid">&#160;</div>
+        </div>
     </div>
-
-    <!-- Premier scenario -->
-    <form action="" method="get" id="fScen1" class="pHid">
-        <p id="pLev1"><label for="cboLev1">Type ou niveau de diplôme&#160;:</label><br />
-            <select id="cboLev1" name="cboLev1" class="cbo1">
-                <option value="" selected="selected">Sélectionnez un type ou niveau de diplôme</option>
-            </select></p>
-        <p id="pDisc1"><label for="cboDisc1">Discipline&#160;:</label><br />
-            <select id="cboDisc1" name="cboDisc1" class="cbo2">
-                <option value="" selected="selected">Sélectionnez une discipline</option>
-            </select></p>
-    </form>
-
-    <!-- Deuxième scenario -->
-    <form action="" method="get" id="fScen2" class="pHid">
-        <p id="pDisc2"><label for="cboDisc2">Discipline&#160;:</label><br />
-            <select id="cboDisc2" name="cboDisc2" class="cbo1">
-                <option value="" selected="selected">Sélectionnez une discipline</option>
-            </select></p>
-        <p id="pLev2"><label for="cboLev2">Type ou niveau de diplôme&#160;:</label><br />
-            <select id="cboLev2" name="cboLev2" class="cbo2">
-                <option value="" selected="selected">Sélectionnez un type ou niveau de diplôme</option>
-            </select></p>
-    </form>
-
-    <!-- Troisième scenario -->
-    <form action="" method="get" id="fScen3" class="pHid">
-        <p id="pProf3"><label for="cboProf3">Objectif professionnel&#160;:</label><br />
-            <select id="cboProf3" name="cboProf3" class="cbo1">
-                <option value="" selected="selected">Sélectionnez un objectif professionnel</option>
-            </select></p>
-        <p id="pLev3"><label for="cboLev3">Type ou niveau de diplôme&#160;:</label><br />
-            <select id="cboLev3" name="cboLev3" class="cbo2">
-                <option value="" selected="selected">Sélectionnez un type ou niveau de diplôme</option>
-            </select></p>
-    </form>
-
-    <!-- légendes des icones ead -->
-    <p class="legende pHid" >Enseignement pouvant être suivi à distance :<br/><img src="/fileadmin/templates/unistra/images/icones/ead-c.png" width="16" height="16" alt="Enseignement complètement à distance"/>  intégralement <img src="/fileadmin/templates/unistra/images/icones/ead-p.png" width="16" height="16" alt="Enseignement partiellement à distance"/> partiellement <img src="/fileadmin/templates/unistra/images/icones/ead-non.png" width="16" height="16" alt="Pas d'enseignement à distance"/> non</p>
-
-    <!-- div pour l'affichage des sélections de diplômes -->
-    <div id="res" class="pHid">&#160;</div>
-</div>
 {% endblock %}
