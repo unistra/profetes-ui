@@ -13,12 +13,21 @@ var paths = {'100': 'types-diplomes',
             };
 var msgAttente = '<p><img src="http://www.unistra.fr/fileadmin/templates/unistra/images/icones/focus/loading.gif" height="16" width="16" align="middle">Chargement en cours, merci de patienter</p>';
 
+function emptyControl(control) {
+    if ($('#' + control).prop('type') == 'select-one') {
+        $('#' + control + ' option[value!=""]').remove();
+    } else {
+        $('#' + control).empty();
+    }
+}
+
 function updateContent(control, url) {
     $('div#res').empty().html(msgAttente).show();
-    $('#' + control).empty().hide();
+    emptyControl(control);
+    $('#' + control).hide();
     $.get(url, function(data) {
         $('div#res').empty();
-        $('#' + control).html(data).show();
+        $('#' + control).append(data).show();
         if (control == 'res') {
             $('p.legende').show();
         }
