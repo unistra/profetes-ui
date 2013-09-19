@@ -1,7 +1,8 @@
 {% extends '::fiche.html.twig' %}
 
 {% block title %}{{ formation.getProgramName }}{% endblock %}
-{% block keywords %}<meta name="keywords" content="{{ formation.getSearchword }}">{% endblock %}
+{% block meta_keywords %}<meta name="keywords" content="{{ formation.getSearchword }}">{% endblock %}
+
 
 {% block body %}{{ html | raw }}{% endblock %}
 
