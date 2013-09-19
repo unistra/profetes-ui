@@ -1,11 +1,10 @@
 {% extends '::fiche.html.twig' %}
 
 {% block title %}{{ formation.getProgramName }}{% endblock %}
-{% block keywords %}<meta name="keywords" content="{{ formation.getSearchword
-}}">{% endblock %}
+{% block keywords %}<meta name="keywords" content="{{ formation.getSearchword }}">{% endblock %}
 
 {% block body %}{{ html | raw }}{% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('bundles/unistraprofetes/js/onglets.js') }}"></script>
+    <script type="text/javascript" src="http://www.unistra.fr/fileadmin/templates/unistra/scripts/onglets.js"></script>
 {% endblock %}
