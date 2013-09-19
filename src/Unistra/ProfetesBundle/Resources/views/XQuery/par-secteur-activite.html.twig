@@ -4,9 +4,9 @@
 {% block breadcrumb %}Par secteur secteur d'activité{% endblock %}
 
 {% block body %}
-    <div class="chapo">&nbsp;</div>
     <div id="content-mapping">
         <div class="csc-default">
+            <h2>{{ secteurActivite }}</h2>
             {{ formations | xslt_transform(xsl, { 'path': path }) | raw }}
         </div>
     </div>
