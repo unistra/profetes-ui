@@ -12,9 +12,9 @@
         <div id="content-header">
             <div id="breadcrumb">
                 <ul class="breadcrumb">
-                    <li><a href="#">Études et insertion</a> <span class="divider"> › </span></li>
-                    <li><a href="#">Nos formations</a> <span class="divider"> › </span></li>
-                    <li><a href="#">Diplômes</a> <span class="divider"> › </span></li>
+                    <li>Études et insertion <span class="divider"> › </span></li>
+                    <li>Nos formations <span class="divider"> › </span></li>
+                    <li>Diplômes <span class="divider"> › </span></li>
                     <li class="active"><xsl:value-of select="/cdm:CDM/cdm:program/cdm:programName/cdm:text[@language = 'fr-FR']"/></li>
                 </ul>
             </div>
