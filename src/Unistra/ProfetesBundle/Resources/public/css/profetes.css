@@ -80,6 +80,14 @@ div#content-mapping div#scenario ul li a.checked {
 }
 
 div#content-mapping p.pdf {
-  background: url(http://www.unistra.fr/typo3/gfx/fileicons/pdf.gif) no-repeat scroll transparent;
+  background: url(https://www.unistra.fr/typo3/gfx/fileicons/pdf.gif) no-repeat scroll transparent;
   padding: 10px 35px 10px;
+}
+
+// ajout Bruno pour les listes dans recherche assistée
+
+div#scenario ul li a {
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 0 12px;
 }

@@ -11,7 +11,7 @@ var paths = {'100': 'types-diplomes',
              '310': 'o/%1/types-diplomes',
              '311': 'o/%2/t/%1',
             };
-var msgAttente = '<p><img src="http://www.unistra.fr/fileadmin/templates/unistra/images/icones/focus/loading.gif" height="16" width="16" align="middle">Chargement en cours, merci de patienter</p>';
+var msgAttente = '<p><img src="https://www.unistra.fr/fileadmin/templates/unistra/images/icones/focus/loading.gif" height="16" width="16" align="middle">Chargement en cours, merci de patienter</p>';
 
 function emptyControl(control) {
     if ($('#' + control).prop('type') == 'select-one') {
