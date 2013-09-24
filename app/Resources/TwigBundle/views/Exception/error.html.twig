@@ -2,16 +2,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>An Error Occurred: {{ status_text }}</title>
+        <title>Erreur : {{ status_text }}</title>
     </head>
     <body>
-        <h1>Oops! An Error Occurred</h1>
-        <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+        <h1>Une erreur s'est produite</h1>
+        <h2>Le serveur dit "{{ status_code }} {{ status_text }}".</h2>
 
         <div>
-            Something is broken. Please e-mail us at [email] and let us know
-            what you were doing when this error occurred. We will fix it as soon
-            as possible. Sorry for any inconvenience caused.
+            Veuillez ré-essayer un peu plus tard. Si l'erreur persiste, vous
+            pouvez nous le faire savoir en nous envoyant un courriel à
+            webmestre@unistra.fr et en nous communiquant le texte de l'erreur et
+            ce que vous étiez en train de faire lorsque l'erreur s'est produite.
+            Nous sommes désolés du désagrément causé.
         </div>
     </body>
 </html>

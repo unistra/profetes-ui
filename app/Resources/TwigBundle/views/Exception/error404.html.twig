@@ -2,16 +2,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>An Error Occurred: {{ status_text }}</title>
+        <title>Erreur : {{ status_text }}</title>
     </head>
     <body>
-        <h1>Oops! An Error Occurred</h1>
-        <h2>The server returned a "{{ status_code }} {{ status_text }}".</h2>
+        <h1>Une erreur s'est produite</h1>
+        <h2>Le serveur dit "{{ status_code }} {{ status_text }}".</h2>
 
         <div>
-            Something is broken. Please e-mail us at [email] and let us know
-            what you were doing when this error occurred. We will fix it as soon
-            as possible. Sorry for any inconvenience caused.
+            Une erreur s'est produite. La page demandée n'existe pas ou a été
+            supprimée.
         </div>
     </body>
 </html>
