@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE names [
-<!ENTITY nbsp "&#160;">
-]>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:cdm="http://cdm-fr.fr/2006/CDM-frSchema"
     version="1.0" exclude-result-prefixes="cdm">
@@ -62,12 +59,12 @@
     <xsl:template match="/cdm:CDM/cdm:program/cdm:programDescription/cdm:subBlock[@userDefined = 'DES']/cdm:subBlock[@userDefined = 'domaineMentionSpecialite']">
         <div class="content-menu fiche-diplome">
             <ul class="content-menu-inner">
-                <li><i class="icon-perso-puce-03"></i><strong>Domaine :</strong>&nbsp;<xsl:value-of select="cdm:subBlock[@userDefined = 'domaine' and @blockLang = 'fr-FR']"/></li>
+                <li><i class="icon-perso-puce-03"></i><strong>Domaine :</strong>&#160;<xsl:value-of select="cdm:subBlock[@userDefined = 'domaine' and @blockLang = 'fr-FR']"/></li>
                 <xsl:if test="cdm:subBlock[@userDefined = 'mention' and @blockLang = 'fr-FR']">
-                    <li><i class="icon-perso-puce-03"></i><strong>Mention :</strong>&nbsp;<xsl:value-of select="cdm:subBlock[@userDefined = 'mention' and @blockLang = 'fr-FR']"/></li>
+                    <li><i class="icon-perso-puce-03"></i><strong>Mention :</strong>&#160;<xsl:value-of select="cdm:subBlock[@userDefined = 'mention' and @blockLang = 'fr-FR']"/></li>
                 </xsl:if>
                 <xsl:if test="cdm:subBlock[@userDefined = 'specialite' and @blockLang = 'fr-FR']">
-                    <li><i class="icon-perso-puce-03"></i><strong>Spécialité :</strong>&nbsp;<xsl:value-of select="cdm:subBlock[@userDefined = 'specialite' and @blockLang = 'fr-FR']" /></li>
+                    <li><i class="icon-perso-puce-03"></i><strong>Spécialité :</strong>&#160;<xsl:value-of select="cdm:subBlock[@userDefined = 'specialite' and @blockLang = 'fr-FR']" /></li>
                 </xsl:if>
             </ul>
         </div>
@@ -186,29 +183,29 @@
     <xsl:template match="cdm:contactData/cdm:adr">
         <xsl:if test="cdm:street">
            <xsl:value-of select="cdm:street"/><br/>
-           <xsl:value-of select="cdm:pcode"/>&nbsp;
+           <xsl:value-of select="cdm:pcode"/>&#160;
            <xsl:value-of select="cdm:locality"/><br/>
         </xsl:if>
     </xsl:template>
 
     <xsl:template match="cdm:contactData/cdm:telephone">
-        <strong>Tél.&nbsp;:</strong>&nbsp;<xsl:value-of select="."/><br/>
+        <strong>Tél.&#160;:</strong>&#160;<xsl:value-of select="."/><br/>
     </xsl:template>
 
     <xsl:template match="cdm:person/cdm:contactData/cdm:email">
         <xsl:variable name="nom"><xsl:value-of select="concat(../../cdm:name/cdm:given, ' ', ../../cdm:name/cdm:family)"/></xsl:variable>
-        <strong>Courriel&nbsp;:</strong>&nbsp;<a title="Envoyer un courriel à {$nom}" href="mailto:{.}"><xsl:value-of select="$nom"/></a><br/>
+        <strong>Courriel&#160;:</strong>&#160;<a title="Envoyer un courriel à {$nom}" href="mailto:{.}"><xsl:value-of select="$nom"/></a><br/>
     </xsl:template>
 
     <xsl:template match="cdm:CDM/cdm:program/cdm:formOfTeaching">
         <div class="bloc fiche-diplome">
             <ul>
-                <li><strong>Formation initiale&nbsp;:</strong>&nbsp;<xsl:value-of select="cdm:subBlock[@userDefined = 'formationInitiale']"/></li>
-                <li><strong>Formation continue&nbsp;:</strong>&nbsp;<xsl:value-of select="cdm:subBlock[@userDefined = 'formationContinue']"/></li>
-                <li><strong>En alternance&nbsp;:</strong>&nbsp;<xsl:value-of select="cdm:subBlock[@userDefined = 'formationEnAlternance']"/></li>
-                <li><strong>À distance&nbsp;:</strong>&nbsp;<xsl:value-of select="cdm:subBlock[@userDefined = 'enseignementADistance']"/></li>
-                <li><strong>Stage&nbsp;:</strong>&nbsp;<xsl:value-of select="cdm:subBlock[@userDefined = 'stage']"/></li>
-                <li><strong>Stage à l'étranger&nbsp;:</strong>&nbsp;<xsl:value-of select="cdm:subBlock[@userDefined = 'stageEtranger']"/></li>
+                <li><strong>Formation initiale&#160;:</strong>&#160;<xsl:value-of select="cdm:subBlock[@userDefined = 'formationInitiale']"/></li>
+                <li><strong>Formation continue&#160;:</strong>&#160;<xsl:value-of select="cdm:subBlock[@userDefined = 'formationContinue']"/></li>
+                <li><strong>En alternance&#160;:</strong>&#160;<xsl:value-of select="cdm:subBlock[@userDefined = 'formationEnAlternance']"/></li>
+                <li><strong>À distance&#160;:</strong>&#160;<xsl:value-of select="cdm:subBlock[@userDefined = 'enseignementADistance']"/></li>
+                <li><strong>Stage&#160;:</strong>&#160;<xsl:value-of select="cdm:subBlock[@userDefined = 'stage']"/></li>
+                <li><strong>Stage à l'étranger&#160;:</strong>&#160;<xsl:value-of select="cdm:subBlock[@userDefined = 'stageEtranger']"/></li>
             </ul>
         </div>
     </xsl:template>
