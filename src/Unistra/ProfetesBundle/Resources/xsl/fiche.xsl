@@ -11,7 +11,6 @@
                 <ul class="breadcrumb">
                     <li>Études et insertion <span class="divider"> › </span></li>
                     <li>Nos formations <span class="divider"> › </span></li>
-                    <li>Diplômes <span class="divider"> › </span></li>
                     <li class="active"><xsl:value-of select="/cdm:CDM/cdm:program/cdm:programName/cdm:text[@language = 'fr-FR']"/></li>
                 </ul>
             </div>
