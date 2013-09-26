@@ -1,6 +1,6 @@
 var scenario = 1;
 var selections = [['Lev', 'Disc'], ['Disc', 'Lev'], ['Prof', 'Lev']];
-var url = '/profetes-v2/recherche-assistee/';
+var url = '/formations/recherche-assistee/';
 var paths = {'100': 'types-diplomes',
              '110': 't/%1/disciplines',
              '111': 't/%2/d/%1',
