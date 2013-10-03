@@ -48,27 +48,34 @@ class ExistDB
      */
     public function getResource($id)
     {
-        $path = $this->makePath($id);
 
-        if ($path) {
-            $this->connect();
-            $params = array(
-                'sessionId'     => $this->getConnectionId(),
-                'path'          => $path,
-                'indent'        => true,
-                'xinclude'      => true,
-            );
-            try {
-                $resource = $this->soapClient->getResource($params);
-            } catch (\SoapFault $e) {
-                if (strstr($e->faultstring, 'not found')) {
-                    throw new \Exception('Resource not found', 404);
+        $resource = $this->loadXQueryFromCache($id);
+
+        if (!$resource) {
+            $path = $this->makePath($id);
+
+            if ($path) {
+                $this->connect();
+                $params = array(
+                    'sessionId'     => $this->getConnectionId(),
+                    'path'          => $path,
+                    'indent'        => true,
+                    'xinclude'      => true,
+                );
+                try {
+                    $resource = $this->soapClient->getResource($params);
+                    $resource = $resource->getResourceReturn;
+                    $this->saveXQueryToCache($id, $resource);
+                } catch (\SoapFault $e) {
+                    if (strstr($e->faultstring, 'not found')) {
+                        throw new \Exception('Resource not found', 404);
+                    }
                 }
             }
         }
 
         $formation = new FormationCDM;
-        $formation->setXML($resource->getResourceReturn);
+        $formation->setXML($resource);
 
         return $formation;
     }
