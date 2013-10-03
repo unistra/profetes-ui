@@ -7,7 +7,10 @@ use Unistra\ProfetesBundle\ExistDB\FormationCDM;
 class ExistDB
 {
 
-    private $status     = 'disconnected';
+    const   CONNECTED = 1;
+    const   DISCONNECTED = 0;
+
+    private $status     = self::DISCONNECTED;
     private $wsdl       = '';
     private $username   = '';
     private $password   = '';
@@ -24,8 +27,6 @@ class ExistDB
         $this->password = $password;
 
         $this->cacheMaxAge = 60 * 60 * 24 * 7; #7 days
-
-        $this->connect();
     }
 
     public function getStatus()
@@ -48,9 +49,11 @@ class ExistDB
     public function getResource($id)
     {
         $path = $this->makePath($id);
+
         if ($path) {
+            $this->connect();
             $params = array(
-                'sessionId'     => $this->connectionId,
+                'sessionId'     => $this->getConnectionId(),
                 'path'          => $path,
                 'indent'        => true,
                 'xinclude'      => true,
@@ -89,8 +92,9 @@ class ExistDB
             return $xml . $cacheContent;
         }
 
+        $this->connect();
         $queryParams = array(
-            'sessionId'     => $this->connectionId,
+            'sessionId'     => $this->getConnectionId(),
             'xpath'         => $xquery,
         );
         $query = $this->soapClient->query($queryParams);
@@ -197,13 +201,19 @@ class ExistDB
 
     protected function connect()
     {
-        if ($this->wsdl) {
+        if (self::CONNECTED == $this->getStatus()) {
+            return $this->getConnectionId();
+        } else if ($this->wsdl) {
             $credentials = array(
                 'userId'    => $this->username,
                 'password'  => $this->password);
             $this->soapClient = new \SoapClient($this->wsdl);
             $this->connectionId = $this->soapClient->connect($credentials)->connectReturn;
-            $this->status = 'connected';
+            $this->status = self::CONNECTED;
+
+            return $this->getConnectionId();
+        } else {
+            throw new \Exception(sprintf('%s is not a valid wsdl', $this->wsdl));
         }
     }
 
