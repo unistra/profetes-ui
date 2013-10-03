@@ -249,7 +249,7 @@ class ExistDB
     protected function loadXQueryFromCache($xquery)
     {
         $fileName = md5($xquery);
-        $fileName = $this->getCacheDir() . '/' . $fileName;
+        $fileName = sprintf('%s/%s/%s', $this->getCacheDir(), substr($fileName, 0, 1), substr($fileName, 1));
         if (is_file($fileName) && is_readable($fileName)) {
             if ((time() - filemtime($fileName)) < $this->cacheMaxAge) {
                 $cachedQuery = file_get_contents($fileName);
@@ -268,7 +268,11 @@ class ExistDB
     protected function saveXQueryToCache($xquery, $queryResult)
     {
         $fileName = md5($xquery);
-        $fileName = $this->getCacheDir() . '/' . $fileName;
+        $fileName = sprintf('%s/%s/%s', $this->getCacheDir(), substr($fileName, 0, 1), substr($fileName, 1));
+        $dirName = dirname($fileName);
+        if (!is_dir($dirName)) {
+            mkdir($dirName, 0777, true);
+        }
         file_put_contents($fileName, $queryResult);
     }
 }
