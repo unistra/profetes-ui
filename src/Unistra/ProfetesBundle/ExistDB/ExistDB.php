@@ -20,13 +20,22 @@ class ExistDB
     private $cacheMaxAge;
 
 
-    public function __construct($wsdl, $username = 'guest', $password = 'guest')
+    public function __construct($wsdl, $username = 'guest', $password = 'guest', $options = null)
     {
         $this->wsdl = $wsdl;
         $this->username = $username;
         $this->password = $password;
 
-        $this->cacheMaxAge = 60 * 60 * 24 * 7; #7 days
+        $this->setCacheMaxAge(60 * 60 * 24 * 7); # 7 days
+
+        if (is_array($options) && count($options)) {
+            foreach ($options as $optionName => $optionValue) {
+                $callable = array($this, 'set' . $optionName);
+                if (is_callable($callable)) {
+                    call_user_func_array(array($this, 'set' . $optionName), array($optionValue));
+                }
+            }
+        }
     }
 
     public function getStatus()
@@ -204,6 +213,10 @@ class ExistDB
         } else {
             throw new \Exception(sprintf('%s is not a valid cache directory', $cacheDir));
         }
+    }
+
+    public function setCacheMaxAge($maxAge) {
+        $this->cacheMaxAge = (int)$maxAge;
     }
 
     protected function connect()

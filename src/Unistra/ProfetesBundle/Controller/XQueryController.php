@@ -27,7 +27,6 @@ class XQueryController extends Controller
                 $this->container->getParameter('unistra_profetes.xquery.path'),
                 $this->container->getParameter('unistra_profetes.xquery.composante')),
             array('composante' => $exist_db->getOriginalId($id)));
-        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery);
 
         return $this->render('UnistraProfetesBundle:XQuery:composante.html.twig', array(
@@ -47,7 +46,6 @@ class XQueryController extends Controller
                 $this->container->getParameter('unistra_profetes.xquery.path'),
                 'par-type-de-diplome.xquery'),
             array('type-de-diplome' => $typeDeDiplome));
-        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery);
 
         return $this->render('UnistraProfetesBundle:XQuery:par-type-de-diplome.html.twig', array(
@@ -66,7 +64,6 @@ class XQueryController extends Controller
                 $this->container->getParameter('unistra_profetes.xquery.path'),
                 'par-secteur-activite.xquery'),
             array('secteur-activite'    => $secteurActivite));
-        $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
         $xml = $exist_db->getXQuery($xquery);
 
         return $this->render('UnistraProfetesBundle:XQuery:par-secteur-activite.html.twig', array(

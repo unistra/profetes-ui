@@ -10,9 +10,7 @@ class FicheController extends Controller
     public function indexAction($id, $_format)
     {
         try {
-            $exist_db = $this->get('exist_db');
-            $exist_db->setCacheDir($this->container->getParameter('unistra_profetes.xquery.cache_dir'));
-            $formation = $exist_db->getResource($id);
+            $formation = $this->get('exist_db')->getResource($id);
         } catch (\Exception $e) {
             if (404 == $e->getCode()) {
                 throw $this->createNotFoundException();

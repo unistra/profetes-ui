@@ -7,3 +7,4 @@ parameters:
     unistra_profetes.xquery.composante:     composante.xquery
 
     unistra_profetes.xquery.cache_dir:      %kernel.cache_dir%/unistraprofetes-xquery
+    unistra_profetes.xquery.cache_age:      604800  # 60 * 60 * 24 * 7 = 7 jours
