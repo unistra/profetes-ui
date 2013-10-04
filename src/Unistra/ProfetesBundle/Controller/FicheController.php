@@ -9,6 +9,9 @@ class FicheController extends Controller
 {
     public function indexAction($id, $_format)
     {
+        if ($this->getRequest()->get('format')) {
+            throw $this->createNotFoundException();
+        }
         try {
             $formation = $this->get('exist_db')->getResource($id);
         } catch (\Exception $e) {
