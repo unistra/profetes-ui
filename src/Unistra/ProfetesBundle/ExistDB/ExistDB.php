@@ -7,7 +7,10 @@ use Unistra\ProfetesBundle\ExistDB\FormationCDM;
 class ExistDB
 {
 
-    private $status     = 'disconnected';
+    const   CONNECTED = 1;
+    const   DISCONNECTED = 0;
+
+    private $status     = self::DISCONNECTED;
     private $wsdl       = '';
     private $username   = '';
     private $password   = '';
@@ -17,15 +20,22 @@ class ExistDB
     private $cacheMaxAge;
 
 
-    public function __construct($wsdl, $username = 'guest', $password = 'guest')
+    public function __construct($wsdl, $username = 'guest', $password = 'guest', $options = null)
     {
         $this->wsdl = $wsdl;
         $this->username = $username;
         $this->password = $password;
 
-        $this->cacheMaxAge = 60 * 60 * 24 * 7; #7 days
+        $this->setCacheMaxAge(60 * 60 * 24 * 7); # 7 days
 
-        $this->connect();
+        if (is_array($options) && count($options)) {
+            foreach ($options as $optionName => $optionValue) {
+                $callable = array($this, 'set' . $optionName);
+                if (is_callable($callable)) {
+                    call_user_func_array(array($this, 'set' . $optionName), array($optionValue));
+                }
+            }
+        }
     }
 
     public function getStatus()
@@ -47,25 +57,34 @@ class ExistDB
      */
     public function getResource($id)
     {
-        $path = $this->makePath($id);
-        if ($path) {
-            $params = array(
-                'sessionId'     => $this->connectionId,
-                'path'          => $path,
-                'indent'        => true,
-                'xinclude'      => true,
-            );
-            try {
-                $resource = $this->soapClient->getResource($params);
-            } catch (\SoapFault $e) {
-                if (strstr($e->faultstring, 'not found')) {
-                    throw new \Exception('Resource not found', 404);
+
+        $resource = $this->loadXQueryFromCache($id);
+
+        if (!$resource) {
+            $path = $this->makePath($id);
+
+            if ($path) {
+                $this->connect();
+                $params = array(
+                    'sessionId'     => $this->getConnectionId(),
+                    'path'          => $path,
+                    'indent'        => true,
+                    'xinclude'      => true,
+                );
+                try {
+                    $resource = $this->soapClient->getResource($params);
+                    $resource = $resource->getResourceReturn;
+                    $this->saveXQueryToCache($id, $resource);
+                } catch (\SoapFault $e) {
+                    if (strstr($e->faultstring, 'not found')) {
+                        throw new \Exception('Resource not found', 404);
+                    }
                 }
             }
         }
 
         $formation = new FormationCDM;
-        $formation->setXML($resource->getResourceReturn);
+        $formation->setXML($resource);
 
         return $formation;
     }
@@ -89,8 +108,9 @@ class ExistDB
             return $xml . $cacheContent;
         }
 
+        $this->connect();
         $queryParams = array(
-            'sessionId'     => $this->connectionId,
+            'sessionId'     => $this->getConnectionId(),
             'xpath'         => $xquery,
         );
         $query = $this->soapClient->query($queryParams);
@@ -195,15 +215,25 @@ class ExistDB
         }
     }
 
+    public function setCacheMaxAge($maxAge) {
+        $this->cacheMaxAge = (int)$maxAge;
+    }
+
     protected function connect()
     {
-        if ($this->wsdl) {
+        if (self::CONNECTED == $this->getStatus()) {
+            return $this->getConnectionId();
+        } else if ($this->wsdl) {
             $credentials = array(
                 'userId'    => $this->username,
                 'password'  => $this->password);
             $this->soapClient = new \SoapClient($this->wsdl);
             $this->connectionId = $this->soapClient->connect($credentials)->connectReturn;
-            $this->status = 'connected';
+            $this->status = self::CONNECTED;
+
+            return $this->getConnectionId();
+        } else {
+            throw new \Exception(sprintf('%s is not a valid wsdl', $this->wsdl));
         }
     }
 
@@ -239,7 +269,7 @@ class ExistDB
     protected function loadXQueryFromCache($xquery)
     {
         $fileName = md5($xquery);
-        $fileName = $this->getCacheDir() . '/' . $fileName;
+        $fileName = sprintf('%s/%s/%s', $this->getCacheDir(), substr($fileName, 0, 1), substr($fileName, 1));
         if (is_file($fileName) && is_readable($fileName)) {
             if ((time() - filemtime($fileName)) < $this->cacheMaxAge) {
                 $cachedQuery = file_get_contents($fileName);
@@ -258,7 +288,11 @@ class ExistDB
     protected function saveXQueryToCache($xquery, $queryResult)
     {
         $fileName = md5($xquery);
-        $fileName = $this->getCacheDir() . '/' . $fileName;
+        $fileName = sprintf('%s/%s/%s', $this->getCacheDir(), substr($fileName, 0, 1), substr($fileName, 1));
+        $dirName = dirname($fileName);
+        if (!is_dir($dirName)) {
+            mkdir($dirName, 0777, true);
+        }
         file_put_contents($fileName, $queryResult);
     }
 }
