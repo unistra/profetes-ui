@@ -18,7 +18,6 @@ class ListeDiplomesCommand extends ContainerAwareCommand
         $this
             ->setName('unistra:profetes:diplomes:liste')
             ->setDescription('Liste complète des codes des formations dans la base, au format texte')
-            ->addArgument('prefix', InputArgument::OPTIONAL, 'Préfixe à ajouter aux codes RNE pour faire une URL')
             #->addArgument()
             #->addOption()
         ;
@@ -26,10 +25,9 @@ class ListeDiplomesCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $xqueryParams = array('prefix' => $this->getContainer()->get('router')->generate('_unistra_profetes_repertoire_fiche'));
-        if ($input->getArgument('prefix')) {
-            $xqueryParams['prefix'] = $input->getArgument('prefix') . $xqueryParams['prefix'];
-        }
+        $router = $this->getContainer()->get('router');
+        $router->getContext()->setHost('www.unistra.fr');
+        $xqueryParams = array('prefix' => $router->generate('_unistra_profetes_repertoire_fiche', array(), true));
         $exist_db = $this->getContainer()->get('exist_db');
         $xquery = $exist_db->loadXQueryFromFile(
             $this->getContainer()->get('kernel')->locateResource("@UnistraUtilBundle/Resources/xquery/diplomes.xquery"),
