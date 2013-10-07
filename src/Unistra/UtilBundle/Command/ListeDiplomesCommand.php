@@ -26,10 +26,9 @@ class ListeDiplomesCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $xqueryParams = array('prefix' => $this->getContainer()->get('router')->generate('_unistra_profetes_repertoire_fiche'));
         if ($input->getArgument('prefix')) {
-            $xqueryParams = array('prefix' => $input->getArgument('prefix'));
-        } else {
-            $xqueryParams = array('prefix' => '');
+            $xqueryParams['prefix'] = $input->getArgument('prefix') . $xqueryParams['prefix'];
         }
         $exist_db = $this->getContainer()->get('exist_db');
         $xquery = $exist_db->loadXQueryFromFile(
