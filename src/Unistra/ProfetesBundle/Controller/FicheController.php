@@ -3,6 +3,7 @@
 namespace Unistra\ProfetesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\GoneHttpException;
 
 
 class FicheController extends Controller
@@ -10,7 +11,7 @@ class FicheController extends Controller
     public function indexAction($id, $_format)
     {
         if ($this->getRequest()->get('format')) {
-            throw $this->createNotFoundException();
+            throw new GoneHttpException('Gone');
         }
         try {
             $formation = $this->get('exist_db')->getResource($id);
