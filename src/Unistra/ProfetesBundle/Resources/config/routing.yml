@@ -13,10 +13,6 @@ _unistra_profetes_repertoire_fiche:
     path:       /diplome/
     defaults:   { _controller: UnistraProfetesBundle:Fiche:repertoireFiche }
 
-unistra_profetes_composantes:
-    path:       /composantes/
-    defaults:   { _controller: UnistraProfetesBundle:XQuery:composantes }
-
 _unistra_profetes_repertoire_composante:
     path:       /composante/
     defaults:   { _controller: UnistraProfetesBundle:XQuery:repertoireComposante }
