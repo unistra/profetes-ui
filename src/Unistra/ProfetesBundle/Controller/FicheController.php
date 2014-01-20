@@ -14,7 +14,9 @@ class FicheController extends Controller
             throw new GoneHttpException('Gone');
         }
         try {
-            $formation = $this->get('exist_db')->getResource($id);
+            $exist_db = $this->get('exist_db');
+            $exist_db->setCacheMaxAge($this->container->getParameter('unistra_profetes.fiche.cache_age'));
+            $formation = $exist_db->getResource($id);
         } catch (\Exception $e) {
             if (404 == $e->getCode()) {
                 throw $this->createNotFoundException();
