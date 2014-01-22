@@ -9,6 +9,8 @@ class ExistDB
 
     const   CONNECTED = 1;
     const   DISCONNECTED = 0;
+    const   FICHE = 'f';
+    const   XQUERY = 'q';
 
     private $status     = self::DISCONNECTED;
     private $wsdl       = '';
@@ -58,7 +60,7 @@ class ExistDB
     public function getResource($id)
     {
 
-        $resource = $this->loadXQueryFromCache($id);
+        $resource = $this->loadXQueryFromCache($id, ExistDB::FICHE);
 
         if (!$resource) {
             $path = $this->makePath($id);
@@ -74,7 +76,7 @@ class ExistDB
                 try {
                     $resource = $this->soapClient->getResource($params);
                     $resource = $resource->getResourceReturn;
-                    $this->saveXQueryToCache($id, $resource);
+                    $this->saveXQueryToCache($id, $resource, ExistDB::FICHE);
                 } catch (\SoapFault $e) {
                     if (strstr($e->faultstring, 'not found')) {
                         throw new \Exception('Resource not found', 404);
@@ -104,7 +106,7 @@ class ExistDB
         $useCache = (array_key_exists('useCache', $options) ? $options['useCache'] : true);
         $xml = '';
 
-        if ($useCache && $cacheContent = $this->loadXQueryFromCache($xquery)) {
+        if ($useCache && $cacheContent = $this->loadXQueryFromCache($xquery, ExistDB::XQUERY)) {
             return $xml . $cacheContent;
         }
 
@@ -132,7 +134,7 @@ class ExistDB
                 $xml .= $result . "\n";
             }
             if ($useCache) {
-                $this->saveXQueryToCache($xquery, $result);
+                $this->saveXQueryToCache($xquery, $result, ExistDB::XQUERY);
             }
             if ($withXmlProlog) {
                 return '<?xml version="1.0" encoding="utf-8"?>' . "\n" . $xml;
@@ -266,10 +268,10 @@ class ExistDB
      * Détermine si une version en cache peut être utilisée
      *
      */
-    protected function loadXQueryFromCache($xquery)
+    protected function loadXQueryFromCache($xquery, $typeOfQuery = ExistDB::FICHE)
     {
         $fileName = md5($xquery);
-        $fileName = sprintf('%s/%s/%s', $this->getCacheDir(), substr($fileName, 0, 1), substr($fileName, 1));
+        $fileName = sprintf('%s/%s/%s/%s', $this->getCacheDir(), $typeOfQuery, substr($fileName, 0, 1), substr($fileName, 1));
         if (is_file($fileName) && is_readable($fileName)) {
             if ((time() - filemtime($fileName)) < $this->cacheMaxAge) {
                 $cachedQuery = file_get_contents($fileName);
@@ -285,10 +287,10 @@ class ExistDB
      * Enregistre le résultat de la requête en cache
      *
      */
-    protected function saveXQueryToCache($xquery, $queryResult)
+    protected function saveXQueryToCache($xquery, $queryResult, $typeOfQuery = ExistDB::FICHE)
     {
         $fileName = md5($xquery);
-        $fileName = sprintf('%s/%s/%s', $this->getCacheDir(), substr($fileName, 0, 1), substr($fileName, 1));
+        $fileName = sprintf('%s/%s/%s/%s', $this->getCacheDir(), $typeOfQuery, substr($fileName, 0, 1), substr($fileName, 1));
         $dirName = dirname($fileName);
         if (!is_dir($dirName)) {
             mkdir($dirName, 0777, true);
