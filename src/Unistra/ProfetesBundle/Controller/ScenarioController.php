@@ -5,14 +5,12 @@ namespace Unistra\ProfetesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class ScenarioController extends Controller
 {
     public function indexAction()
     {
         return $this->render('UnistraProfetesBundle:Scenario:index.html.twig');
     }
-
 
     public function listeTypesDiplomesAction()
     {
@@ -24,7 +22,6 @@ class ScenarioController extends Controller
 
         return new Response($xml);
     }
-
 
     public function disciplinesParTypeDeDiplomeAction($typeDeDiplome)
     {
@@ -115,4 +112,3 @@ class ScenarioController extends Controller
     }
 
 }
-

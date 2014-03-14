@@ -5,7 +5,6 @@ namespace Unistra\ProfetesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\GoneHttpException;
 
-
 class FicheController extends Controller
 {
     public function indexAction($id, $_format)

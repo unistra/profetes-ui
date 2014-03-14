@@ -10,4 +10,3 @@ services:
         class:      Unistra\UtilBundle\Twig\Extension\XsltExtension
         tags:
             - { name: twig.extension }
-

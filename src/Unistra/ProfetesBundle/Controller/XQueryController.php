@@ -4,7 +4,6 @@ namespace Unistra\ProfetesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-
 class XQueryController extends Controller
 {
 
@@ -25,7 +24,6 @@ class XQueryController extends Controller
             'path'       => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
         ));
     }
-
 
     public function parTypeDeDiplomeAction($typeDeDiplome)
     {

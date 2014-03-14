@@ -1,4 +1,3 @@
 {% block body %}
     {{ formations | xslt_transform(xsl, { 'path': path }) | raw }}
 {% endblock %}
-

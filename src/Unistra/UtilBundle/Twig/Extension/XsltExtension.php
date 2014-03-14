@@ -12,13 +12,12 @@ class XsltExtension extends \Twig_Extension
         );
     }
 
-
     /*
      * Convertit un string xml à l'aide d'une feuille de style XSLT
      *
-     * @param string $xml le flux XML à transformer
-     * @param string $xslt le flux ou fichier XSLT
-     * @param array $params des paramètres à passer au processeur
+     * @param  string $xml    le flux XML à transformer
+     * @param  string $xslt   le flux ou fichier XSLT
+     * @param  array  $params des paramètres à passer au processeur
      * @return string le flux transformé
      */
     public function xsltTransform($xml, $xslt, $params = array())
@@ -43,9 +42,9 @@ class XsltExtension extends \Twig_Extension
         }
 
         $out = $processor->transformToXML($xmldoc);
+
         return $out;
     }
-
 
     public function getName()
     {

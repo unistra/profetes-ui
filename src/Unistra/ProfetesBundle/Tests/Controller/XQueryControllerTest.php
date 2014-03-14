@@ -2,7 +2,6 @@
 
 namespace Unistra\ProfetesBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Unistra\ProfetesBundle\ExistDB\ExistDB;
 
 class XQueryControllerTest extends \PHPUnit_Framework_TestCase
@@ -30,4 +29,3 @@ class XQueryControllerTest extends \PHPUnit_Framework_TestCase
     }
 
 }
-

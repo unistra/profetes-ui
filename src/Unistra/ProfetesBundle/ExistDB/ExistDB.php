@@ -2,8 +2,6 @@
 
 namespace Unistra\ProfetesBundle\ExistDB;
 
-use Unistra\ProfetesBundle\ExistDB\FormationCDM;
-
 class ExistDB
 {
 
@@ -20,7 +18,6 @@ class ExistDB
     private $connectionId;
     private $cacheDirName;
     private $cacheMaxAge;
-
 
     public function __construct($wsdl, $username = 'guest', $password = 'guest', $options = null)
     {
@@ -85,7 +82,7 @@ class ExistDB
             }
         }
 
-        $formation = new FormationCDM;
+        $formation = new FormationCDM();
         $formation->setXML($resource);
 
         return $formation;
@@ -94,9 +91,9 @@ class ExistDB
     /**
      * Execute une requête XQuery dans la base eXist et retourne le résultat
      *
-     * @param string $xquery la requête XQuery
-     * @param int $start offset du premier résultat
-     * @param int $howmany nombre max de résultats à retourner
+     * @param string $xquery  la requête XQuery
+     * @param int    $start   offset du premier résultat
+     * @param int    $howmany nombre max de résultats à retourner
      *
      * @return string résultat retourné par la base eXist
      */
@@ -154,8 +151,8 @@ class ExistDB
      * Ces placeholders sont sous la forme {{{param}}} où param est la clé
      * de l'entrée du tableau.
      *
-     * @param string $xqueryFile Fichier xquery à charger
-     * @param array|null $params tableau de paramètres à remplacer dans le xquery
+     * @param string     $xqueryFile Fichier xquery à charger
+     * @param array|null $params     tableau de paramètres à remplacer dans le xquery
      *
      * @return string|null la requête xquery
      */
@@ -207,25 +204,25 @@ class ExistDB
         if (substr($cacheDir, -1) == '/') {
             $cacheDir = substr($cacheDir, 0, -1);
         }
-        if (is_dir($cacheDir) && is_readable($cacheDir) && is_writable($cacheDir))
-        {
+        if (is_dir($cacheDir) && is_readable($cacheDir) && is_writable($cacheDir)) {
             $this->cacheDirName = $cacheDir;
-        } else if (mkdir($cacheDir, 0777, true)) {
+        } elseif (mkdir($cacheDir, 0777, true)) {
             $this->cacheDirName = $cacheDir;
         } else {
             throw new \Exception(sprintf('%s is not a valid cache directory', $cacheDir));
         }
     }
 
-    public function setCacheMaxAge($maxAge) {
-        $this->cacheMaxAge = (int)$maxAge;
+    public function setCacheMaxAge($maxAge)
+    {
+        $this->cacheMaxAge = (int) $maxAge;
     }
 
     protected function connect()
     {
         if (self::CONNECTED == $this->getStatus()) {
             return $this->getConnectionId();
-        } else if ($this->wsdl) {
+        } elseif ($this->wsdl) {
             $credentials = array(
                 'userId'    => $this->username,
                 'password'  => $this->password);
@@ -298,4 +295,3 @@ class ExistDB
         file_put_contents($fileName, $queryResult);
     }
 }
-

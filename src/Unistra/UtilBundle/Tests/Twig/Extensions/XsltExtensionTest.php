@@ -4,7 +4,7 @@ namespace Unistra\UtilBundle\Tests\Twig\Extensions;
 
 use Unistra\UtilBundle\Twig\Extensions\XsltExtension;
 
-class XsltExtensionTest extends \PHPUnit_Framework_TestCase 
+class XsltExtensionTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testXsltTransform()
@@ -12,7 +12,7 @@ class XsltExtensionTest extends \PHPUnit_Framework_TestCase
         $xslExt = new XsltExtension();
 
         $this->assertRegExp('/st/', 'test');
-        $this->assertRegExp('/<b>Test<\/b>/', $this->getXml()); 
+        $this->assertRegExp('/<b>Test<\/b>/', $this->getXml());
         $this->assertRegExp('/<p>Test<\/p>/', $xslExt->xsltTransform(
             $this->getXml(),
             $this->getXsl()
@@ -21,8 +21,9 @@ class XsltExtensionTest extends \PHPUnit_Framework_TestCase
 
     protected function getXml()
     {
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>'; 
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
         $xml .= '<a><b>Test</b></a>';
+
         return $xml;
     }
 
@@ -34,8 +35,8 @@ class XsltExtensionTest extends \PHPUnit_Framework_TestCase
         $xsl .= '<p><xsl:value-of select="/a/b" /></p>';
         $xsl .= '</xsl:template>';
         $xsl .= '</xsl:stylesheet>';
+
         return $xsl;
     }
 
 }
-
