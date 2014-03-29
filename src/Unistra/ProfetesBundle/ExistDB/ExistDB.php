@@ -2,6 +2,8 @@
 
 namespace Unistra\ProfetesBundle\ExistDB;
 
+use Symfony\Component\Stopwatch\Stopwatch;
+
 class ExistDB
 {
 
@@ -19,11 +21,12 @@ class ExistDB
     private $cacheDirName;
     private $cacheMaxAge;
 
-    public function __construct($wsdl, $username = 'guest', $password = 'guest', $options = null)
+    public function __construct($wsdl, $username = 'guest', $password = 'guest', $options = null, Stopwatch $stopwatch = null)
     {
         $this->wsdl = $wsdl;
         $this->username = $username;
         $this->password = $password;
+        $this->stopwatch = $stopwatch;
 
         $this->setCacheMaxAge(60 * 60 * 24 * 7); # 7 days
 
@@ -63,6 +66,9 @@ class ExistDB
             $path = $this->makePath($id);
 
             if ($path) {
+                if ($this->stopwatch) {
+                    $this->stopwatch->start('ExistDB::getResource');
+                }
                 $this->connect();
                 $params = array(
                     'sessionId'     => $this->getConnectionId(),
@@ -78,6 +84,9 @@ class ExistDB
                     if (strstr($e->faultstring, 'not found')) {
                         throw new \Exception('Resource not found', 404);
                     }
+                }
+                if ($this->stopwatch) {
+                    $this->stopwatch->start('ExistDB::getResource');
                 }
             }
         }

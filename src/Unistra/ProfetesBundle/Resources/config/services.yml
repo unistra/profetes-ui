@@ -4,7 +4,7 @@ imports:
 services:
     exist_db:
         class:      Unistra\ProfetesBundle\ExistDB\ExistDB
-        arguments:  [ %existdb.wsdl%, %existdb.username%, %existdb.password%, {'CacheDir': %unistra_profetes.xquery.cache_dir%, 'CacheMaxAge': %unistra_profetes.xquery.cache_age%} ]
+        arguments:  [ %existdb.wsdl%, %existdb.username%, %existdb.password%, {'CacheDir': %unistra_profetes.xquery.cache_dir%, 'CacheMaxAge': %unistra_profetes.xquery.cache_age%}, @?debug.stopwatch ]
 
     twig.extension.unistra_xslt_extension:
         class:      Unistra\UtilBundle\Twig\Extension\XsltExtension
