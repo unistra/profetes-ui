@@ -1,8 +1,8 @@
 <?php
 
-namespace Unistra\UtilBundle\Tests\Twig\Extensions;
+namespace Unistra\UtilBundle\Tests\Twig\Extension;
 
-use Unistra\UtilBundle\Twig\Extensions\XsltExtension;
+use Unistra\UtilBundle\Twig\Extension\XsltExtension;
 
 class XsltExtensionTest extends \PHPUnit_Framework_TestCase
 {
