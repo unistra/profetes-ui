@@ -3,6 +3,7 @@
 /app/bootstrap*
 /app/cache/*
 /app/logs/*
+/app/Resources/views/*html.twig
 /vendor/
 /app/config/parameters.yml
 cache/
