@@ -5,6 +5,7 @@ namespace Unistra\UtilBundle\Command;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Parser;
 use Unistra\UtilBundle\Command\Template\TemplateFetcher;
@@ -18,8 +19,7 @@ class TemplatesCommand extends ContainerAwareCommand
             ->setName('unistra:profetes:templates:fetch')
             ->setDescription('Récupère les pages sur le site Unistra afin d\'en faire des templates')
             ->addArgument('config', InputArgument::REQUIRED, 'Yaml config file')
-            #->addArgument()
-            #->addOption()
+            ->addOption('silent', null, InputOption::VALUE_NONE, 'Si activée, cette option rendra la commande silencieuse')
         ;
     }
 
@@ -31,7 +31,9 @@ class TemplatesCommand extends ContainerAwareCommand
             $input->getArgument('config'));
 
         foreach ($values['templates'] as $template) {
-            $output->writeln($template['output']);
+            if (!$input->getOption('silent')) {
+                $output->writeln('<info>'.$template['output'].'</info>');
+            }
             $fetcher->fetch($template['url'], $template['output'], $template['xsl']);
         }
     }
