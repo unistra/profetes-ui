@@ -51,6 +51,11 @@
         </body>
     </xsl:template>
 
+    <xsl:template match="a/@href[starts-with(., 'index')]">
+        <!-- lien sans slash initial..., corriger -->
+        <xsl:attribute name="href">/<xsl:value-of select="."/></xsl:attribute>
+    </xsl:template>
+    
     <!-- On supprime les éléments suivants -->
     <xsl:template match="comment()" priority="2"/>
     <xsl:template match="meta[@name = 'generator'] | meta[@name = 'date']"/>
