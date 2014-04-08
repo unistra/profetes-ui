@@ -3,6 +3,7 @@
 namespace Unistra\UtilBundle\Command\Template;
 
 use Buzz\Browser;
+use Buzz\Client\Curl;
 
 class TemplateFetcher
 {
@@ -11,7 +12,9 @@ class TemplateFetcher
 
     public function __construct()
     {
-        $this->browser = new Browser();
+        $client = new Curl();
+        $client->setMaxRedirects(0);
+        $this->browser = new Browser($client);
     }
 
     public function fetch($pageToFetch, $templateFile, $xslFile)
@@ -69,6 +72,7 @@ class TemplateFetcher
     private function saveTemplate($template, $file)
     {
         file_put_contents($file, $template);
+
         return true;
     }
 
@@ -82,7 +86,7 @@ class TemplateFetcher
             '//div[@id="main-content"]',
         );
 
-        foreach($checks as $check) {
+        foreach ($checks as $check) {
             $nodeList = $xpath->query($check);
             if ($nodeList) {
                 if ($nodeList->length) {
