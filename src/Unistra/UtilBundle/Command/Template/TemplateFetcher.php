@@ -95,7 +95,7 @@ class TemplateFetcher
                 if ($nodeList->length) {
                     $successes += 1;
                 } else {
-                    throw new \Exception(sprintf('La requête %s a échoué', $check));
+                    throw new \Exception(sprintf('Le test XPath %s a échoué', $check));
                 }
             }
         }
