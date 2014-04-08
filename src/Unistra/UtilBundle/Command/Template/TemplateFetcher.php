@@ -100,6 +100,6 @@ class TemplateFetcher
             }
         }
 
-        return ($successes === count($this->checks));
+        return (count($this->checks) === $successes);
     }
 }
