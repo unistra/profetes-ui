@@ -8,6 +8,7 @@ use Buzz\Client\Curl;
 class TemplateFetcher
 {
     private $fetchedHtml = array();
+    private $checks = array();
     private $browser;
 
     public function __construct()
@@ -27,6 +28,13 @@ class TemplateFetcher
 
         return $this->saveTemplate($templateContent, $templateFile);
 
+    }
+
+    public function setChecks($checks = null)
+    {
+        if (is_array($checks)) {
+            $this->checks = $checks;
+        }
     }
 
     private function fetchPage($url)
@@ -80,13 +88,8 @@ class TemplateFetcher
     {
         $successes = 0;
         $xpath = new \DOMXpath($domDocument);
-        $checks = array(
-            '//h1[@id="page-title"]',
-            '//div[@id="breadcrumb"]/ul/li',
-            '//div[@id="main-content"]',
-        );
 
-        foreach ($checks as $check) {
+        foreach ($this->checks as $check) {
             $nodeList = $xpath->query($check);
             if ($nodeList) {
                 if ($nodeList->length) {
@@ -97,6 +100,6 @@ class TemplateFetcher
             }
         }
 
-        return ($successes === count($checks));
+        return ($successes === count($this->checks));
     }
 }

@@ -30,6 +30,8 @@ class TemplatesCommand extends ContainerAwareCommand
             $this->getContainer()->getParameter('kernel.root_dir') . '/config/' .
             $input->getArgument('config'));
 
+        $fetcher->setChecks($values['checks']['xpath']);
+
         foreach ($values['templates'] as $template) {
             if (!$input->getOption('silent')) {
                 $output->writeln('<info>'.$template['output'].'</info>');
