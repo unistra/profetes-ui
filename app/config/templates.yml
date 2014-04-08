@@ -1,0 +1,9 @@
+templates:
+    fiche:
+        url:    http://www.unistra.fr/index.php?id=etudes
+        xsl:    %kernel.root_dir%/../src/Unistra/UtilBundle/Resources/xsl/templates/fiche.xsl
+        output: %kernel.root_dir%/Resources/views/fiche.html.twig
+    base:
+        url:    http://www.unistra.fr/index.php?id=etudes
+        xsl:    %kernel.root_dir%/../src/Unistra/UtilBundle/Resources/xsl/templates/base.xsl
+        output: %kernel.root_dir%/Resources/views/base.html.twig

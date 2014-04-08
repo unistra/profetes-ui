@@ -4,7 +4,10 @@ namespace Unistra\UtilBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Yaml\Parser;
+use Unistra\UtilBundle\Command\Template\TemplateFetcher;
 
 class TemplatesCommand extends ContainerAwareCommand
 {
@@ -14,6 +17,7 @@ class TemplatesCommand extends ContainerAwareCommand
         $this
             ->setName('unistra:profetes:templates:fetch')
             ->setDescription('Récupère les pages sur le site Unistra afin d\'en faire des templates')
+            ->addArgument('config', InputArgument::REQUIRED, 'Yaml config file')
             #->addArgument()
             #->addOption()
         ;
@@ -21,7 +25,37 @@ class TemplatesCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('La sortie de ma commande');
+        $fetcher = new TemplateFetcher();
+        $values = $this->parseConfigFile(
+            $this->getContainer()->getParameter('kernel.root_dir') . '/config/' .
+            $input->getArgument('config'));
+
+        foreach ($values['templates'] as $template) {
+            $output->writeln($template['output']);
+            $fetcher->fetch($template['url'], $template['output'], $template['xsl']);
+        }
     }
 
+    protected function parseConfigFile($configFile)
+    {
+        $parser = new Parser();
+        if (!is_file($configFile)) {
+            throw new \Exception(sprintf('%s n\'est pas un fichier', $configFile));
+        }
+        if (!is_readable($configFile)) {
+            throw new \Exception(sprintf('%s ne peut pas être lu', $configFile));
+        }
+        $fileContents = file_get_contents($configFile);
+        $fileContents = str_replace('%kernel.root_dir%',
+            $this->getContainer()->getParameter('kernel.root_dir'),
+            $fileContents
+        );
+        try {
+            $values = $parser->parse($fileContents);
+        } catch (ParseException $e) {
+            printf('Impossible de parser le fichier %s à la config %s', $configFile, $e->getMessage());
+        }
+
+        return $values;
+    }
 }
