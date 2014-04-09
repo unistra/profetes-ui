@@ -1,6 +1,9 @@
 unistra_profetes_homepage:
     path:       /
-    defaults:   { _controller: UnistraProfetesBundle:Default:index }
+    defaults:
+        _controller:    FrameworkBundle:Redirect:urlRedirect
+        path:           'http://www.unistra.fr/index.php?id=etudes'
+        permanent:      true
 
 unistra_profetes_fiche:
     path:       /diplome/{id}.{_format}
