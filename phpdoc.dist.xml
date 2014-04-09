@@ -2,7 +2,7 @@
 <phpdoc>
     <title>www.unistra.fr/formations/</title>
     <parser>
-        <target>output</target>
+        <target>docs/api</target>
         <markers>
             <item>TODO</item>
             <item>FIXME</item>
