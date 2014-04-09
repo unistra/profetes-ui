@@ -4,8 +4,9 @@
 /app/cache/*
 /app/logs/*
 /app/Resources/views/*html.twig
-/vendor/
 /app/config/parameters.yml
+/docs/api/*
+/vendor/
 cache/
 /bin/
 

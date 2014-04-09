@@ -10,6 +10,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Parser;
 use Unistra\UtilBundle\Command\Template\TemplateFetcher;
 
+/**
+ * Commande à utiliser en ligne de commande pour récupérer une ou plusieurs
+ * pages du site unistra et en faire des templates.
+ *
+ * La(les) page(s) à utiliser, les feuilles de style XSL à appliquer, les tests
+ * à effectuer et les templates à produire sont définis dans le fichier donné en
+ * argument (au format Yaml)
+ */
 class TemplatesCommand extends ContainerAwareCommand
 {
 

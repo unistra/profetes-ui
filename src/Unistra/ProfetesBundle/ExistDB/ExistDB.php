@@ -40,11 +40,19 @@ class ExistDB
         }
     }
 
+    /**
+     * Retourne le statut de la connexion
+     */
     public function getStatus()
     {
         return $this->status;
     }
 
+    /**
+     * Retourne l'id de connection
+     *
+     * @return integer connectionId
+     */
     public function getConnectionId()
     {
         return $this->connectionId;
@@ -55,7 +63,7 @@ class ExistDB
      *
      * @param string $id id de la fiche à retourner
      *
-     * @return string la fiche au format XML CDM-fr
+     * @return FormationCDM la fiche au format XML CDM-fr
      */
     public function getResource($id)
     {
@@ -101,8 +109,7 @@ class ExistDB
      * Execute une requête XQuery dans la base eXist et retourne le résultat
      *
      * @param string $xquery  la requête XQuery
-     * @param int    $start   offset du premier résultat
-     * @param int    $howmany nombre max de résultats à retourner
+     * @param array  $options options à la requête
      *
      * @return string résultat retourné par la base eXist
      */
@@ -160,10 +167,10 @@ class ExistDB
      * Ces placeholders sont sous la forme {{{param}}} où param est la clé
      * de l'entrée du tableau.
      *
-     * @param string     $xqueryFile Fichier xquery à charger
-     * @param array|null $params     tableau de paramètres à remplacer dans le xquery
+     * @param string $xqueryFile Fichier xquery à charger
+     * @param array  $params     tableau de paramètres à remplacer dans le xquery
      *
-     * @return string|null la requête xquery
+     * @return string le résultat de la requête xquery
      */
     public function loadXQueryFromFile($xqueryFile, $params = null)
     {
@@ -186,7 +193,7 @@ class ExistDB
     /**
      * Convertit les Id du format CDM au format d'affichage
      *
-     * FR_RNE_0673021V_PR_LV103_204 => fr-rne-0673021v-pr-lv103-204
+     * FR\_RNE\_0673021V\_PR\_LV103\_204 => fr-rne-0673021v-pr-lv103-204
      */
     public function getPrettyId($id)
     {
@@ -196,7 +203,7 @@ class ExistDB
     /**
      * Convertit les Id du format d'affichage au format CDM
      *
-     * fr-rne-0673021v-pr-lv103-204 => FR_RNE_0673021V_PR_LV103_204
+     * fr-rne-0673021v-pr-lv103-204 => FR\_RNE\_0673021V\_PR\_LV103\_204
      */
     public function getOriginalId($id)
     {
@@ -208,6 +215,12 @@ class ExistDB
         return $this->cacheDirName;
     }
 
+    /**
+     * Définit le répertoire utilisé pour stocker le cache
+     *
+     * @param  string $cacheDir le répertoire du cache
+     * @return void
+     */
     public function setCacheDir($cacheDir)
     {
         if (substr($cacheDir, -1) == '/') {
@@ -222,6 +235,12 @@ class ExistDB
         }
     }
 
+    /**
+     * Définit la durée pendant laquelle le cache est valable
+     *
+     * @param  int  $maxAge durée de validité en secondes
+     * @return void
+     */
     public function setCacheMaxAge($maxAge)
     {
         $this->cacheMaxAge = (int) $maxAge;
@@ -272,7 +291,6 @@ class ExistDB
 
     /**
      * Détermine si une version en cache peut être utilisée
-     *
      */
     protected function loadXQueryFromCache($xquery, $typeOfQuery = ExistDB::FICHE)
     {
@@ -291,7 +309,6 @@ class ExistDB
 
     /**
      * Enregistre le résultat de la requête en cache
-     *
      */
     protected function saveXQueryToCache($xquery, $queryResult, $typeOfQuery = ExistDB::FICHE)
     {

@@ -5,6 +5,9 @@ namespace Unistra\UtilBundle\Twig\Extension;
 class XsltExtension extends \Twig_Extension
 {
 
+    /**
+     * {@inheritdoc}
+     */
     public function getFilters()
     {
         return array(
@@ -12,7 +15,7 @@ class XsltExtension extends \Twig_Extension
         );
     }
 
-    /*
+    /**
      * Convertit un string xml à l'aide d'une feuille de style XSLT
      *
      * @param  string $xml    le flux XML à transformer
@@ -46,6 +49,9 @@ class XsltExtension extends \Twig_Extension
         return $out;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return 'unistra_xslt_extension';

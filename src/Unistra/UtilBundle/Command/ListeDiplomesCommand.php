@@ -6,6 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Récupère la liste de tous les diplômes de la base eXist (profetes) et en fait
+ * une liste d'URLs des fiches diplômes.
+ *
+ * Les diplômes sont sélectionnés à l'aide d'une requête XQuery.
+ */
 class ListeDiplomesCommand extends ContainerAwareCommand
 {
 
