@@ -4,6 +4,12 @@ namespace Unistra\ProfetesBundle\ExistDB;
 
 use Symfony\Component\Stopwatch\Stopwatch;
 
+/**
+ * Accès à la base de donnée eXist Profetes
+ *
+ * Permet de se connecter à la base, d'en extraire une fiche et d'effectuer des
+ * requêtes XQuery
+ */
 class ExistDB
 {
 
@@ -94,7 +100,7 @@ class ExistDB
                     }
                 }
                 if ($this->stopwatch) {
-                    $this->stopwatch->start('ExistDB::getResource');
+                    $this->stopwatch->stop('ExistDB::getResource');
                 }
             }
         }
@@ -123,6 +129,9 @@ class ExistDB
             return $xml . $cacheContent;
         }
 
+        if ($this->stopwatch) {
+            $this->stopwatch->start('ExistDB::getXQuery');
+        }
         $this->connect();
         $queryParams = array(
             'sessionId'     => $this->getConnectionId(),
@@ -139,6 +148,9 @@ class ExistDB
             'highlight'     => true,
         );
         $result = $this->soapClient->retrieve($retrieveParams)->retrieveReturn;
+        if ($this->stopwatch) {
+            $this->stopwatch->stop('ExistDB::getXQuery');
+        }
 
         if ($result) {
             if (is_array($result)) {
@@ -294,17 +306,22 @@ class ExistDB
      */
     protected function loadXQueryFromCache($xquery, $typeOfQuery = ExistDB::FICHE)
     {
+        if ($this->stopwatch) {
+            $this->stopwatch->start('ExistDB::loadXQueryFromCache');
+        }
+        $cachedQuery = false;
         $fileName = md5($xquery);
         $fileName = sprintf('%s/%s/%s/%s', $this->getCacheDir(), $typeOfQuery, substr($fileName, 0, 1), substr($fileName, 1));
         if (is_file($fileName) && is_readable($fileName)) {
             if ((time() - filemtime($fileName)) < $this->cacheMaxAge) {
                 $cachedQuery = file_get_contents($fileName);
-
-                return $cachedQuery;
             }
         }
+        if ($this->stopwatch) {
+            $this->stopwatch->stop('ExistDB::loadXQueryFromCache');
+        }
 
-        return false;
+        return $cachedQuery;
     }
 
     /**
