@@ -26,13 +26,16 @@ class ExistDB
     private $connectionId;
     private $cacheDirName;
     private $cacheMaxAge;
+    private $stopwatch = null;
+    private $logger = null;
 
-    public function __construct($wsdl, $username = 'guest', $password = 'guest', $options = null, Stopwatch $stopwatch = null)
+    public function __construct($wsdl, $username = 'guest', $password = 'guest', $options = null, Stopwatch $stopwatch = null, $logger = null)
     {
         $this->wsdl = $wsdl;
         $this->username = $username;
         $this->password = $password;
         $this->stopwatch = $stopwatch;
+        $this->logger = $logger;
 
         $this->setCacheMaxAge(60 * 60 * 24 * 7); # 7 days
 
@@ -102,6 +105,9 @@ class ExistDB
                 if ($this->stopwatch) {
                     $this->stopwatch->stop('ExistDB::getResource');
                 }
+                if ($this->logger) {
+                    $this->logger->debug('getResource: ' . $id);
+                }
             }
         }
 
@@ -151,6 +157,9 @@ class ExistDB
         if ($this->stopwatch) {
             $this->stopwatch->stop('ExistDB::getXQuery');
         }
+        if ($this->logger) {
+            $this->logger->debug('getXQuery: ' . $xquery);
+        }
 
         if ($result) {
             if (is_array($result)) {
@@ -197,6 +206,9 @@ class ExistDB
                 $paramValue = str_replace("'", "''", $paramValue);
                 $xquery = str_replace('{{{' . $paramName . '}}}', $paramValue, $xquery);
             }
+        }
+        if ($this->logger) {
+            $this->logger->debug('loadXQueryFromFile: ' . $xquery);
         }
 
         return $xquery;
@@ -269,6 +281,9 @@ class ExistDB
             $this->soapClient = new \SoapClient($this->wsdl);
             $this->connectionId = $this->soapClient->connect($credentials)->connectReturn;
             $this->status = self::CONNECTED;
+            if ($this->logger) {
+                $this->logger->debug(sprintf('Connected with connectionId %s', $this->connectionId));
+            }
 
             return $this->getConnectionId();
         } else {
@@ -309,6 +324,9 @@ class ExistDB
         if ($this->stopwatch) {
             $this->stopwatch->start('ExistDB::loadXQueryFromCache');
         }
+        if ($this->logger) {
+            $this->logger->debug('loadXQueryFromCache: ' . $xquery);
+        }
         $cachedQuery = false;
         $fileName = md5($xquery);
         $fileName = sprintf('%s/%s/%s/%s', $this->getCacheDir(), $typeOfQuery, substr($fileName, 0, 1), substr($fileName, 1));
@@ -329,6 +347,9 @@ class ExistDB
      */
     protected function saveXQueryToCache($xquery, $queryResult, $typeOfQuery = ExistDB::FICHE)
     {
+        if ($this->logger) {
+            $this->logger->debug('saveXQueryToCache: ' . $xquery);
+        }
         $fileName = md5($xquery);
         $fileName = sprintf('%s/%s/%s/%s', $this->getCacheDir(), $typeOfQuery, substr($fileName, 0, 1), substr($fileName, 1));
         $dirName = dirname($fileName);
