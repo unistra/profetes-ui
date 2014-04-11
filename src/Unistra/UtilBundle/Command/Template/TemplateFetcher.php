@@ -127,7 +127,9 @@ class TemplateFetcher
      */
     private function saveTemplate($template, $file)
     {
-        if (file_get_contents($file) !== $template) {
+        if (is_file($file) && file_get_contents($file) === $template) {
+            return true;
+        } else {
             file_put_contents($file, $template);
         }
 
