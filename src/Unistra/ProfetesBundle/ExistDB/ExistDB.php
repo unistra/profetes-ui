@@ -77,7 +77,7 @@ class ExistDB
     public function getResource($id)
     {
 
-        $resource = $this->loadXQueryFromCache($id, ExistDB::FICHE);
+        $resource = $this->loadXQueryResultFromCache($id, ExistDB::FICHE);
 
         if (!$resource) {
             $path = $this->makePath($id);
@@ -131,7 +131,7 @@ class ExistDB
         $useCache = (array_key_exists('useCache', $options) ? $options['useCache'] : true);
         $xml = '';
 
-        if ($useCache && $cacheContent = $this->loadXQueryFromCache($xquery, ExistDB::XQUERY)) {
+        if ($useCache && $cacheContent = $this->loadXQueryResultFromCache($xquery, ExistDB::XQUERY)) {
             return $xml . $cacheContent;
         }
 
@@ -319,13 +319,13 @@ class ExistDB
     /**
      * Détermine si une version en cache peut être utilisée
      */
-    protected function loadXQueryFromCache($xquery, $typeOfQuery = ExistDB::FICHE)
+    protected function loadXQueryResultFromCache($xquery, $typeOfQuery = ExistDB::FICHE)
     {
         if ($this->stopwatch) {
-            $this->stopwatch->start('ExistDB::loadXQueryFromCache');
+            $this->stopwatch->start('ExistDB::loadXQueryResultFromCache');
         }
         if ($this->logger) {
-            $this->logger->debug('loadXQueryFromCache: ' . $xquery);
+            $this->logger->debug('loadXQueryResultFromCache: ' . $xquery);
         }
         $cachedQuery = false;
         $fileName = md5($xquery);
@@ -336,7 +336,7 @@ class ExistDB
             }
         }
         if ($this->stopwatch) {
-            $this->stopwatch->stop('ExistDB::loadXQueryFromCache');
+            $this->stopwatch->stop('ExistDB::loadXQueryResultFromCache');
         }
 
         return $cachedQuery;
