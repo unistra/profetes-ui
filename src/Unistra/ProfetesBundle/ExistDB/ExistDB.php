@@ -148,7 +148,7 @@ class ExistDB
         $retrieveParams = array(
             'sessionId'     => $this->connectionId,
             'start'         => (array_key_exists('start', $options) ? $options['start'] : 1),
-            'howmany'       => (array_key_exists('howmany', $options) ? $options['howmany'] : 1000),
+            'howmany'       => (array_key_exists('howmany', $options) ? $options['howmany'] : $query->queryReturn->hits),
             'indent'        => true,
             'xinclude'      => true,
             'highlight'     => true,
