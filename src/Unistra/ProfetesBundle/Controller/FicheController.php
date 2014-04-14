@@ -45,7 +45,7 @@ class FicheController extends Controller
      *
      * Au cas où elle était appelée, elle renverrait une erreur 404.
      */
-    public function repertoireAction()
+    public function repertoireFicheAction()
     {
         throw $this->createNotFoundException();
     }
