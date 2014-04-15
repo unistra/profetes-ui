@@ -35,9 +35,7 @@ class TemplateFetcher
     public function fetch($pageToFetch, $templateFile, $xslFile)
     {
         $html = $this->fetchPage($pageToFetch);
-        if (!$this->checkPage($html)) {
-            throw new \Exception('Echec des tests XPath de la page');
-        }
+        $this->checkPage($html);
         $templateContent = $this->xsltTransform($html, $xslFile);
 
         return $this->saveTemplate($templateContent, $templateFile);
@@ -77,7 +75,7 @@ class TemplateFetcher
 
         $response = $this->browser->get($url);
         if (!$response->isOk()) {
-            throw new \Exception(sprintf('%s fetch not a 200 OK', $url));
+            throw new \InvalidArgumentException(sprintf('%s fetch not a 200 OK', $url));
         }
         if (!$response->toDomDocument()) {
             throw new \Exception('Unable to convert to DOMDocument');
