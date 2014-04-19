@@ -39,7 +39,6 @@ class TemplateFetcher
         $templateContent = $this->xsltTransform($html, $xslFile);
 
         return $this->saveTemplate($templateContent, $templateFile);
-
     }
 
     /**
@@ -128,6 +127,7 @@ class TemplateFetcher
         if (is_file($file) && file_get_contents($file) === $template) {
             return true;
         } else {
+            $template = preg_replace('~\r\n?~', "\n", $template);
             file_put_contents($file, $template);
         }
 
