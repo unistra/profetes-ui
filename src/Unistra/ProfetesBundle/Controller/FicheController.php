@@ -4,12 +4,13 @@ namespace Unistra\ProfetesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\GoneHttpException;
+use Symfony\Component\HttpFoundation\Request;
 
 class FicheController extends Controller
 {
-    public function indexAction($id, $_format)
+    public function indexAction(Request $request, $id, $_format)
     {
-        if ($this->getRequest()->get('format')) {
+        if ($request->get('format')) {
             throw new GoneHttpException('Gone');
         }
         try {
