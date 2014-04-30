@@ -26,7 +26,7 @@ class TemplatesCommand extends ContainerAwareCommand
         $this
             ->setName('unistra:profetes:templates:fetch')
             ->setDescription('Récupère les pages sur le site Unistra afin d\'en faire des templates')
-            ->addArgument('config', InputArgument::REQUIRED, 'Yaml config file')
+            ->addArgument('config', InputArgument::OPTIONAL, 'Yaml config file', 'templates.yml')
             ->addOption('silent', null, InputOption::VALUE_NONE, 'Si activée, cette option rendra la commande silencieuse')
         ;
     }
@@ -35,8 +35,8 @@ class TemplatesCommand extends ContainerAwareCommand
     {
         $fetcher = new TemplateFetcher();
         $values = $this->parseConfigFile(
-            $this->getContainer()->getParameter('kernel.root_dir') . '/config/' .
-            $input->getArgument('config'));
+            $this->getContainer()->getParameter('kernel.root_dir') . '/config/' . $input->getArgument('config')
+        );
 
         $fetcher->setChecks($values['checks']['xpath']);
 
