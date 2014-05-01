@@ -13,25 +13,25 @@ class FormationCDM
      *
      * @var string
      */
-    private $formation_xml = '';
+    private $formationXml = '';
 
     /**
      * Le document au format DOMDocument
      *
      * @var \DOMDocument
      */
-    private $formation_dom;
+    private $formationDom;
 
     /**
      * Les paramètres XSLT
      *
      * @var array
      */
-    private $xsl_parameters = array();
+    private $xslParameters = array();
 
     public function __construct()
     {
-        $this->formation_dom = new \DOMDocument();
+        $this->formationDom = new \DOMDocument();
     }
 
     /**
@@ -41,8 +41,8 @@ class FormationCDM
      */
     public function setXml($xml)
     {
-        $this->formation_xml = $xml;
-        $this->formation_dom->loadXML($xml);
+        $this->formationXml = $xml;
+        $this->formationDom->loadXML($xml);
     }
 
     /**
@@ -52,7 +52,7 @@ class FormationCDM
      */
     public function getXml()
     {
-        return $this->formation_dom->saveXML();
+        return $this->formationDom->saveXML();
     }
 
     /**
@@ -62,7 +62,7 @@ class FormationCDM
      */
     public function getDOMDocument()
     {
-        return $this->formation_dom;
+        return $this->formationDom;
     }
 
     /**
@@ -76,19 +76,19 @@ class FormationCDM
         if (is_file($xsl) && is_readable($xsl)) {
             $xsl = file_get_contents($xsl);
         }
-        $this->xsl_dom = new \DOMDocument();
-        $this->xsl_dom->loadXML($xsl);
+        $this->xslDom = new \DOMDocument();
+        $this->xslDom->loadXML($xsl);
 
         $xsltprocessor = new \XSLTProcessor;
-        $xsltprocessor->importStyleSheet($this->xsl_dom);
+        $xsltprocessor->importStyleSheet($this->xslDom);
 
-        if (is_array($this->xsl_parameters)) {
-            foreach ($this->xsl_parameters as $name => $value) {
+        if (is_array($this->xslParameters)) {
+            foreach ($this->xslParameters as $name => $value) {
                 $xsltprocessor->setParameter('', $name, $value);
             }
         }
 
-        return $xsltprocessor->transformToXML($this->formation_dom);
+        return $xsltprocessor->transformToXML($this->formationDom);
     }
 
     /**
@@ -99,7 +99,7 @@ class FormationCDM
      */
     public function setXsltParameter($name, $value)
     {
-        $this->xsl_parameters[$name] = $value;
+        $this->xslParameters[$name] = $value;
     }
 
     /**
@@ -110,7 +110,7 @@ class FormationCDM
      */
     public function getProgramName($language = 'fr-FR')
     {
-        $xpath = new \DOMXPath($this->formation_dom);
+        $xpath = new \DOMXPath($this->formationDom);
         $xpath->registerNameSpace('cdm', 'http://cdm-fr.fr/2006/CDM-frSchema');
         $title = sprintf(
             "/cdm:CDM/cdm:program/cdm:programName/cdm:text[@language = '%s']/text()",
@@ -128,7 +128,7 @@ class FormationCDM
     public function getSearchword()
     {
         $searchwords = array();
-        $xpath = new \DOMXPath($this->formation_dom);
+        $xpath = new \DOMXPath($this->formationDom);
         $xpath->registerNameSpace('cdm', 'http://cdm-fr.fr/2006/CDM-frSchema');
         $searchword = "//cdm:program/cdm:searchword";
         $nodes = $xpath->query($searchword);
