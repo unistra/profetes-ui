@@ -101,7 +101,7 @@
     </xsl:template>
 
 
-    <xsl:template match="cdm:programDescription/cdm:subBlock[not(@userDefined = 'DES') and @blockLang = 'fr-FR']">
+    <xsl:template match="cdm:programDescription/cdm:subBlock[not(@userDefined = 'DES') and @blockLang = 'fr-FR']" priority="100">
         <div class="profetes-bloc">
             <xsl:attribute name="id">profetes-bloc-<xsl:value-of select="generate-id(.)"/></xsl:attribute>
             <h2>Présentation et objectifs</h2>
@@ -224,6 +224,7 @@
     <xsl:template match="cdm:altLangBlock"><span xml:lang="{@blockLang}" lang="{@blockLang}"><xsl:apply-templates/></span></xsl:template>
     
     <xsl:template match="cdm:subBlock[cdm:webLink]">
+        <xsl:comment>@@check@@<xsl:value-of select="/cdm:CDM/cdm:program/@id"/>@@</xsl:comment>
         <p><xsl:apply-templates/></p>
     </xsl:template>
     
