@@ -36,7 +36,7 @@
                 <xsl:apply-templates select="cdm:qualification/cdm:profession/cdm:subBlock"/>
                 <xsl:apply-templates select="cdm:infoBlock/cdm:subBlock[@userDefined = 'enSavoirPlus' and @blockLang = 'fr-FR']"/>
                 <xsl:apply-templates select="cdm:infoBlock/cdm:subBlock[@userDefined = 'informationsComplementaires' and @blockLang = 'fr-FR']"/>
-                <xsl:apply-templates select="cdm:admissionInfo/cdm:admissionDescription/cdm:subBlock"/>
+                <!--<xsl:apply-templates select="cdm:admissionInfo/cdm:admissionDescription/cdm:subBlock"/>-->
             </div>
         </div>
 
@@ -208,7 +208,7 @@
             </ul>
         </div>
     </xsl:template>
-    
+
     <xsl:template match="cdm:listItem"><li><xsl:apply-templates/></li></xsl:template>
     
     <xsl:template match="cdm:br"><br/></xsl:template>
@@ -223,19 +223,14 @@
     
     <xsl:template match="cdm:altLangBlock"><span xml:lang="{@blockLang}" lang="{@blockLang}"><xsl:apply-templates/></span></xsl:template>
     
-    <xsl:template match="cdm:subBlock[cdm:webLink]">
-        <xsl:comment>@@check@@<xsl:value-of select="/cdm:CDM/cdm:program/@id"/>@@</xsl:comment>
-        <p><xsl:apply-templates/></p>
-    </xsl:template>
-    
     <xsl:template match="cdm:webLink">
         <xsl:choose>
             <xsl:when test="@userDefined != ''">
                 <xsl:choose>
-                    <xsl:when test="@userDefined = 'reinscription'"><li><a href="{cdm:href}" rel="nofollow">Vous inscrire ou vous ré-inscrire en ligne</a> (<strong>conseillé</strong>)</li></xsl:when>
+                    <xsl:when test="@userDefined = 'reinscription'"><ul><li><a href="{cdm:href}" rel="nofollow">Vous inscrire ou vous ré-inscrire en ligne</a> (<strong>conseillé</strong>)</li></ul></xsl:when>
                     <!--<xsl:when test="@userDefined = 'reinscription'"><li><a href="{cdm:href}" rel="nofollow">Effectuer une réinscription en ligne</a></li></xsl:when>-->
-                    <xsl:when test="@userDefined = 'candidature'"><li><a href="{cdm:href}" rel="nofollow">Déposer un dossier de candidature</a></li></xsl:when>
-                    <xsl:when test="@userDefined = 'dossier'"><li><a href="{cdm:href}" rel="nofollow">Déposer un dossier d'inscription sur rendez-vous</a></li></xsl:when>
+                    <xsl:when test="@userDefined = 'candidature'"><ul><li><a href="{cdm:href}" rel="nofollow">Déposer un dossier de candidature</a></li></ul></xsl:when>
+                    <xsl:when test="@userDefined = 'dossier'"><ul><li><a href="{cdm:href}" rel="nofollow">Déposer un dossier d'inscription sur rendez-vous</a></li></ul></xsl:when>
                 </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
