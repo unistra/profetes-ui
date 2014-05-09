@@ -3,7 +3,7 @@
     xmlns:cdm="http://cdm-fr.fr/2006/CDM-frSchema"
     version="1.0" exclude-result-prefixes="cdm">
 
-    <xsl:output method="html" indent="yes" omit-xml-declaration="yes" />
+    <xsl:output method="html" indent="no" omit-xml-declaration="yes" />
 
     <xsl:template match="/">
         <div id="content-header">
