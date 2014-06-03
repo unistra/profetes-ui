@@ -4,6 +4,7 @@ namespace Unistra\ProfetesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Unistra\Profetes\XQuery;
 
 class ScenarioController extends Controller
 {
@@ -12,101 +13,99 @@ class ScenarioController extends Controller
         return $this->render('UnistraProfetesBundle:Scenario:index.html.twig');
     }
 
+    /** /formations/recherche-assistee/types-diplomes */
     public function listeTypesDiplomesAction()
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-types-de-diplomes.xquery')
-        );
-        $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/liste-types-de-diplomes.xquery'));
+        $xml = $this->get('profetes_repository')->query($xquery, false);
 
         return new Response($xml);
     }
 
+    /** /formations/recherche-assistee/t/{typeDeDiplome}/disciplines */
     public function disciplinesParTypeDeDiplomeAction($typeDeDiplome)
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-disciplines-par-type-de-diplome.xquery'),
-            array('type-de-diplome' => $typeDeDiplome)
-        );
-        $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/liste-disciplines-par-type-de-diplome.xquery'));
+        $xquery->addParameter('type-de-diplome', $typeDeDiplome);
+        $xml = $this->get('profetes_repository')->query($xquery, false);
 
         return new Response($xml);
     }
 
+    /** /formations/recherche-assistee/t/{typeDeDiplome}/d/{discipline} */
     public function parDisciplineEtTypeDeDiplomeAction($discipline, $typeDeDiplome)
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'par-type-de-diplome-et-discipline.xquery'),
-            array('type-de-diplome' => $typeDeDiplome, 'discipline' => $discipline));
-        $xml = $exist_db->getXQuery($xquery);
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/par-type-de-diplome-et-discipline.xquery'));
+        $xquery->setParameters(array(
+            'type-de-diplome' => $typeDeDiplome,
+            'discipline' => $discipline));
+        $xml = $this->get('profetes_repository')->query($xquery);
 
         return $this->render('UnistraProfetesBundle:Scenario:formations.html.twig', array(
             'formations'    => $xml,
-            'xsl'           => $this->container->getParameter('unistra_profetes.xsl.path') . '/par-scenario.xsl',
+            'xsl'           => __DIR__.'/../Resources/xsl/par-scenario.xsl',
             'path'          => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
         ));
     }
 
+    /** /formations/recherche-assistee/disciplines */
     public function listeDisciplinesAction()
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-disciplines.xquery')
-        );
-        $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/liste-disciplines.xquery'));
+        $xml = $this->get('profetes_repository')->query($xquery, false);
 
         return new Response($xml);
     }
 
+    /** /formations/recherche-assistee/d/{discipline}/types-diplomes */
     public function typesDiplomesParDisciplineAction($discipline)
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-types-de-diplomes-par-discipline.xquery'),
-            array('discipline' => $discipline)
-        );
-        $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/liste-types-de-diplomes-par-discipline.xquery'));
+        $xquery->addParameter('discipline', $discipline);
+        $xml = $this->get('profetes_repository')->query($xquery, false);
 
         return new Response($xml);
     }
 
+    /** /formations/recherche-assistee/objectifs-professionnels */
     public function listeObjectifsProfessionnelsAction()
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-objectifs-professionnels.xquery')
-        );
-        $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/liste-objectifs-professionnels.xquery'));
+        $xml = $this->get('profetes_repository')->query($xquery, false);
 
         return new Response($xml);
     }
 
+    /** /formations/recherche-assistee/o/{objectifProfessionnel}/types-diplomes */
     public function typesDiplomesParObjProAction($objectifProfessionnel)
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'liste-types-de-diplomes-par-objectif-professionnel.xquery'),
-            array('objectif-professionnel' => $objectifProfessionnel)
-        );
-        $xml = $exist_db->getXQuery($xquery, array('withXmlProlog' => false));
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/liste-types-de-diplomes-par-objectif-professionnel.xquery'));
+        $xquery->addParameter('objectif-professionnel', $objectifProfessionnel);
+        $xml = $this->get('profetes_repository')->query($xquery, false);
 
         return new Response($xml);
     }
 
+    /** /formations/recherche-assistee/o/{objectifProfessionnel}/t/{typeDeDiplome} */
     public function parObjectifProfessionnelEtTypeDeDiplomeAction($objectifProfessionnel, $typeDeDiplome)
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s', $this->container->getParameter('unistra_profetes.xquery.path'), 'par-type-de-diplome-et-objectif-professionnel.xquery'),
-            array('type-de-diplome' => $typeDeDiplome, 'objectif-professionnel' => $objectifProfessionnel));
-        $xml = $exist_db->getXQuery($xquery);
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/par-type-de-diplome-et-objectif-professionnel.xquery'));
+        $xquery->setParameters(array(
+            'type-de-diplome' => $typeDeDiplome,
+            'objectif-professionnel' => $objectifProfessionnel));
+        $xml = $this->get('profetes_repository')->query($xquery);
 
         return $this->render('UnistraProfetesBundle:Scenario:formations.html.twig', array(
             'formations'    => $xml,
-            'xsl'           => $this->container->getParameter('unistra_profetes.xsl.path') . '/par-scenario.xsl',
+            'xsl'           => __DIR__.'/../Resources/xsl/par-scenario.xsl',
             'path'          => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
         ));
     }

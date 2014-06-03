@@ -1,12 +1,10 @@
 parameters:
-    existdb.wsdl:       "http://ofxml.u-strasbg.fr/exist/services/Query?wsdl"
-    existdb.username:   username
-    existdb.password:   password
-
-    unistra_profetes.xsl.fiche:             fiche.xsl
-    unistra_profetes.xquery.composante:     composante.xquery
-
-    unistra_profetes.xquery.cache_dir:      %kernel.cache_dir%/unistraprofetes-xquery
-    unistra_profetes.xquery.cache_age:      259200  # 60 * 60 * 24 * 3 = 3J
-    unistra_profetes.fiche.cache_age:       86400   # 60 * 60 * 24 = 24H
-
+    unistra.profetes.wsdl: 'http://ofxml.u-strasbg.fr/exist/services/Query?wsdl'
+    unistra.profetes.username: username
+    unistra.profetes.password: password
+    unistra.profetes.collection: /db/CDM-2009
+    unistra.profetes.cache.dir: '%kernel.cache_dir%/unistraprofetes-xquery'
+    unistra.profetes.cache.program.dir: %unistra.profetes.cache.dir%/p
+    unistra.profetes.cache.program.ttl: 86400
+    unistra.profetes.cache.query.dir: %unistra.profetes.cache.dir%/q
+    unistra.profetes.cache.query.ttl: 259200

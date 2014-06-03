@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    
+    <!-- les paramètres sont définis dans ./parameters.yml -->
+
+    <services>
+        <service id="unistra.profetes.soap_client" class="SoapClient" public="false">
+            <argument>%unistra.profetes.wsdl%</argument>
+            <argument type="collection">
+                <argument key="exceptions">true</argument>
+            </argument>
+        </service>
+
+        <service id="unistra.profetes.cache.program_cache" class="Unistra\Profetes\Cache\FileCache" public="false">
+            <argument>%unistra.profetes.cache.program.dir%</argument>
+            <argument>%unistra.profetes.cache.program.ttl%</argument>
+        </service>
+
+        <service id="unistra.profetes.cache.query_cache" class="Unistra\Profetes\Cache\FileCache" public="false">
+            <argument>%unistra.profetes.cache.query.dir%</argument>
+            <argument>%unistra.profetes.cache.query.ttl%</argument>
+        </service>
+
+        <service id="unistra.profetes.exist.existdb" class="Unistra\Profetes\eXist\eXistDB" public="false">
+            <argument type="service" id="unistra.profetes.soap_client"/>
+            <argument>%unistra.profetes.username%</argument>
+            <argument>%unistra.profetes.password%</argument>
+            <argument>%unistra.profetes.collection%</argument>
+        </service>
+
+        <service id="unistra.profetes.repository.profetes_repository" class="Unistra\Profetes\Repository\ProfeteseXistRepository" public="false">
+            <argument type="service" id="unistra.profetes.exist.existdb"/>
+            <argument type="service" id="unistra.profetes.cache.program_cache"/>
+            <argument type="service" id="unistra.profetes.cache.query_cache"/>
+        </service>
+
+        <service id="profetes_repository" alias="unistra.profetes.repository.profetes_repository"/>
+
+        <service id="twig.extension.unistra_xslt_extension" class="Unistra\UtilBundle\Twig\Extension\XsltExtension">
+            <tag name="twig.extension"/>
+        </service>
+
+    </services>
+
+</container>

@@ -1,10 +1,10 @@
 {% extends '::fiche.html.twig' %}
 
-{% block title %}{{ formation.getProgramName }}{% endblock %}
-{% block meta_keywords %}<meta name="keywords" content="{{ formation.getSearchword }}">{% endblock %}
+{% block title %}{{ program.programName }}{% endblock %}
 
+{% block meta_keywords %}<meta name="keywords" content="{{ program.searchwords|join(", ") }}">{% endblock %}
 
-{% block body %}{{ html | raw }}{% endblock %}
+{% block body %}{{ program.xml|xslt_transform(xsl)|raw }}{% endblock %}
 
 {% block javascripts %}
     <script type="text/javascript" src="https://www.unistra.fr/fileadmin/templates/unistra/scripts/onglets.js"></script>

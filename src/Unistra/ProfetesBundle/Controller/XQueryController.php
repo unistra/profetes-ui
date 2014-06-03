@@ -3,59 +3,54 @@
 namespace Unistra\ProfetesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Unistra\Profetes\XQuery;
 
 class XQueryController extends Controller
 {
 
+    /** /formations/composante/{id} */
     public function composanteAction($id)
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s',
-                $this->container->getParameter('unistra_profetes.xquery.path'),
-                $this->container->getParameter('unistra_profetes.xquery.composante')),
-            array('composante' => $exist_db->getOriginalId($id)));
-        $xml = $exist_db->getXQuery($xquery);
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/composante.xquery'));
+        $xquery->addParameter('composante', strtoupper(str_replace('-', '_', $id)));
+        $xml = $this->get('profetes_repository')->query($xquery);
 
         return $this->render('UnistraProfetesBundle:XQuery:composante.html.twig', array(
             'formations' => $xml,
             'composante' => $id,
-            'xsl'        => $this->container->getParameter('unistra_profetes.xsl.path') . '/composante.xsl',
+            'xsl'        => __DIR__.'/../Resources/xsl/composante.xsl',
             'path'       => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
         ));
     }
 
+    /** /formations/type-diplome/{typeDeDiplome} */
     public function parTypeDeDiplomeAction($typeDeDiplome)
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s',
-                $this->container->getParameter('unistra_profetes.xquery.path'),
-                'par-type-de-diplome.xquery'),
-            array('type-de-diplome' => $typeDeDiplome));
-        $xml = $exist_db->getXQuery($xquery);
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/par-type-de-diplome.xquery'));
+        $xquery->addParameter('type-de-diplome', $typeDeDiplome);
+        $xml = $this->get('profetes_repository')->query($xquery);
 
         return $this->render('UnistraProfetesBundle:XQuery:par-type-de-diplome.html.twig', array(
             'formations'    => $xml,
-            'xsl'           => $this->container->getParameter('unistra_profetes.xsl.path') . '/par-type-de-diplome.xsl',
+            'xsl'           => __DIR__.'/../Resources/xsl/par-type-de-diplome.xsl',
             'path'          => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
             'typeDeDiplome' => $typeDeDiplome,
         ));
     }
 
+    /** /formations/secteur-activite/{secteurActivite} */
     public function parSecteurActiviteAction($secteurActivite)
     {
-        $exist_db = $this->get('exist_db');
-        $xquery = $exist_db->loadXQueryFromFile(
-            sprintf('%s/%s',
-                $this->container->getParameter('unistra_profetes.xquery.path'),
-                'par-secteur-activite.xquery'),
-            array('secteur-activite'    => $secteurActivite));
-        $xml = $exist_db->getXQuery($xquery);
+        $xquery = new XQuery(file_get_contents(
+            __DIR__.'/../Resources/xquery/par-secteur-activite.xquery'));
+        $xquery->addParameter('secteur-activite', $secteurActivite);
+        $xml = $this->get('profetes_repository')->query($xquery);
 
         return $this->render('UnistraProfetesBundle:XQuery:par-secteur-activite.html.twig', array(
             'formations'    => $xml,
-            'xsl'           => $this->container->getParameter('unistra_profetes.xsl.path') . '/par-secteur-activite.xsl',
+            'xsl'           => __DIR__.'/../Resources/xsl/par-secteur-activite.xsl',
             'path'          => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
             'secteurActivite'   => $secteurActivite,
         ));

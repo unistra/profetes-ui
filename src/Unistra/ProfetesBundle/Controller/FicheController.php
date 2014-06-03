@@ -5,6 +5,7 @@ namespace Unistra\ProfetesBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\GoneHttpException;
 use Symfony\Component\HttpFoundation\Request;
+use Unistra\Profetes\ProgramId;
 
 class FicheController extends Controller
 {
@@ -14,9 +15,9 @@ class FicheController extends Controller
             throw new GoneHttpException('Gone');
         }
         try {
-            $exist_db = $this->get('exist_db');
-            $exist_db->setCacheMaxAge($this->container->getParameter('unistra_profetes.fiche.cache_age'));
-            $formation = $exist_db->getResource($id);
+            $repository = $this->get('profetes_repository');
+            $programId = new ProgramId($id);
+            $program = $repository->getProgram($programId);
         } catch (\Exception $e) {
             if (404 == $e->getCode()) {
                 throw $this->createNotFoundException();
@@ -24,16 +25,10 @@ class FicheController extends Controller
                 throw new \Exception($e->getMessage());
             }
         }
-        $html = $formation->transform(
-            sprintf('%s/%s',
-                $this->container->getParameter('unistra_profetes.xsl.path'),
-                $this->container->getParameter('unistra_profetes.xsl.fiche')
-            )
-        );
 
         return $this->render(sprintf('UnistraProfetesBundle:Fiche:index.%s.twig', $_format), array(
-            'formation' => $formation,
-            'html'      => $html,
+            'program'   => $program,
+            'xsl'       => __DIR__.'/../Resources/xsl/fiche.xsl',
         ));
     }
 
