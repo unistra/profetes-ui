@@ -14,10 +14,10 @@ class XQueryControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('h3')->count());
         $this->assertGreaterThan(0, $crawler->filter('li')->count());
 
-        $crawler = $client->request('GET', '/formations/composante/FR_RNE_0673021V_OR_DRT');
+        $client->request('GET', '/formations/composante/FR_RNE_0673021V_OR_DRT');
         $this->assertTrue($client->getResponse()->isNotFound());
 
-        $crawler = $client->request('GET', '/formations/composante/droit');
+        $client->request('GET', '/formations/composante/droit');
         $this->assertTrue($client->getResponse()->isNotFound());
 
         $crawler = $client->request('GET', '/formations/composante/fr-rne-0673021v-or-abc');
@@ -36,6 +36,14 @@ class XQueryControllerTest extends WebTestCase
         $this->assertGreaterThan(0, $crawler->filter('div#content-mapping div ul li')->count());
     }
 
+    public function testTypeDeDiplomeAccentue()
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/formations/type-diplome/Diplôme d\'université');
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
     public function testSecteurActivite()
     {
         $client = static::createClient();
@@ -50,6 +58,12 @@ class XQueryControllerTest extends WebTestCase
         $crawler = $client->click($link);
         $this->assertTrue($client->getResponse()->isSuccessful());
         $this->assertEquals(1, $crawler->filter('nav#menu-onglets')->count());
+    }
 
+    public function testSecteurActiviteAccentue()
+    {
+        $client = static::createClient();
+        $client->request('GET', '/formations/secteur-activite/Technologies%20de%20l%27information,%20t%C3%A9l%C3%A9communications,%20r%C3%A9seaux');
+        $this->assertTrue($client->getResponse()->isSuccessful());
     }
 }
