@@ -1,7 +1,7 @@
 declare namespace cdm="http://cdm-fr.fr/2006/CDM-frSchema";
 
 let $unistra := 'FR_RNE_0673021V_OR'
-let $secteur-activite := '{{{secteur-activite}}}'
+let $secteur-activite := "{{{secteur-activite}}}"
 
 return <secteur-activite nom="{$secteur-activite}">{
 for $f in collection('%collection%')/cdm:CDM[cdm:orgUnit/@id = $unistra]/cdm:program[cdm:qualification/cdm:qualificationDescription/cdm:subBlock[@userDefined = 'secteursActiviteUNERA'] = $secteur-activite]
