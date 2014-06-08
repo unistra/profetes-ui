@@ -41,12 +41,23 @@ class XQuery
     {
         $xquery = $this->xquery;
         foreach ($this->parameters as $paramName => $paramValue) {
-            $paramValue = str_replace('"', '&#34;', $paramValue);
-            $paramValue = str_replace("'", '&#39;', $paramValue);
+            $paramValue = $this->escapeParameterValue($paramValue);
             $placeholder = '{{{' . $paramName . '}}}';
             $xquery = str_replace($placeholder, $paramValue, $xquery);
         }
 
         return $xquery;
+    }
+
+    /**
+     * @param string $paramValue value to escape
+     * @return string
+     */
+    private function escapeParameterValue($paramValue)
+    {
+        $paramValue = str_replace('"', '&#34;', $paramValue);
+        $paramValue = str_replace("'", '&#39;', $paramValue);
+
+        return $paramValue;
     }
 }
