@@ -1,7 +1,6 @@
 div#content-mapping div#res li {
-  padding: 5px 0 2px 18px;
-  background-repeat: no-repeat;
-  background-position: left 6px;
+    padding: 5px 0 2px 18px;
+    background: no-repeat left 6px;
 }
 
 div#content-mapping ul.liste-diplomes {
@@ -9,82 +8,79 @@ div#content-mapping ul.liste-diplomes {
 }
 
 div#content-mapping div#res li.ead-aucune {
-  background-image: url(/fileadmin/templates/unistra/images/icones/ead-non.png);
+    background-image: url(/fileadmin/templates/unistra/images/icones/ead-non.png);
 }
 
 div#content-mapping div#res li.ead-partielle {
-  background-image: url(/fileadmin/templates/unistra/images/icones/ead-p.png);
+    background-image: url(/fileadmin/templates/unistra/images/icones/ead-p.png);
 }
 
 div#content-mapping div#res li.ead-complete {
-  background-image: url(/fileadmin/templates/unistra/images/icones/ead-c.png);
+    background-image: url(/fileadmin/templates/unistra/images/icones/ead-c.png);
 }
 
 div#content-mapping .pHid {
-  display: none;
+    display: none;
 }
 
 div#content-mapping select {
-  width: 100%;
+    width: 100%;
 }
 
 div#content-mapping label {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 div#content-mapping div#scenario {
-  margin: 0 0 15px 0;
+    margin: 0 0 15px 0;
 }
 
 div#content-mapping div#scenario ul {
-  list-style-type: none;
-  margin: 0;
-  padding:0;
-  height: 100px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 100px;
 }
 
 div#content-mapping div#scenario ul li {
-  margin: 0;
-  padding:0;
-  float: left;
-  display: inline;
+    margin: 0;
+    padding: 0;
+    float: left;
+    display: inline;
 }
 
 div#content-mapping div#scenario ul li a {
-  display: block;
-  margin: 0 8px 0 0;
-  padding: 10px 20px 10px 5px;
-  text-decoration: none;
-  font-size: 0.8em;
-  width: 150px;
-  color: black;
-  border: 1px solid #b2c9da;
-  background: #f3f3f3 url(../../images/profetes/unchecked.gif) no-repeat right bottom;
+    display: block;
+    margin: 0 8px 0 0;
+    padding: 10px 20px 10px 5px;
+    text-decoration: none;
+    font-size: 0.8em;
+    width: 150px;
+    color: black;
+    border: 1px solid #b2c9da;
+    background: #f3f3f3 url(../../images/profetes/unchecked.gif) no-repeat right bottom;
 }
 
 div#content-mapping div#scenario ul li a:hover {
-  border: 1px solid #647e91;
-  background: #e7e7e7 url(../../images/profetes/unchecked_over.gif) no-repeat right bottom;
+    border: 1px solid #647e91;
+    background: #e7e7e7 url(../../images/profetes/unchecked_over.gif) no-repeat right bottom;
 }
 
-
 div#content-mapping div#scenario ul li a span {
-  font-size: 1.3em;
-  color: #415a6d;
-  font-weight: bold;
+    font-size: 1.3em;
+    color: #415a6d;
+    font-weight: bold;
 }
 
 div#content-mapping div#scenario ul li a.checked {
-  border: 1px solid #04a008;
-  background: #e5f1e5 url(../../images/profetes/checked.gif) no-repeat right bottom;
+    border: 1px solid #04a008;
+    background: #e5f1e5 url(../../images/profetes/checked.gif) no-repeat right bottom;
 }
 
 div#content-mapping p.pdf {
-  background: url(https://www.unistra.fr/typo3/gfx/fileicons/pdf.gif) no-repeat scroll transparent;
-  padding: 10px 35px 10px;
+    background: url(https://www.unistra.fr/typo3/gfx/fileicons/pdf.gif) no-repeat scroll transparent;
+    padding: 10px 35px 10px;
 }
-
-// ajout Bruno pour les listes dans recherche assistée
 
 div#scenario ul li a {
     color: #FFFFFF;

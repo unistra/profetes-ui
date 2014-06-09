@@ -10,4 +10,5 @@
 /vendor/
 cache/
 /bin/
-
+*.min.js
+*.min.css
