@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Parser;
+use Symfony\Component\Yaml\Exception\ParseException;
 use Unistra\UtilBundle\Command\Template\TemplateFetcher;
 
 /**
@@ -51,6 +52,7 @@ class TemplatesCommand extends ContainerAwareCommand
     protected function parseConfigFile($configFile)
     {
         $parser = new Parser();
+        $values = '';
         if (!is_file($configFile)) {
             throw new \Exception(sprintf('%s n\'est pas un fichier', $configFile));
         }

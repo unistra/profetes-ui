@@ -30,14 +30,14 @@ class FileCache implements Cache
 
     public function fetch($id, $ttl = null)
     {
-        if (null === $ttl) {
-            $ttl = $this->ttl;
+        if (!is_null($ttl)) {
+            $this->ttl = $ttl;
         }
+        $fullFileName = $this->getFullPath($id);
 
-        $fn = $this->getFullPath($id);
-        if (is_file($fn) && is_readable($fn)) {
-            if (time() - filemtime($fn) < $ttl) {
-                return file_get_contents($fn);
+        if (is_file($fullFileName) && is_readable($fullFileName)) {
+            if ($this->isCacheStillValid($fullFileName)) {
+                return file_get_contents($fullFileName);
             }
         }
 
@@ -59,6 +59,11 @@ class FileCache implements Cache
         }
 
         return file_put_contents($fn, $value) !== false;
+    }
+
+    private function isCacheStillValid($fullFileName)
+    {
+        return (time() - filemtime($fullFileName) < $this->ttl);
     }
 
     private function getFullPath($id)

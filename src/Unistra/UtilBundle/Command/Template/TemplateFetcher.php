@@ -63,8 +63,9 @@ class TemplateFetcher
      * Page de base à récupérer
      *
      * @param string $url URL de la page
-     *
      * @return \DOMDocument le DOMDocument de la page
+     * @throws \InvalidArgumentException if invalid $url
+     * @throws \Exception if unable to convert $url to DOMDocument
      */
     private function fetchPage($url)
     {
@@ -91,13 +92,10 @@ class TemplateFetcher
      *
      * @param \DOMDocument $xml Le DOMDocument de la page du site
      * @param string      $xsl Le fichier XSL de transformation
-     *
      * @return string le template généré
      */
     private function xsltTransform(\DOMDocument $xml, $xsl)
     {
-        $template = '';
-
         $docXml = $xml;
 
         if (is_file($xsl) && is_readable($xsl)) {
@@ -119,7 +117,6 @@ class TemplateFetcher
      *
      * @param string $template contenu du template
      * @param string $file     nom du fichier sous lequel enregistrer le template
-     *
      * @return boolean
      */
     private function saveTemplate($template, $file)
@@ -138,8 +135,8 @@ class TemplateFetcher
      * Effectue les tests XPath sur le document
      *
      * @param \DOMDocument $domDocument
-     *
      * @return boolean
+     * @throws \Exception if XPath test fails
      */
     private function checkPage(\DOMDocument $domDocument)
     {
