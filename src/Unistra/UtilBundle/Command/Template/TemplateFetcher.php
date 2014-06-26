@@ -15,6 +15,7 @@ class TemplateFetcher
     private $fetchedHtml = array();
     private $checks = array();
     private $browser;
+    private $lastModificationDate;
 
     public function __construct()
     {
@@ -59,6 +60,11 @@ class TemplateFetcher
         }
     }
 
+    public function getLastModification($format)
+    {
+        return $this->lastModificationDate->format($format);
+    }
+
     /**
      * Page de base à récupérer
      *
@@ -83,6 +89,7 @@ class TemplateFetcher
         $xml = $response->toDomDocument();
 
         $this->fetchedHtml[$url] = $xml;
+        $this->checkLastModificationDate($xml);
 
         return $xml;
     }
@@ -155,5 +162,15 @@ class TemplateFetcher
         }
 
         return (count($this->checks) === $successes);
+    }
+
+    private function checkLastModificationDate(\DOMDocument $domDocument)
+    {
+        $lastModificationXPath = '/html/head/meta[@name="date"]/@content';
+        $xpath = new \DOMXPath($domDocument);
+        $resultNodes = $xpath->query($lastModificationXPath);
+        $resultNode = $resultNodes->item(0);
+
+        $this->lastModificationDate = new \DateTime($resultNode->nodeValue);
     }
 }

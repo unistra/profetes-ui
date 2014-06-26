@@ -46,6 +46,9 @@ class TemplatesCommand extends ContainerAwareCommand
                 $output->writeln('<info>'.$template['output'].'</info>');
             }
             $fetcher->fetch($template['url'], $template['output'], $template['xsl']);
+            if (!$input->getOption('silent')) {
+                $output->writeln('    ➜ Last modification @ <info>'.$fetcher->getLastModification('d/m/Y H:i').'</info>');
+            }
         }
     }
 
