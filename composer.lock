@@ -1392,16 +1392,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.4.6",
+            "version": "v2.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "ebf1be8a9217eb5911102a522eb2bd500923297d"
+                "reference": "e72f9ebfdf0041e810652f8e893bd3f5e11abfed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/ebf1be8a9217eb5911102a522eb2bd500923297d",
-                "reference": "ebf1be8a9217eb5911102a522eb2bd500923297d",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/e72f9ebfdf0041e810652f8e893bd3f5e11abfed",
+                "reference": "e72f9ebfdf0041e810652f8e893bd3f5e11abfed",
                 "shasum": ""
             },
             "require": {
@@ -1409,7 +1409,7 @@
                 "php": ">=5.3.3",
                 "psr/log": "~1.0",
                 "symfony/icu": "~1.0",
-                "twig/twig": "~1.11"
+                "twig/twig": "~1.12"
             },
             "replace": {
                 "symfony/browser-kit": "self.version",
@@ -1503,7 +1503,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2014-05-31 18:42:13"
+            "time": "2014-07-08 11:54:27"
         },
         {
             "name": "twig/extensions",
