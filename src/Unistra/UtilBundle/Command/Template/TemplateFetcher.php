@@ -170,7 +170,10 @@ class TemplateFetcher
         $xpath = new \DOMXPath($domDocument);
         $resultNodes = $xpath->query($lastModificationXPath);
         $resultNode = $resultNodes->item(0);
-
-        $this->lastModificationDate = new \DateTime($resultNode->nodeValue);
+        if (null !== $resultNode && $resultNode->nodeValue) {
+            $this->lastModificationDate = new \DateTime($resultNode->nodeValue);
+        } else {
+            $this->lastModificationDate = \DateTime::createFromFormat('U', 0);
+        }
     }
 }
