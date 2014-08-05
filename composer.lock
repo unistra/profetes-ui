@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "72482627b47aa5e8dcf6c66b49698377",
+    "hash": "bea3b6bef64e68b9602fa1765f26f6c2",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -802,7 +802,7 @@
         },
         {
             "name": "kriswallsmith/buzz",
-            "version": "dev-master",
+            "version": "v0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/Buzz.git",
@@ -2466,9 +2466,9 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "kriswallsmith/buzz": 20
-    },
+    "stability-flags": [
+
+    ],
     "prefer-stable": false,
     "platform": {
         "php": ">=5.3.3",
