@@ -61,6 +61,24 @@ class FileCache implements Cache
         return file_put_contents($fn, $value) !== false;
     }
 
+    public function info($id)
+    {
+        $fn = $this->getFullPath($id);
+        $file = new \SplFileInfo($fn);
+
+        if (!$file->isFile()) {
+            throw new \InvalidArgumentException(sprintf('%s is not a file', $fn));
+        }
+
+        $info = [
+            'filename' => $file->getRealPath(),
+            'updated' => new \DateTime('@' . $file->getMTime(), new \DateTimeZone('Europe/Paris')),
+            'size' => $file->getSize(),
+        ];
+
+        return $info;
+    }
+
     private function isCacheStillValid($fullFileName)
     {
         return (time() - filemtime($fullFileName) < $this->ttl);

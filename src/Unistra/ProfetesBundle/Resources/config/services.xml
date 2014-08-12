@@ -3,7 +3,7 @@
 <container xmlns="http://symfony.com/schema/dic/services"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
-    
+
     <!-- les paramètres sont définis dans ./parameters.yml -->
 
     <services>
@@ -14,7 +14,7 @@
             </argument>
         </service>
 
-        <service id="unistra.profetes.cache.program_cache" class="Unistra\Profetes\Cache\FileCache" public="false">
+        <service id="unistra.profetes.cache.program_cache" class="Unistra\Profetes\Cache\FileCache">
             <argument>%unistra.profetes.cache.program.dir%</argument>
             <argument>%unistra.profetes.cache.program.ttl%</argument>
         </service>
