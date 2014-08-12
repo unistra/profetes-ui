@@ -23,14 +23,15 @@ class ProgramId
         return $this->id;
     }
 
+    /**
+     * fr-rne-0673021v-pr-ps103-202
+     * => /db/CDM/WSDiplomeCDM-0673021V-FRAN-PS103-202.xml
+     *
+     * @return string
+     */
     public function getResourcePath()
     {
-        $id = $this->id;
-        $id = strtoupper($id);
-        $parts = explode('-', $id);
-
-        #format: /db/CDM/WSDiplomeCDM-0673021V-FRAN-PS103-202.xml pour
-        #fr-rne-0673021v-pr-ps103-202
+        $parts = explode('-', strtoupper($this->id));
 
         return sprintf(
             '%%collection%%/WSDiplomeCDM-%s-FRAN-%s-%s.xml',
