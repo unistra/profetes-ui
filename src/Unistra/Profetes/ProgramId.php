@@ -8,10 +8,11 @@ class ProgramId
 
     public function __construct($id)
     {
-        $pattern = '/^fr-rne-06\d{5}[a-z]-pr-\w+-\w+$/';
+        $pattern = '/^fr-rne-06\d{5}[a-z]-pr-[a-z0-9]+-[a-z0-9]+$/';
         if (! preg_match($pattern, $id)) {
             throw new \InvalidArgumentException(
-                sprintf('%s is not a valid id for a program', $id)
+                sprintf('%s is not a valid id for a program', $id),
+                404
             );
         }
         $this->id = $id;

@@ -8,8 +8,11 @@ class FicheControllerTest extends WebTestCase
 {
     public function setUp()
     {
-        $this->diplome_id = 'fr-rne-0673021v-pr-mi203-231';
-        $this->false_id = 'fr-rne-0673021v-pf-mi203-231';
+        $prefix = 'fr-rne-0673021v';
+        $code = 'mi203-231';
+        $this->diplome_id = $prefix . '-pr-' . $code;
+        $this->false_id = $prefix . '-pf-'. $code;
+        $this->idWithCaps = $prefix . '-pr-' . strtoupper($code);
     }
 
     public function testIndex()
@@ -39,6 +42,13 @@ class FicheControllerTest extends WebTestCase
         $client = static::createClient();
         $crawler = $client->request('GET', '/formations/diplome/fr-rne-0673021v-pr-ab123-456');
         $this->assertTrue($client->getResponse()->isNotFound());
+    }
+
+    public function testNoCapsInDiplomeId()
+    {
+        $client  = static::createClient();
+        $crawler = $client->request('GET', sprintf('/formations/diplome/%s', $this->idWithCaps));
+        $this->assertTrue($client->getResponse()->isNotFound(), $this->idWithCaps . ' has CAPS response should be not found');
     }
 
     public function testNoMorePdf() {
