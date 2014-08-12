@@ -24,7 +24,7 @@ class ProfeteseXistRepository implements ProfetesRepository
     }
 
     /**
-     * @param ProgramId $programId
+     * @param  ProgramId $programId
      * @return Program
      */
     public function getProgram(ProgramId $programId)
@@ -44,8 +44,8 @@ class ProfeteseXistRepository implements ProfetesRepository
     }
 
     /**
-     * @param XQuery $query
-     * @param boolean $addXmlProlog
+     * @param  XQuery  $query
+     * @param  boolean $addXmlProlog
      * @return string
      */
     public function query(XQuery $query, $addXmlProlog = true)

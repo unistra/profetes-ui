@@ -50,7 +50,7 @@ class XQuery
     }
 
     /**
-     * @param string $paramValue value to escape
+     * @param  string $paramValue value to escape
      * @return string
      */
     private function escapeParameterValue($paramValue)

@@ -31,8 +31,8 @@ class eXistDB
     /**
      * Fetch a XML document from the eXist-db database using its resource path
      *
-     * @param  string $path path of the resource to fetch
-     * @return string XML of the resource document
+     * @param  string     $path path of the resource to fetch
+     * @return string     XML of the resource document
      * @throws \Exception with code 404 if resource not found
      */
     public function getResource($path)
@@ -68,8 +68,8 @@ class eXistDB
     /**
      * Execute an XQuery against the database
      *
-     * @param  string  $xquery       the XQuery to execute
-     * @param  boolean $addXmlProlog wether to add the XML prolog to the result
+     * @param  string     $xquery       the XQuery to execute
+     * @param  boolean    $addXmlProlog wether to add the XML prolog to the result
      * @return string
      * @throws \Exception
      */

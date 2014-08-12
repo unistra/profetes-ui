@@ -34,7 +34,7 @@ class Program
     /**
      * The content of the cdm:ProgramName in the given language
      *
-     * @param string $language
+     * @param  string $language
      * @return string
      */
     public function getProgramName($language = 'fr-FR')

@@ -51,7 +51,8 @@ class FicheControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isNotFound(), $this->idWithCaps . ' has CAPS response should be not found');
     }
 
-    public function testNoMorePdf() {
+    public function testNoMorePdf()
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', sprintf('/formations/diplome/%s.pdf', $this->diplome_id));
         $this->assertTrue($client->getResponse()->isNotFound());
@@ -60,7 +61,8 @@ class FicheControllerTest extends WebTestCase
         $this->assertEquals(410, $client->getResponse()->getStatusCode());
     }
 
-    public function testXmlFormat() {
+    public function testXmlFormat()
+    {
         $client = static::createClient();
         $crawler = $client->request('GET', sprintf('/formations/diplome/%s.xml', $this->diplome_id));
         $this->assertTrue($client->getResponse()->headers->contains('content-type', 'text/xml; charset=UTF-8'));

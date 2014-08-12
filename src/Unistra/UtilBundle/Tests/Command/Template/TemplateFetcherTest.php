@@ -49,6 +49,7 @@ class TemplateFetcherTest extends \PHPUnit_Framework_TestCase
             $fetcher->fetch($this->urlToFetch, $this->templateFile, $this->xslFile);
         } catch (\Exception $e) {
             @unlink($this->templateFile);
+
             return;
         }
         $this->fail('une exception aurait du être levée avec un test xpath impassable');

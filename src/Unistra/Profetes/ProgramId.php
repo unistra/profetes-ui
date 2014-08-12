@@ -31,6 +31,7 @@ class ProgramId
 
         #format: /db/CDM/WSDiplomeCDM-0673021V-FRAN-PS103-202.xml pour
         #fr-rne-0673021v-pr-ps103-202
+
         return sprintf(
             '%%collection%%/WSDiplomeCDM-%s-FRAN-%s-%s.xml',
             $parts[2],
