@@ -22,8 +22,8 @@ class CacheInfoCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $tz = new \DateTimeZone('Europe/Paris');
-        $id = $this->normalizeId($input->getArgument('id'));
-        $programId = new ProgramId($id);
+        $id = $input->getArgument('id');
+        $programId = ProgramId::fromBestGuess($id);
         $cache = $this->getContainer()->get('unistra.profetes.cache.program_cache');
         $info = $cache->info($programId->getResourcePath());
 
@@ -32,17 +32,5 @@ class CacheInfoCommand extends ContainerAwareCommand
         $output->writeln('  Date : ' . $info['updated']->setTimeZone($tz)->format('d/m/Y H:i:s P'));
         $output->writeln('  Size : ' . $info['size'] . ' o');
         $output->writeln('');
-    }
-
-    private function normalizeId($id)
-    {
-        $id = strtolower($id);
-        $id = str_replace(['_', '.', '/'], '-', $id);
-
-        if (preg_match("/^[a-z0-9]{3,}-\d+$/", $id)) {
-            $id = 'fr-rne-0673021v-pr-' . $id;
-        }
-
-        return $id;
     }
 }
