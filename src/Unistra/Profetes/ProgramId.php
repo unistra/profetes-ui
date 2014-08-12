@@ -17,6 +17,11 @@ class ProgramId
         $this->id = $id;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getResourcePath()
     {
         $id = $this->id;

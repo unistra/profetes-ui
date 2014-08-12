@@ -27,10 +27,10 @@ class CacheInfoCommand extends ContainerAwareCommand
         $cache = $this->getContainer()->get('unistra.profetes.cache.program_cache');
         $info = $cache->info($programId->getResourcePath());
 
-        $output->writeln('<info>' . $id . '</info>');
-        $output->writeln('  File : ' . $info['filename']);
-        $output->writeln('  Date : ' . $info['updated']->setTimeZone($tz)->format('d/m/Y H:i:s P'));
-        $output->writeln('  Size : ' . $info['size'] . ' o');
+        $output->writeln(sprintf('<info>%s</info>', $programId->getId()));
+        $output->writeln('  <options=bold>File</options=bold> : ' . $info['filename']);
+        $output->writeln('  <options=bold>Date</options=bold> : ' . $info['updated']->setTimeZone($tz)->format('d/m/Y H:i:s P'));
+        $output->writeln('  <options=bold>Size</options=bold> : ' . $info['size'] . ' o');
         $output->writeln('');
     }
 }
