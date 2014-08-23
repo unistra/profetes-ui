@@ -47,7 +47,6 @@ class TemplatesCommand extends ContainerAwareCommand
             }
             $fetcher->fetch($template['url'], $template['output'], $template['xsl']);
             if (!$input->getOption('silent')) {
-                $output->writeln('    ➜ Last modification @ <info>'.$fetcher->getLastModification('d/m/Y H:i').'</info>');
                 $output->writeln('    ➜ Checksum: <info>' . md5_file($template['output']) . '</info>');
             }
         }
