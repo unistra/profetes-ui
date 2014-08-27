@@ -14,3 +14,5 @@ checks:
         - '//div[@id="main-content"]'
         - '//nav[@id="menu"]//ul[@class="nav"]/li'
         - '//nav[@id="acces-direct"]/ul[@class="dropdown-menu"]'
+
+checksumsFile: %kernel.root_dir%/Resources/views/checksums.json

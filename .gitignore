@@ -5,6 +5,7 @@
 /app/cache/*
 /app/logs/*
 /app/Resources/views/*html.twig
+/app/Resources/views/checksums.json
 /app/config/parameters.yml
 /docs/api/*
 /vendor/

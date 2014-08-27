@@ -15,6 +15,7 @@ class TemplateFetcher
     private $fetchedHtml = array();
     private $checks = array();
     private $browser;
+    private $checksumsFile;
 
     public function __construct()
     {
@@ -34,9 +35,17 @@ class TemplateFetcher
      */
     public function fetch($pageToFetch, $templateFile, $xslFile)
     {
+        $checksums = $this->loadChecksums();
         $html = $this->fetchPage($pageToFetch);
         $this->checkPage($html);
+
+        if ($this->checksumsAreSame($html, $checksums[$pageToFetch])) {
+            return false;
+        }
+
         $templateContent = $this->xsltTransform($html, $xslFile);
+        $checksums[$pageToFetch] = md5($html->saveHTML());
+        $this->saveChecksums($checksums);
 
         return $this->saveTemplate($templateContent, $templateFile);
     }
@@ -57,6 +66,21 @@ class TemplateFetcher
         if (is_array($checks)) {
             $this->checks = $checks;
         }
+    }
+
+    public function setChecksumsFile($checksumsFile)
+    {
+        if (!is_file($checksumsFile)) {
+            throw new \InvalidArgumentException(sprintf("Checksums file %s does not exist", $checksumsFile));
+        }
+        if (!is_readable($checksumsFile)) {
+            throw new \InvalidArgumentException(sprintf('Checksums file %s is not readable', $checksumsFile));
+        }
+        if (!is_writable($checksumsFile)) {
+            throw new \InvalidArgumentException(sprintf("Checksums file %s is not writable", $checksumsFile));
+        }
+
+        $this->checksumsFile = $checksumsFile;
     }
 
     /**
@@ -155,5 +179,24 @@ class TemplateFetcher
         }
 
         return (count($this->checks) === $successes);
+    }
+
+    private function checksumsAreSame(\DOMDocument $document, $checksum)
+    {
+        $documentSum = md5($document->saveHTML());
+
+        return ($checksum === $documentSum);
+    }
+
+    private function loadChecksums()
+    {
+        $checksums = json_decode(file_get_contents($this->checksumsFile), true);
+
+        return $checksums;
+    }
+
+    private function saveChecksums($checksums)
+    {
+        file_put_contents($this->checksumsFile, json_encode($checksums));
     }
 }

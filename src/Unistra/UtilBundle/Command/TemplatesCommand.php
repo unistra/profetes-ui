@@ -35,19 +35,24 @@ class TemplatesCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $fetcher = new TemplateFetcher();
-        $values = $this->parseConfigFile(
-            $this->getContainer()->getParameter('kernel.root_dir') . '/config/' . $input->getArgument('config')
+        $configValues = $this->parseConfigFile(
+            $this->getContainer()->getParameter('kernel.root_dir').'/config/'.$input->getArgument('config')
         );
 
-        $fetcher->setChecks($values['checks']['xpath']);
+        $fetcher->setChecks($configValues['checks']['xpath']);
+        $fetcher->setChecksumsFile($configValues['checksumsFile']);
 
-        foreach ($values['templates'] as $template) {
+        foreach ($configValues['templates'] as $template) {
             if (!$input->getOption('silent')) {
                 $output->writeln('<info>'.$template['output'].'</info>');
             }
-            $fetcher->fetch($template['url'], $template['output'], $template['xsl']);
+            $fetched = $fetcher->fetch($template['url'], $template['output'], $template['xsl']);
             if (!$input->getOption('silent')) {
-                $output->writeln('    ➜ Checksum: <info>' . md5_file($template['output']) . '</info>');
+                if ($fetched) {
+                    $output->writeln('    ➜ <info>file updated</info>');
+                } else {
+                    $output->writeln('    ➜ File not updated');
+                }
             }
         }
     }
