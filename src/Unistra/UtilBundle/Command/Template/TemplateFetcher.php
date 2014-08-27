@@ -16,12 +16,19 @@ class TemplateFetcher
     private $checks = array();
     private $browser;
     private $checksumsFile;
+    private $checksums = array();
+    private $newChecksums = array();
 
     public function __construct()
     {
         $client = new Curl();
         $client->setMaxRedirects(0);
         $this->browser = new Browser($client);
+    }
+
+    public function __destruct()
+    {
+        $this->saveChecksums();
     }
 
     /**
@@ -35,17 +42,16 @@ class TemplateFetcher
      */
     public function fetch($pageToFetch, $templateFile, $xslFile)
     {
-        $checksums = $this->loadChecksums();
         $html = $this->fetchPage($pageToFetch);
         $this->checkPage($html);
 
-        if ($this->checksumsAreSame($html, $checksums[$pageToFetch])) {
+        if ($this->checksumsAreSame($html, $this->checksums[$pageToFetch])) {
             return false;
         }
 
         $templateContent = $this->xsltTransform($html, $xslFile);
-        $checksums[$pageToFetch] = md5($html->saveHTML());
-        $this->saveChecksums($checksums);
+        $this->newChecksums[$pageToFetch] = md5($html->saveHTML());
+        $this->saveChecksums($this->checksums);
 
         return $this->saveTemplate($templateContent, $templateFile);
     }
@@ -81,6 +87,7 @@ class TemplateFetcher
         }
 
         $this->checksumsFile = $checksumsFile;
+        $this->loadChecksums();
     }
 
     /**
@@ -190,13 +197,17 @@ class TemplateFetcher
 
     private function loadChecksums()
     {
-        $checksums = json_decode(file_get_contents($this->checksumsFile), true);
-
-        return $checksums;
+        $this->checksums = json_decode(file_get_contents($this->checksumsFile), true);
+        $this->newChecksums = $this->checksums;
     }
 
-    private function saveChecksums($checksums)
+    private function saveChecksums()
     {
-        file_put_contents($this->checksumsFile, json_encode($checksums));
+        if (array_diff($this->checksums, $this->newChecksums)) {
+            file_put_contents(
+                $this->checksumsFile,
+                json_encode($this->newChecksums, JSON_PRETTY_PRINT)
+            );
+        }
     }
 }
