@@ -291,16 +291,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "v2.4.2",
+            "version": "v2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "fec965d330c958e175c39e61c3f6751955af32d0"
+                "reference": "0368bc031976126e5d36d37d2c56155092b6575b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fec965d330c958e175c39e61c3f6751955af32d0",
-                "reference": "fec965d330c958e175c39e61c3f6751955af32d0",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/0368bc031976126e5d36d37d2c56155092b6575b",
+                "reference": "0368bc031976126e5d36d37d2c56155092b6575b",
                 "shasum": ""
             },
             "require": {
@@ -312,7 +312,7 @@
                 "symfony/console": "~2.0"
             },
             "suggest": {
-                "symfony/console": "Allows use of the command line interface"
+                "symfony/console": "For helpful console commands such as SQL execution and import of files."
             },
             "type": "library",
             "autoload": {
@@ -326,23 +326,20 @@
             ],
             "authors": [
                 {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com",
-                    "homepage": "http://www.jwage.com/",
-                    "role": "Creator"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com",
-                    "homepage": "http://www.instaclick.com"
-                },
-                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Benjamin Eberlei",
                     "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
                 }
             ],
             "description": "Database Abstraction Layer",
@@ -353,7 +350,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2014-01-01 16:43:57"
+            "time": "2014-10-16 11:56:49"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -718,16 +715,16 @@
         },
         {
             "name": "kriswallsmith/assetic",
-            "version": "v1.1.2",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "v1.1.2"
+                "reference": "df991c124a2212371443b586a1be767500036dee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/v1.1.2",
-                "reference": "v1.1.2",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/df991c124a2212371443b586a1be767500036dee",
+                "reference": "df991c124a2212371443b586a1be767500036dee",
                 "shasum": ""
             },
             "require": {
@@ -742,7 +739,9 @@
                 "leafo/scssphp": "*",
                 "leafo/scssphp-compass": "*",
                 "mrclay/minify": "*",
-                "phpunit/phpunit": "~3.7",
+                "patchwork/jsqueeze": "~1.0",
+                "phpunit/phpunit": "~4",
+                "psr/log": "~1.0",
                 "ptachoire/cssembed": "*",
                 "twig/twig": "~1.6"
             },
@@ -750,13 +749,14 @@
                 "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
                 "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
                 "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin",
+                "patchwork/jsqueeze": "Assetic provides the integration with the JSqueeze JavaScript compressor",
                 "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
                 "twig/twig": "Assetic provides the integration with the Twig templating engine"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -785,7 +785,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-07-19 00:03:27"
+            "time": "2014-10-14 14:45:32"
         },
         {
             "name": "kriswallsmith/buzz",
@@ -1148,45 +1148,46 @@
         },
         {
             "name": "symfony/assetic-bundle",
-            "version": "v2.3.0",
-            "target-dir": "Symfony/Bundle/AsseticBundle",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/AsseticBundle.git",
-                "reference": "v2.3.0"
+                "reference": "90ea7fb66d6d5245fd4afc16e4c8070214254fec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/v2.3.0",
-                "reference": "v2.3.0",
+                "url": "https://api.github.com/repos/symfony/AsseticBundle/zipball/90ea7fb66d6d5245fd4afc16e4c8070214254fec",
+                "reference": "90ea7fb66d6d5245fd4afc16e4c8070214254fec",
                 "shasum": ""
             },
             "require": {
-                "kriswallsmith/assetic": ">=1.1,<2.0",
+                "kriswallsmith/assetic": "~1.2",
                 "php": ">=5.3.0",
-                "symfony/framework-bundle": ">=2.1,<3.0"
+                "symfony/console": "~2.1",
+                "symfony/framework-bundle": "~2.1",
+                "symfony/yaml": "~2.1"
             },
             "require-dev": {
-                "symfony/class-loader": ">=2.1,<3.0",
-                "symfony/console": ">=2.1,<3.0",
-                "symfony/css-selector": ">=2.1,<3.0",
-                "symfony/dom-crawler": ">=2.1,<3.0",
-                "symfony/form": ">=2.1,<3.0",
-                "symfony/twig-bundle": ">=2.1,<3.0",
-                "symfony/yaml": ">=2.1,<3.0"
+                "kriswallsmith/spork": "~0.2",
+                "patchwork/jsqueeze": "~1.0",
+                "symfony/class-loader": "~2.1",
+                "symfony/css-selector": "~2.1",
+                "symfony/dom-crawler": "~2.1",
+                "symfony/twig-bundle": "~2.1"
             },
             "suggest": {
-                "symfony/twig-bundle": "~2.1"
+                "kriswallsmith/spork": "to be able to dump assets in parallel",
+                "symfony/twig-bundle": "to use the Twig integration"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1.x-dev"
+                    "dev-master": "2.5-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Symfony\\Bundle\\AsseticBundle": ""
+                "psr-4": {
+                    "Symfony\\Bundle\\AsseticBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1207,7 +1208,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2013-05-16 05:32:23"
+            "time": "2014-10-15 12:03:38"
         },
         {
             "name": "symfony/icu",
@@ -1994,16 +1995,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.3.1",
+            "version": "4.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "06005259429c156c02596add91f6a59c7dc3d4af"
+                "reference": "5a0bc4dcbb7340c0a9a9bc3507854a67c564edc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/06005259429c156c02596add91f6a59c7dc3d4af",
-                "reference": "06005259429c156c02596add91f6a59c7dc3d4af",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/5a0bc4dcbb7340c0a9a9bc3507854a67c564edc4",
+                "reference": "5a0bc4dcbb7340c0a9a9bc3507854a67c564edc4",
                 "shasum": ""
             },
             "require": {
@@ -2064,7 +2065,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2014-10-06 06:20:35"
+            "time": "2014-10-16 16:53:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
