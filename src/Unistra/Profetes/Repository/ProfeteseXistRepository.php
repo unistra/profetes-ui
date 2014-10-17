@@ -2,8 +2,8 @@
 
 namespace Unistra\Profetes\Repository;
 
+use Doctrine\Common\Cache\CacheProvider;
 use Unistra\Profetes\eXist\eXistDB;
-use Unistra\Profetes\Cache\Cache;
 use Unistra\Profetes\ProgramId;
 use Unistra\Profetes\XQuery;
 use Unistra\Profetes\Program;
@@ -11,16 +11,16 @@ use Unistra\Profetes\Program;
 class ProfeteseXistRepository implements ProfetesRepository
 {
     protected $existDb;
+    protected $cache;
+    protected $ttlProgram;
+    protected $ttlQuery;
 
-    protected $resourceCache;
-
-    protected $queryCache;
-
-    public function __construct(eXistDB $existDb, Cache $resourceCache, Cache $queryCache)
+    public function __construct(eXistDB $existDb, CacheProvider $cache, $ttlProgram, $ttlQuery)
     {
         $this->existDb = $existDb;
-        $this->resourceCache = $resourceCache;
-        $this->queryCache = $queryCache;
+        $this->cache = $cache;
+        $this->ttlProgram = $ttlProgram;
+        $this->ttlQuery = $ttlQuery;
     }
 
     /**
@@ -29,13 +29,14 @@ class ProfeteseXistRepository implements ProfetesRepository
      */
     public function getProgram(ProgramId $programId)
     {
+        $this->cache->setNamespace('profetes.program');
         $resourcePath = $programId->getResourcePath();
 
-        $xml = $this->resourceCache->fetch($resourcePath);
+        $xml = $this->cache->fetch($resourcePath);
 
         if (!$xml) {
             $xml = $this->existDb->getResource($resourcePath);
-            $this->resourceCache->save($resourcePath, $xml);
+            $this->cache->save($resourcePath, $xml, $this->ttlProgram);
         }
 
         $program = new Program($xml);
@@ -50,14 +51,16 @@ class ProfeteseXistRepository implements ProfetesRepository
      */
     public function query(XQuery $query, $addXmlProlog = true)
     {
+        $this->cache->setNamespace('profetes.xquery');
         $xquery = $query->getXQuery();
+        $cacheId = md5($xquery);
 
-        if ($result = $this->queryCache->fetch($xquery)) {
+        if ($result = $this->cache->fetch($cacheId)) {
             return $result;
         }
 
         $result = $this->existDb->xquery($xquery, $addXmlProlog);
-        $this->queryCache->save($xquery, $result);
+        $this->cache->save($cacheId, $result, $this->ttlQuery);
 
         return $result;
     }

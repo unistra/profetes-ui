@@ -3,8 +3,5 @@ parameters:
     unistra.profetes.username: username
     unistra.profetes.password: password
     unistra.profetes.collection: /db/CDM-2009
-    unistra.profetes.cache.dir: '%kernel.cache_dir%/unistraprofetes-xquery'
-    unistra.profetes.cache.program.dir: %unistra.profetes.cache.dir%/p
     unistra.profetes.cache.program.ttl: 86400
-    unistra.profetes.cache.query.dir: %unistra.profetes.cache.dir%/q
     unistra.profetes.cache.query.ttl: 259200

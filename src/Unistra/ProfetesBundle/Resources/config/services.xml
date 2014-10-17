@@ -14,14 +14,9 @@
             </argument>
         </service>
 
-        <service id="unistra.profetes.cache.program_cache" class="Unistra\Profetes\Cache\FileCache">
-            <argument>%unistra.profetes.cache.program.dir%</argument>
-            <argument>%unistra.profetes.cache.program.ttl%</argument>
-        </service>
-
-        <service id="unistra.profetes.cache.query_cache" class="Unistra\Profetes\Cache\FileCache" public="false">
-            <argument>%unistra.profetes.cache.query.dir%</argument>
-            <argument>%unistra.profetes.cache.query.ttl%</argument>
+        <service id="unistra.profetes.doctrine_cache" class="Doctrine\Common\Cache\PhpFileCache">
+            <argument>%kernel.cache_dir%/profetes</argument>
+            <argument>cache</argument>
         </service>
 
         <service id="unistra.profetes.exist.existdb" class="Unistra\Profetes\eXist\eXistDB" public="false">
@@ -33,8 +28,9 @@
 
         <service id="unistra.profetes.repository.profetes_repository" class="Unistra\Profetes\Repository\ProfeteseXistRepository" public="false">
             <argument type="service" id="unistra.profetes.exist.existdb"/>
-            <argument type="service" id="unistra.profetes.cache.program_cache"/>
-            <argument type="service" id="unistra.profetes.cache.query_cache"/>
+            <argument type="service" id="unistra.profetes.doctrine_cache"/>
+            <argument>%unistra.profetes.cache.program.ttl%</argument>
+            <argument>%unistra.profetes.cache.query.ttl%</argument>
         </service>
 
         <service id="profetes_repository" alias="unistra.profetes.repository.profetes_repository"/>
