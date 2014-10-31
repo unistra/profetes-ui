@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<cdm:CDM xmlns:cdm="http://cdm-fr.fr/2006/CDM-frSchema">
+    <cdm:properties>
+        <cdm:datetime date="2014-04-01+02:00" time="08:00:54.350+02:00"/>
+    </cdm:properties>
+    <cdm:orgUnit id="FR_RNE_0673021V_OR">
+        <cdm:orgUnitID>FR_RNE_0673021V_OR</cdm:orgUnitID>
+        <cdm:orgUnitName>
+            <cdm:text>UNIVERSIT&#xC9; DE STRASBOURG</cdm:text>
+        </cdm:orgUnitName>
+        <cdm:orgUnitCode>0673021V</cdm:orgUnitCode>
+        <cdm:orgUnit id="FR_RNE_0673021V_OR_LVI">
+            <cdm:orgUnitID>FR_RNE_0673021V_OR_LVI</cdm:orgUnitID>
+            <cdm:orgUnitName>
+                <cdm:text>Facult&#xE9; Langues et Cultures &#xE9;trang&#xE8;res</cdm:text>
+            </cdm:orgUnitName>
+            <cdm:orgUnitKind>
+                <cdm:subBlock>
+                    <cdm:subBlock>Composante</cdm:subBlock>
+                </cdm:subBlock>
+            </cdm:orgUnitKind>
+            <cdm:contacts>
+                <cdm:contactData>
+                    <cdm:adr>
+                        <cdm:street>22 rue Ren&#xE9; Descartes</cdm:street>
+                        <cdm:locality>STRASBOURG</cdm:locality>
+                        <cdm:pcode>67084</cdm:pcode>
+                    </cdm:adr>
+                </cdm:contactData>
+            </cdm:contacts>
+            <cdm:refProgram idRef="FR_RNE_0673021V_PR_LV203_231"/>
+        </cdm:orgUnit>
+        <cdm:orgUnit id="FR_RNE_0673021V_OR_CGE_DS2">
+            <cdm:orgUnitID>FR_RNE_0673021V_OR_CGE_DS2</cdm:orgUnitID>
+            <cdm:orgUnitName>
+                <cdm:text>DES - Inscriptions Bureau ALL-SHS</cdm:text>
+            </cdm:orgUnitName>
+            <cdm:orgUnitKind>
+                <cdm:subBlock>
+                    <cdm:subBlock>Centre de gestion</cdm:subBlock>
+                </cdm:subBlock>
+            </cdm:orgUnitKind>
+            <cdm:contacts>
+                <cdm:contactData>
+                    <cdm:adr>
+                        <cdm:locality>STRASBOURG</cdm:locality>
+                        <cdm:pcode>67084</cdm:pcode>
+                    </cdm:adr>
+                </cdm:contactData>
+            </cdm:contacts>
+        </cdm:orgUnit>
+    </cdm:orgUnit>
+    <cdm:program id="FR_RNE_0673021V_PR_LV203_231">
+        <cdm:programID>FR_RNE_0673021V_PR_LV203_231</cdm:programID>
+        <cdm:programName>
+            <cdm:text language="fr-FR">Licence Anglais</cdm:text>
+            <cdm:text language="fr-FR-MTP">LSNS ANKL</cdm:text>
+            <cdm:text language="fr-FR-TRL">licence anglais</cdm:text>
+        </cdm:programName>
+        <cdm:programDescription>
+            <cdm:subBlock blockLang="fr-FR">
+                <cdm:subBlock>Cette licence propose aux &#xE9;tudiants anglicistes une formation g&#xE9;n&#xE9;rale ouvrant sur la diversit&#xE9; culturelle et linguistique du monde anglophone dans sa profondeur litt&#xE9;raire, id&#xE9;ologique et historique. Il offrira ainsi une formation pluridisciplinaire ouverte sur les autres aires culturelles et linguistiques permettant l'&#xE9;tablissement de passerelles fructueuses pour la formation des &#xE9;tudiants en sciences humaines.</cdm:subBlock>
+                <cdm:subBlock>La formation s'appuie principalement sur un enseignement th&#xE9;orique, m&#xE9;thodologique et pratique initiant l'&#xE9;tudiant aux disciplines universitaires classiques mais lui permettant aussi de d&#xE9;couvrir et d'appr&#xE9;hender les complexit&#xE9;s des soci&#xE9;t&#xE9;s, des pratiques culturelles et de la langue du monde anglophone contemporain.</cdm:subBlock>
+                <cdm:subBlock>En troisi&#xE8;me ann&#xE9;e l'&#xE9;tudiant choisira un des deux parcours propos&#xE9;s : &#xAB; Langues et Cultures &#xBB; ou &#xAB; Traduction(s) &#xBB;.</cdm:subBlock>
+                <cdm:subBlock>Le parcours &#xAB; Langues et Culture &#xBB; est consacr&#xE9;e &#xE0; un approfondissement des connaissances et &#xE0; une ouverture sur de nouveaux domaines de l'enseignement et de la recherche.</cdm:subBlock>
+                <cdm:subBlock>Le parcours &#xAB; traduction(s) &#xBB; met l'accent sur le d&#xE9;veloppement des techniques de traductions de diff&#xE9;rents types et sur la r&#xE9;flexion et l'analyse des proc&#xE9;d&#xE9;s de passage d'une langue &#xE0; l'autre.Pour plus d'informations concernant le contenu des cours, les modalit&#xE9;s et dates d'inscriptions, etc., veuillez consulter le site du D&#xE9;partement d'Etudes Anglaises et Nord-Am&#xE9;ricaines :</cdm:subBlock>
+                <cdm:webLink>
+                    <cdm:href>http://www.departement-anglais.unistra.fr/</cdm:href>
+                    <cdm:linkName/>
+                </cdm:webLink>
+            </cdm:subBlock>
+            <cdm:subBlock userDefined="DES">
+                <cdm:subBlock userDefined="domaineMentionSpecialite">
+                    <cdm:subBlock userDefined="domaine" blockLang="fr-FR">Arts, Lettres, Langues</cdm:subBlock>
+                    <cdm:subBlock userDefined="mention" blockLang="fr-FR">Langues, litt&#xE9;ratures et civilisations etrang&#xE8;res</cdm:subBlock>
+                    <cdm:subBlock userDefined="specialite" blockLang="fr-FR">Anglais</cdm:subBlock>
+                </cdm:subBlock>
+            </cdm:subBlock>
+        </cdm:programDescription>
+        <cdm:searchword>licence</cdm:searchword>
+        <cdm:searchword>anglais</cdm:searchword>
+        <cdm:searchword>langue</cdm:searchword>
+        <cdm:qualification>
+            <cdm:qualificationDescription>
+                <cdm:subBlock userDefined="champsDisciplinairesUNERA">Lettres, langues, sciences du langage</cdm:subBlock>
+                <cdm:subBlock userDefined="secteursActiviteUNERA">Enseignement, formation, &#xE9;ducation</cdm:subBlock>
+            </cdm:qualificationDescription>
+            <cdm:profession>
+                <cdm:subBlock blockLang="fr-FR">
+                    <cdm:subBlock>
+            Dans le secteur public : fonction publique d'Etat (enseignement, recherche), territoriale (biblioth&#xE8;que, mairie...), hospitali&#xE8;re et internationale (institutions europ&#xE9;ennes, attach&#xE9; culturel...)
+            <cdm:br/>
+            Dans le secteur priv&#xE9; : m&#xE9;tiers des langues (traducteur, interpr&#xE8;te, enseignant...) ou m&#xE9;tiers avec des langues (attach&#xE9; commercial bilingue, guide-interpr&#xE8;te, charg&#xE9; de communication, de relations publiques, m&#xE9;tiers du journalisme et de l'&#xE9;dition ....).
+            <cdm:br/>
+            Tous ces m&#xE9;tiers ont en commun une pratique intensive des langues.
+          </cdm:subBlock>
+                </cdm:subBlock>
+            </cdm:profession>
+            <cdm:studyQualification>
+                <cdm:subBlock blockLang="fr-FR">
+                    <cdm:subBlock>
+            Master Monde Anglophone
+            <cdm:br/>
+                        <cdm:br/>
+            Master MEEF (M&#xE9;tiers de l'enseignement)
+          </cdm:subBlock>
+                    <cdm:subBlock>
+            Master Langues et interculturalit&#xE9; :
+            <cdm:br/>
+            - Plurilinguisme europ&#xE9;en et interculturalit&#xE9;
+          </cdm:subBlock>
+                    <cdm:subBlock>
+            - Relations internationales et langues
+            <cdm:br/>
+            - Traduction professionnelle et interpr&#xE9;tation de conf&#xE9;rence
+          </cdm:subBlock>
+                    <cdm:subBlock>
+            Master Didactique des langues &#xE9;trang&#xE8;res et secondes , sous r&#xE9;serve d'avoir suivi des enseignements de didactique et de fran&#xE7;ais langue &#xE9;trang&#xE8;re au cours de la Licence
+            <cdm:br/>
+            Professorat des Ecoles
+          </cdm:subBlock>
+                </cdm:subBlock>
+            </cdm:studyQualification>
+        </cdm:qualification>
+        <cdm:level>
+            <cdm:subBlock>
+                <cdm:subBlock>Licence</cdm:subBlock>
+                <cdm:extension>
+                    <order n="1"/>
+                </cdm:extension>
+            </cdm:subBlock>
+        </cdm:level>
+        <cdm:learningObjectives>
+            <cdm:subBlock blockLang="fr-FR">
+                <cdm:subBlock>
+          Analyser, synth&#xE9;tiser, argumenter en anglais.
+          <cdm:br/>
+          Pratique raisonn&#xE9;e de la langue &#xE9;crite et orale.
+          <cdm:br/>
+          Expression &#xE9;crite et orale sur des sujets de nature diverse.
+          <cdm:br/>
+          D&#xE9;velopper une analyse autonome des manifestations litt&#xE9;raires, linguistiques, politiques et culturelles.
+        </cdm:subBlock>
+                <cdm:subBlock>Traduire en anglais et en fran&#xE7;ais.</cdm:subBlock>
+            </cdm:subBlock>
+        </cdm:learningObjectives>
+        <cdm:admissionInfo/>
+        <cdm:formalPrerequisites>
+            <cdm:subBlock blockLang="fr-FR">
+                <cdm:subBlock>
+          Acc&#xE8;s
+          <cdm:br/>
+          - en 1&#xE8;re ann&#xE9;e : baccalaur&#xE9;at, DAEU-A ou tout titre fran&#xE7;ais ou &#xE9;tranger &#xE9;quivalent (Abitur, Apolytirion, Maturita...)
+          <cdm:br/>
+          - en 2&#xE8;me ann&#xE9;e si une premi&#xE8;re ann&#xE9;e valid&#xE9;e ou cas particulier
+          <cdm:br/>
+          - en 3&#xE8;me ann&#xE9;e si une deuxi&#xE8;me ann&#xE9;e valid&#xE9;e ou cas particulier
+          <cdm:br/>
+          Validation des acquis d'&#xE9;tudes ou des acquis de l'exp&#xE9;rience sur dossir apr&#xE8;s examen de la commission p&#xE9;dagogique
+          <cdm:br/>
+          Etudiants &#xE9;trangers hors Union europ&#xE9;enne : acc&#xE8;s en 1&#xE8;re et 2&#xE8;me ann&#xE9;es apr&#xE8;s demande d'admission pr&#xE9;alable (DAP).
+          <cdm:br/>
+          Consulter la Direction des &#xE9;tudes et de la scolarit&#xE9; :
+          <cdm:email>scolarite-all-shs@unistra.fr</cdm:email>
+                </cdm:subBlock>
+                <cdm:subBlock>Consulter &#xE9;galement :</cdm:subBlock>
+                <cdm:subBlock>
+                    <cdm:webLink>
+                        <cdm:href>http://www.enseignementsup-recherche.gouv.fr/cid20200/commencer-ses-etudes-superieures-en-france.html</cdm:href>
+                        <cdm:linkName>http://www.enseignementsup-recherche.gouv.fr/cid20200/commencer-ses-etudes-superieures-en-france.html</cdm:linkName>
+                    </cdm:webLink>
+                </cdm:subBlock>
+                <cdm:subBlock>
+                    <cdm:webLink>
+                        <cdm:href>http://www.diplomatie.gouv.fr/fr/espaces_dedies.php3?id_rubrique=12793</cdm:href>
+                        <cdm:linkName>http://www.diplomatie.gouv.fr/fr/espaces_dedies.php3?id_rubrique=12793</cdm:linkName>
+                    </cdm:webLink>
+                </cdm:subBlock>
+                <cdm:subBlock>Pr&#xE9;-requis : avoir &#xE9;tudi&#xE9; l'anglais dans le secondaire</cdm:subBlock>
+            </cdm:subBlock>
+        </cdm:formalPrerequisites>
+        <cdm:formOfTeaching>
+            <cdm:subBlock userDefined="enseignementADistance">Aucune</cdm:subBlock>
+            <cdm:subBlock userDefined="formationInitiale">Oui</cdm:subBlock>
+            <cdm:subBlock userDefined="formationContinue">Oui</cdm:subBlock>
+            <cdm:subBlock userDefined="formationEnAlternance">Non</cdm:subBlock>
+            <cdm:subBlock userDefined="stage">Possible</cdm:subBlock>
+            <cdm:subBlock userDefined="stageEtranger">Possible</cdm:subBlock>
+        </cdm:formOfTeaching>
+        <cdm:programStructure>
+            <cdm:refOrgUnit idRef="FR_RNE_0673021V_OR_LVI"/>
+        </cdm:programStructure>
+        <cdm:regulations>
+            <cdm:subBlock blockLang="fr-FR">
+                <cdm:subBlock>Contr&#xF4;le continu</cdm:subBlock>
+            </cdm:subBlock>
+        </cdm:regulations>
+        <cdm:contacts>
+            <cdm:refPerson idRef="FR_RNE_0673021V_PE_1454"/>
+        </cdm:contacts>
+        <cdm:infoBlock>
+            <cdm:subBlock userDefined="informationsComplementaires" blockLang="fr-FR">
+                <cdm:subBlock>
+          Validation des acquis (VAPP) : +33 (0)3 68 85 65 43, +33 (0)3 68 85 66 05,
+          <cdm:email>des-scolarite-all-shs@unistra.fr</cdm:email>
+                </cdm:subBlock>
+                <cdm:subBlock>
+          Validation des acquis de l'exp&#xE9;rience (VAE) : +33 (0)3 68 85 86 00,
+          <cdm:email>vae@unistra.fr</cdm:email>
+                </cdm:subBlock>
+                <cdm:subBlock>
+          Formation continue - adultes en reprise d'&#xE9;tudes : +33 (0)3 68 85 49 20,
+          <cdm:email>sfc-contact@unistra.fr</cdm:email>
+                </cdm:subBlock>
+                <cdm:subBlock>
+          Information, orientation, emploi : +33 (0)3 68 85 63 00,
+          <cdm:email>espace.avenir@unistra.fr</cdm:email>
+                </cdm:subBlock>
+            </cdm:subBlock>
+            <cdm:subBlock userDefined="enSavoirPlus" blockLang="fr-FR">
+                <cdm:subBlock>
+          Responsable de cette Licence :
+          <cdm:email>mantrant@unistra.fr</cdm:email>
+                </cdm:subBlock>
+                <cdm:subBlock>Secr&#xE9;tariat p&#xE9;dagogique du D&#xE9;partement d'&#xE9;tudes anglaises et nord-am&#xE9;ricaines :</cdm:subBlock>
+                <cdm:subBlock>
+          - M. Micha&#xEB;l Choffat, 03 68 85 65 74,
+          <cdm:email>mchoffat@unistra.fr</cdm:email>
+                </cdm:subBlock>
+                <cdm:subBlock>
+          - Mme Claudie Lotz, 03 68 85 65 74,
+          <cdm:email>clotz@unistra.fr</cdm:email>
+                </cdm:subBlock>
+                <cdm:subBlock>
+          Pour consulter le suivi de cohorte des bacheliers 2005 inscrits en licence d'anglais,
+          <cdm:webLink>
+                        <cdm:href>http://www.unistra.fr/fileadmin/upload/unistra/universite/SAP_Parcours_et_devenir_des_etudiants/UdS_-_Licence_Anglais_01.pdf</cdm:href>
+                        <cdm:linkName>cliquez ici!</cdm:linkName>
+                    </cdm:webLink>
+                </cdm:subBlock>
+            </cdm:subBlock>
+        </cdm:infoBlock>
+    </cdm:program>
+    <cdm:person id="FR_RNE_0673021V_PE_1454">
+        <cdm:name>
+            <cdm:given>Sophie</cdm:given>
+            <cdm:family>Mantrant</cdm:family>
+        </cdm:name>
+        <cdm:contactData>
+            <cdm:adr>
+                <cdm:street>22 Rue Ren&#xE9; Descartes</cdm:street>
+                <cdm:locality>STRASBOURG CEDEX</cdm:locality>
+                <cdm:pcode>67084</cdm:pcode>
+            </cdm:adr>
+            <cdm:telephone>03 68 85 67 02</cdm:telephone>
+            <cdm:email>mantrant@unistra.fr</cdm:email>
+        </cdm:contactData>
+    </cdm:person>
+</cdm:CDM>
+

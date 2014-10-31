@@ -18,9 +18,8 @@ class Program
      */
     public function __construct($xml)
     {
+        $this->loadDomDocument($xml);
         $this->xml = $xml;
-        $this->domDocument = new \DOMDocument();
-        $this->domDocument->loadXML($xml);
     }
 
     /**
@@ -70,5 +69,13 @@ class Program
         $xpath->registerNamespace('cdm', self::CDM_NAMESPACE);
 
         return $xpath->query($query);
+    }
+
+    private function loadDomDocument($xml)
+    {
+        $this->domDocument = new \DOMDocument();
+        if (!$this->domDocument->loadXML($xml, LIBXML_NOERROR)) {
+            throw new \InvalidArgumentException("XML is not valid");
+        }
     }
 }
