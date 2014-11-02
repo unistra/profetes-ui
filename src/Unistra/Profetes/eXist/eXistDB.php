@@ -37,7 +37,7 @@ class eXistDB
      */
     public function getResource($path)
     {
-        $path = str_replace('%collection%', $this->collection, $path);
+        $path = $this->replaceCollection($path);
 
         $this->connect();
         $params = array(
@@ -75,8 +75,9 @@ class eXistDB
      */
     public function xquery($xquery, $addXmlProlog = true)
     {
+        $xquery = $this->replaceCollection($xquery);
+
         $xml = '';
-        $xquery = str_replace('%collection%', $this->collection, $xquery);
         if ($addXmlProlog) {
             $xml = '<?xml version="1.0" encoding="utf-8"?>' . "\n";
         }
@@ -133,5 +134,16 @@ class eXistDB
         } catch (\Exception $e) {
             throw new \Exception("Unable to connect to soap server\n" . $e->getMessage());
         }
+    }
+
+    /**
+     * @param $path
+     * @return mixed
+     */
+    private function replaceCollection($path)
+    {
+        $path = str_replace('%collection%', $this->collection, $path);
+
+        return $path;
     }
 }
