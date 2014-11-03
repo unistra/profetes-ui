@@ -20,28 +20,41 @@ class FicheControllerTest extends WebTestCase
         $this->idWithCaps = $prefix . '-pr-' . strtoupper($code);
     }
 
-    public function testIndex()
+    public function testPageFormation()
     {
         $client = static::createClient();
 
         $crawler = $client->request('GET', sprintf('/formations/diplome/%s', $this->diplomeId));
         $this->assertTrue($client->getResponse()->isSuccessful());
         $this->assertTrue($crawler->filter('html:contains("Licence Mathématiques")')->count() > 0);
-        $html = $client->getResponse()->getContent();
+    }
 
-        $crawler = $client->request('GET', sprintf('/formations/diplome/%s.html', $this->diplomeId));
-        $this->assertTrue($client->getResponse()->isSuccessful());
-        $this->assertTrue($crawler->filter('html:contains("Licence Mathématiques")')->count() > 0);
-
-        $crawler = $client->request('GET', sprintf('/formations/diplome/%s', $this->falseId));
-        $this->assertTrue($client->getResponse()->isNotFound());
+    public function testPageFormationWithHtmlSuffix()
+    {
+        $client = static::createClient();
 
         $crawler = $client->request('GET', sprintf('/formations/diplome/%s.html', $this->diplomeId));
         $this->assertTrue($client->getResponse()->isSuccessful());
         $this->assertTrue($crawler->filter('html:contains("Licence Mathématiques")')->count() > 0);
     }
 
-    public function testUnexistantProgram()
+    public function testPageFormationInXmlFormat()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', sprintf('/formations/diplome/%s.xml', $this->diplomeId));
+        $this->assertTrue($client->getResponse()->headers->contains('content-type', 'text/xml; charset=UTF-8'));
+        $this->assertSame(1, $crawler->filterXPath('cdm:CDM/cdm:program/cdm:programName')->count());
+    }
+
+    public function testPageFormationWithInvalidId()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', sprintf('/formations/diplome/%s', $this->falseId));
+        $this->assertTrue($client->getResponse()->isNotFound());
+    }
+
+    public function testPageFormationForNonExistentProgram()
     {
         // id a un format correct mais la fiche n'existe pas
         $client = static::createClient();
@@ -70,18 +83,8 @@ class FicheControllerTest extends WebTestCase
         $this->assertEquals(Response::HTTP_GONE, $client->getResponse()->getStatusCode());
     }
 
-    public function testXmlFormat()
-    {
-        $client = static::createClient();
-        $crawler = $client->request('GET', sprintf('/formations/diplome/%s.xml', $this->diplomeId));
-        $this->assertTrue($client->getResponse()->headers->contains('content-type', 'text/xml; charset=UTF-8'));
-        #À partir de symfony 2.4...
-        #$crawler->registerNamespace('cdm', 'http://cdm-fr.fr/2006/CDM-frSchema');
-        #$this->assertTrue($crawler->filter('cdm|CDM > cdm|program > cdm|programName')->count() == 1);
-        $this->assertRegExp('/<cdm:programID>.*<\/cdm:programID>/', $client->getResponse()->getContent());
-    }
 
-    public function testRepertoire()
+    public function testCanNotAccessRepertoire()
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/formations/diplome/');
