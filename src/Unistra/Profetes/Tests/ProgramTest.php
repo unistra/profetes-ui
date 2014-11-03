@@ -6,11 +6,17 @@ use Unistra\Profetes\Program;
 
 class ProgramTest extends \PHPUnit_Framework_TestCase
 {
+    private $xml;
+
+    public function setUp()
+    {
+        $this->xml = file_get_contents(__DIR__.'/DataFixtures/program-cdm.xml');
+    }
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage XML is not valid
      */
-    public function testMustBeConstructedWithValidXML()
+    public function testMustBeConstructedWithValidXml()
     {
         $xml = '<?xml version="1.0" encoding="UTF-8"?><root><child-node></root>';
         $program = new Program($xml);
@@ -20,30 +26,27 @@ class ProgramTest extends \PHPUnit_Framework_TestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage XML is not valid
      */
-    public function testMustBeConstructedWithXMLString()
+    public function testMustBeConstructedWithXmlString()
     {
         $program = new Program('Some stupid string');
     }
 
-    public function testGetProgramNameFromCDM()
+    public function testGetProgramNameFromCdm()
     {
-        $xml = file_get_contents(__DIR__.'/DataFixtures/program-cdm.xml');
-        $program = new Program($xml);
+        $program = new Program($this->xml);
         $this->assertEquals('Licence Anglais', $program->getProgramName());
     }
 
-    public function testGetProgramKeywordsFromCDM()
+    public function testGetProgramKeywordsFromCdm()
     {
-        $xml = file_get_contents(__DIR__.'/DataFixtures/program-cdm.xml');
         $expected = ['licence', 'anglais', 'langue',];
-        $program = new Program($xml);
+        $program = new Program($this->xml);
         $this->assertEquals($expected, $program->getSearchWords());
     }
 
     public function testGetXmlReturnsTheDocumentXml()
     {
-        $xml = file_get_contents(__DIR__.'/DataFixtures/program-cdm.xml');
-        $program = new Program($xml);
-        $this->assertXmlStringEqualsXmlString($xml, $program->getXml());
+        $program = new Program($this->xml);
+        $this->assertXmlStringEqualsXmlString($this->xml, $program->getXml());
     }
 }
