@@ -18,9 +18,11 @@ class DefaultControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/formations/');
         $response = $client->getResponse();
         $this->assertTrue($response instanceof RedirectResponse);
-        $this->assertNotEquals(200, $response->getStatusCode());
-        $this->assertEquals(301, $response->getStatusCode());
-        $this->assertRegExp('/www\.unistra\.fr\/index\.php\?id=etudes$/',
-            $response->headers->get('location'));
+        $this->assertNotEquals(Response::HTTP_OK, $response->getStatusCode());
+        $this->assertEquals(Response::HTTP_MOVED_PERMANENTLY, $response->getStatusCode());
+        $this->assertRegExp(
+            '/www\.unistra\.fr\/index\.php\?id=etudes$/',
+            $response->headers->get('location')
+        );
     }
 }
