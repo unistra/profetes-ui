@@ -1,6 +1,6 @@
 <?php
 
-namespace Unistra\UtilBundle\Command;
+namespace Unistra\ProfetesBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -28,7 +28,7 @@ class ListeTypesDiplomesCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $xquery = new XQuery(file_get_contents(
-            __DIR__.'/../Resources/xquery/types-de-diplomes.xquery'));
+            __DIR__.'/../Resources/xquery/Command/liste-types-de-diplomes.xquery'));
         $results = $this->getContainer()->get('profetes_repository')->query($xquery, false);
         $output->writeln($results);
     }

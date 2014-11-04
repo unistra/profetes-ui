@@ -1,6 +1,6 @@
 <?php
 
-namespace Unistra\UtilBundle\Command;
+namespace Unistra\ProfetesBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -30,7 +30,7 @@ class ListeDiplomesCommand extends ContainerAwareCommand
         $router->getContext()->setHost('www.unistra.fr');
         $xqueryParams = array('prefix' => $router->generate('_unistra_profetes_repertoire_fiche', array(), true));
         $xquery = new XQuery(file_get_contents(
-            __DIR__.'/../Resources/xquery/diplomes.xquery'));
+            __DIR__.'/../Resources/xquery/Command/liste-diplomes.xquery'));
         $xquery->setParameters($xqueryParams);
 
         $result = $this->getContainer()->get('profetes_repository')->query($xquery, false);

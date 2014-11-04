@@ -35,7 +35,7 @@
 
         <service id="profetes_repository" alias="unistra.profetes.repository.profetes_repository"/>
 
-        <service id="twig.extension.unistra_xslt_extension" class="Unistra\UtilBundle\Twig\Extension\XsltExtension">
+        <service id="twig.extension.unistra_xslt_extension" class="Unistra\ProfetesBundle\Twig\Extension\XsltExtension">
             <tag name="twig.extension"/>
         </service>
 

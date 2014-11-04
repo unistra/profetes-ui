@@ -1,6 +1,6 @@
 <?php
 
-namespace Unistra\UtilBundle\Twig\Extension;
+namespace Unistra\ProfetesBundle\Twig\Extension;
 
 class XsltExtension extends \Twig_Extension
 {

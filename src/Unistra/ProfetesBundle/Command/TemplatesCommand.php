@@ -1,6 +1,6 @@
 <?php
 
-namespace Unistra\UtilBundle\Command;
+namespace Unistra\ProfetesBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Parser;
 use Symfony\Component\Yaml\Exception\ParseException;
-use Unistra\UtilBundle\Command\Template\TemplateFetcher;
+use Unistra\ProfetesBundle\Command\Template\TemplateFetcher;
 
 /**
  * Commande à utiliser en ligne de commande pour récupérer une ou plusieurs

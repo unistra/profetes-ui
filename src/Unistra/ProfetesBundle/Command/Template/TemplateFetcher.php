@@ -1,6 +1,6 @@
 <?php
 
-namespace Unistra\UtilBundle\Command\Template;
+namespace Unistra\ProfetesBundle\Command\Template;
 
 use Buzz\Browser;
 use Buzz\Client\Curl;

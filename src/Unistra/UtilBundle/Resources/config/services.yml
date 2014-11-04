@@ -1,7 +1,0 @@
-parameters:
-#    unistra_util.example.class: Unistra\UtilBundle\Example
-
-services:
-#    unistra_util.example:
-#        class: %unistra_util.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
