@@ -2,9 +2,13 @@
 
 namespace Unistra\ProfetesBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Unistra\Profetes\XQuery;
 
+/**
+ * @Cache(public=true, maxage=86400)
+ */
 class XQueryController extends Controller
 {
 

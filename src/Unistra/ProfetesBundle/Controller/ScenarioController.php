@@ -2,10 +2,14 @@
 
 namespace Unistra\ProfetesBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Unistra\Profetes\XQuery;
 
+/**
+ * @Cache(public=true, maxage=86400)
+ */
 class ScenarioController extends Controller
 {
     public function indexAction()

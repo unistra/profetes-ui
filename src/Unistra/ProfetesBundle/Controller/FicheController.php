@@ -2,11 +2,15 @@
 
 namespace Unistra\ProfetesBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\GoneHttpException;
 use Symfony\Component\HttpFoundation\Request;
 use Unistra\Profetes\ProgramId;
 
+/**
+ * @Cache(public=true, maxage=86400)
+ */
 class FicheController extends Controller
 {
     public function indexAction(Request $request, $id, $_format)
