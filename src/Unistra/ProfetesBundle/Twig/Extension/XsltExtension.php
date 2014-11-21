@@ -4,7 +4,6 @@ namespace Unistra\ProfetesBundle\Twig\Extension;
 
 class XsltExtension extends \Twig_Extension
 {
-
     /**
      * {@inheritdoc}
      */
@@ -56,5 +55,4 @@ class XsltExtension extends \Twig_Extension
     {
         return 'unistra_xslt_extension';
     }
-
 }

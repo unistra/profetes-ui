@@ -25,7 +25,7 @@ class XsltExtensionTest extends \PHPUnit_Framework_TestCase
         $xml = $this->getXml();
         $xsl = $this->getXslWithParameter();
 
-        $result = $xsltExtension->xsltTransform($xml, $xsl, ['test-param' => 'Param value',]);
+        $result = $xsltExtension->xsltTransform($xml, $xsl, ['test-param' => 'Param value', ]);
 
         $this->assertXmlStringEqualsXmlString(
             "<p>TestParam value</p>",

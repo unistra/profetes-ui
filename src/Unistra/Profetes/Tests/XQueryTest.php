@@ -38,7 +38,7 @@ class XQueryTest extends \PHPUnit_Framework_TestCase
     {
         $xq = new XQuery('XQuery with {{{parameter}}} placeholder');
         $xq->setParameters(array(
-            'parameter' => 'I\'m reading "Harry Potter"!'
+            'parameter' => 'I\'m reading "Harry Potter"!',
         ));
         $this->assertEquals('XQuery with I&#39;m reading &#34;Harry Potter&#34;! placeholder', $xq->getXQuery());
     }

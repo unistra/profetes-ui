@@ -47,7 +47,7 @@ class ProgramId
         $id = str_replace(['_', '.', '/'], '-', $id);
 
         if (preg_match("/^[a-z0-9]{3,}-\d+$/", $id)) {
-            $id = 'fr-rne-0673021v-pr-' . $id;
+            $id = 'fr-rne-0673021v-pr-'.$id;
         }
 
         return new self($id);

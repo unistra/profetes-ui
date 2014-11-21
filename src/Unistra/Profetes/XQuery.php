@@ -42,7 +42,7 @@ class XQuery
         $xquery = $this->xquery;
         foreach ($this->parameters as $paramName => $paramValue) {
             $paramValue = $this->escapeParameterValue($paramValue);
-            $placeholder = '{{{' . $paramName . '}}}';
+            $placeholder = '{{{'.$paramName.'}}}';
             $xquery = str_replace($placeholder, $paramValue, $xquery);
         }
 

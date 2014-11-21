@@ -15,9 +15,9 @@ class FicheControllerTest extends WebTestCase
     {
         $prefix = 'fr-rne-0673021v';
         $code = 'mi203-231';
-        $this->diplomeId = $prefix . '-pr-' . $code;
-        $this->falseId = $prefix . '-pf-'. $code;
-        $this->idWithCaps = $prefix . '-pr-' . strtoupper($code);
+        $this->diplomeId = $prefix.'-pr-'.$code;
+        $this->falseId = $prefix.'-pf-'.$code;
+        $this->idWithCaps = $prefix.'-pr-'.strtoupper($code);
     }
 
     public function testPageFormation()
@@ -66,7 +66,7 @@ class FicheControllerTest extends WebTestCase
     {
         $client  = static::createClient();
         $crawler = $client->request('GET', sprintf('/formations/diplome/%s', $this->idWithCaps));
-        $this->assertTrue($client->getResponse()->isNotFound(), $this->idWithCaps . ' has CAPS response should be not found');
+        $this->assertTrue($client->getResponse()->isNotFound(), $this->idWithCaps.' has CAPS response should be not found');
     }
 
     public function testNoMorePdf()
@@ -82,7 +82,6 @@ class FicheControllerTest extends WebTestCase
         $crawler = $client->request('GET', sprintf('/formations/diplome/%s?format=something', $this->diplomeId));
         $this->assertEquals(Response::HTTP_GONE, $client->getResponse()->getStatusCode());
     }
-
 
     public function testCanNotAccessRepertoire()
     {

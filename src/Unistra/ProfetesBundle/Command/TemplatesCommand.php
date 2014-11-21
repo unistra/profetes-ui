@@ -21,7 +21,6 @@ use Unistra\ProfetesBundle\Command\Template\TemplateFetcher;
  */
 class TemplatesCommand extends ContainerAwareCommand
 {
-
     protected function configure()
     {
         $this

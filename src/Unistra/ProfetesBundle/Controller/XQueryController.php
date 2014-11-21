@@ -11,7 +11,6 @@ use Unistra\Profetes\XQuery;
  */
 class XQueryController extends Controller
 {
-
     /** /formations/composante/{id} */
     public function composanteAction($id)
     {
@@ -59,5 +58,4 @@ class XQueryController extends Controller
             'secteurActivite'   => $secteurActivite,
         ));
     }
-
 }

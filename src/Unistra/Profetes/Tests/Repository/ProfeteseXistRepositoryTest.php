@@ -121,7 +121,7 @@ class ProfeteseXistRepositoryTest extends \PHPUnit_Framework_TestCase
     private function getCacheMock()
     {
         $cache = $this->getMockBuilder('Doctrine\Common\Cache\CacheProvider')
-            ->setMethods(['fetch', 'save',])
+            ->setMethods(['fetch', 'save'])
             ->getMockForAbstractClass();
 
         return $cache;

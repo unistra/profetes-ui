@@ -24,8 +24,7 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
 
     public function testGetResource()
     {
-
-        $soapClient = $this->geteXistDBMock(['connect', 'getResource',]);
+        $soapClient = $this->geteXistDBMock(['connect', 'getResource']);
         $soapClient->expects($this->once())
             ->method('connect')
             ->willReturn($this->soapReturn);
@@ -39,9 +38,9 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
 
     public function testCollectionIsReplacedInResourcePath()
     {
-        $getResourceParams = ['sessionId' => 123, 'path' => 'collection-name/rest-of-path', 'indent' => true, 'xinclude' => true,];
+        $getResourceParams = ['sessionId' => 123, 'path' => 'collection-name/rest-of-path', 'indent' => true, 'xinclude' => true];
 
-        $soapClient = $this->geteXistDBMock(['connect', 'getResource',]);
+        $soapClient = $this->geteXistDBMock(['connect', 'getResource']);
         $soapClient->expects($this->once())
             ->method('connect')
             ->willReturn($this->soapReturn);
@@ -60,7 +59,7 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
      */
     public function testThrowsExceptionIfResourceNotFound()
     {
-        $soapClient = $this->geteXistDBMock(['connect', 'getResource',]);
+        $soapClient = $this->geteXistDBMock(['connect', 'getResource']);
         $soapClient->expects($this->once())
             ->method('connect')
             ->willReturn($this->soapReturn);
@@ -80,7 +79,7 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
     {
         $username = $password = null;
 
-        $soapClient = $this->geteXistDBMock(['connect',]);
+        $soapClient = $this->geteXistDBMock(['connect']);
         $soapClient->expects($this->once())
             ->method('connect')
             ->willThrowException(new \SoapFault(null, null));
@@ -97,13 +96,13 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
         $xquery = 'XPath %collection% to query';
         $retrieveObject = new \stdClass();
         $retrieveObject->retrieveReturn = $resultOfQuery;
-        $soapClient = $this->geteXistDBMock(['connect','query','retrieve',]);
+        $soapClient = $this->geteXistDBMock(['connect', 'query', 'retrieve']);
         $soapClient->expects($this->once())
             ->method('connect')
             ->willReturn($this->soapReturn);
         $soapClient->expects($this->once())
             ->method('query')
-            ->with(['sessionId' => 123, 'xpath' => 'XPath collection-name to query',])
+            ->with(['sessionId' => 123, 'xpath' => 'XPath collection-name to query'])
             ->willReturn($this->soapReturn);
         $soapClient->expects($this->once())
             ->method('retrieve')

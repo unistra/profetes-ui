@@ -51,7 +51,6 @@ class eXistDB
             $resource = $this->soapClient
                 ->getResource($params)
                 ->getResourceReturn;
-
         } catch (\SoapFault $fault) {
             if (strstr($fault->faultstring, 'not found')) {
                 throw new \Exception(
@@ -79,7 +78,7 @@ class eXistDB
 
         $xml = '';
         if ($addXmlProlog) {
-            $xml = '<?xml version="1.0" encoding="utf-8"?>' . "\n";
+            $xml = '<?xml version="1.0" encoding="utf-8"?>'."\n";
         }
 
         $this->connect();
@@ -103,14 +102,13 @@ class eXistDB
 
             if ($result) {
                 if (is_array($result)) {
-                    $xml .= implode("\n", $result) . "\n";
+                    $xml .= implode("\n", $result)."\n";
                 } else {
-                    $xml .= $result . "\n";
+                    $xml .= $result."\n";
                 }
 
                 return $xml;
             }
-
         } catch (\SoapFault $fault) {
             throw new \Exception($fault->faultstring);
         }
@@ -132,7 +130,7 @@ class eXistDB
                 ->connect($credentials)
                 ->connectReturn;
         } catch (\Exception $e) {
-            throw new \Exception("Unable to connect to soap server\n" . $e->getMessage());
+            throw new \Exception("Unable to connect to soap server\n".$e->getMessage());
         }
     }
 

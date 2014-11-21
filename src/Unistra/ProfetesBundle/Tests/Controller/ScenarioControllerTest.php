@@ -63,7 +63,7 @@ class ScenarioControllerTest extends WebTestCase
     public function parTypeDeDiplomeEtDisciplineProvider()
     {
         return [
-            [2, "Histoire", ],
+            [2, "Histoire"],
             [1, "Philosophie, éthique"],
         ];
     }
@@ -93,7 +93,7 @@ class ScenarioControllerTest extends WebTestCase
     public function typesDiplomesParDisciplineProvider()
     {
         return [
-            ['Théologie', '<option value="3">Doctorat</option>', ],
+            ['Théologie', '<option value="3">Doctorat</option>'],
             ['Mathématiques et informatique', '<option value="2">Master</option>', ],
             ['Sciences de la terre et de l\'univers, environnement', '<option value="1">Licence</option>', ]
         ];
@@ -124,7 +124,7 @@ class ScenarioControllerTest extends WebTestCase
     public function typesDiplomesParObjProProvider()
     {
         return [
-            ['Chimie, matériaux, plasturgie', '<option value="1">Licence</option>',],
+            ['Chimie, matériaux, plasturgie', '<option value="1">Licence</option>'],
             ['Droit', '<option value="3">Doctorat</option>', ],
         ];
     }
@@ -143,7 +143,7 @@ class ScenarioControllerTest extends WebTestCase
     public function objectifProfessionnelEtTypeDeDiplomeProvider()
     {
         return [
-            ['Enseignement, formation, éducation', 2, ],
+            ['Enseignement, formation, éducation', 2],
             ['Politique et société', 2, ]
         ];
     }

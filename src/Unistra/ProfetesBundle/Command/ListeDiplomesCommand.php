@@ -15,7 +15,6 @@ use Unistra\Profetes\XQuery;
  */
 class ListeDiplomesCommand extends ContainerAwareCommand
 {
-
     protected function configure()
     {
         $this
@@ -36,5 +35,4 @@ class ListeDiplomesCommand extends ContainerAwareCommand
         $result = $this->getContainer()->get('profetes_repository')->query($xquery, false);
         $output->writeln($result);
     }
-
 }

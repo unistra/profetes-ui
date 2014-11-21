@@ -45,7 +45,7 @@ class ScenarioController extends Controller
             __DIR__.'/../Resources/xquery/par-type-de-diplome-et-discipline.xquery'));
         $xquery->setParameters(array(
             'type-de-diplome' => $typeDeDiplome,
-            'discipline' => $discipline));
+            'discipline' => $discipline, ));
         $xml = $this->get('profetes_repository')->query($xquery);
 
         return $this->render('UnistraProfetesBundle:Scenario:formations.html.twig', array(
@@ -104,7 +104,7 @@ class ScenarioController extends Controller
             __DIR__.'/../Resources/xquery/par-type-de-diplome-et-objectif-professionnel.xquery'));
         $xquery->setParameters(array(
             'type-de-diplome' => $typeDeDiplome,
-            'objectif-professionnel' => $objectifProfessionnel));
+            'objectif-professionnel' => $objectifProfessionnel, ));
         $xml = $this->get('profetes_repository')->query($xquery);
 
         return $this->render('UnistraProfetesBundle:Scenario:formations.html.twig', array(
@@ -113,5 +113,4 @@ class ScenarioController extends Controller
             'path'          => $this->generateUrl('_unistra_profetes_repertoire_fiche'),
         ));
     }
-
 }

@@ -39,7 +39,7 @@ class ProgramTest extends \PHPUnit_Framework_TestCase
 
     public function testGetProgramKeywordsFromCdm()
     {
-        $expected = ['licence', 'anglais', 'langue',];
+        $expected = ['licence', 'anglais', 'langue'];
         $program = new Program($this->xml);
         $this->assertEquals($expected, $program->getSearchWords());
     }
