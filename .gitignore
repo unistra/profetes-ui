@@ -13,3 +13,4 @@ cache/
 /bin/
 *.min.js
 *.min.css
+.php_cs.cache
