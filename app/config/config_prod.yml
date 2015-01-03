@@ -16,8 +16,28 @@ monolog:
         main:
             type:         fingers_crossed
             action_level: error
-            handler:      nested
-        nested:
-            type:  stream
-            path:  %kernel.logs_dir%/%kernel.environment%.log
-            level: debug
+            handler:      streamed
+        critical_events:
+            type:         fingers_crossed
+            action_level: critical
+            handler:      grouped
+        grouped:
+            type:       group
+            members:    [critical_stream, buffered]
+        streamed:
+            type:       stream
+            path:       %kernel.logs_dir%/%kernel.environment%.log
+            level:      debug
+        critical_stream:
+            type:       stream
+            path:       %kernel.logs_dir%/%kernel.environment%_critical.log
+            level:      debug
+        buffered:
+            type:       buffer
+            handler:    swift
+        swift:
+            type:       swift_mailer
+            from_email: dbessey@unistra.fr
+            to_email:   dbessey@unistra.fr
+            subject:    "[unistra-profetes] Oops...."
+            level:      debug
