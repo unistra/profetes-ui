@@ -15,7 +15,7 @@
 
     <xsl:template match="html/head/meta[@name = 'keywords']">{% block meta_keywords %}{% endblock %}</xsl:template>
     <xsl:template match="html/head/meta[@name = 'description']">{% block meta_description %}{% endblock %}</xsl:template>
-    
+
     <xsl:template match="head/link/@href[starts-with(., 'index')]">
         <xsl:attribute name="href">/<xsl:value-of select="."/></xsl:attribute>
     </xsl:template>
@@ -44,9 +44,9 @@
             <xsl:apply-templates/>
         </div>
     </xsl:template>
-    
+
     <xsl:template match="div[@id = 'sidebar']/div[@class = 'csc-default' and (child::node() = div[@id = 'slider-actu'])]"/>
-    
+
     <xsl:template match="div[@id = 'slider-event']"/>
 
     <xsl:template match="html">
@@ -67,17 +67,23 @@
         <body>
             <xsl:apply-templates/>
             <xsl:text>{% block javascripts %}{% endblock %}</xsl:text>
-            <!--<xsl:text>{% include('UnistraProfetesBundle:Default:googleAnalytics.html.twig') %}</xsl:text>-->
         </body>
     </xsl:template>
-    
+
     <xsl:template match="a/@href[starts-with(., 'index')]">
         <!-- lien sans slash initial..., corriger -->
         <xsl:attribute name="href">/<xsl:value-of select="."/></xsl:attribute>
     </xsl:template>
 
+    <xsl:template match="comment()" priority="2">
+        <xsl:if test="starts-with(., '[if')">
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:if>
+    </xsl:template>
+
     <!-- On supprime les éléments suivants -->
-    <xsl:template match="comment()" priority="2"/>
     <xsl:template match="meta[@name = 'generator'] | meta[@name = 'date']"/>
     <xsl:template match="script[contains(@src, 'anchor.js')]"/>
 

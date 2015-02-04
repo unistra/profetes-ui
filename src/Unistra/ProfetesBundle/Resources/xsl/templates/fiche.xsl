@@ -47,7 +47,6 @@
         <body>
             <xsl:apply-templates/>
             <xsl:text>{% block javascripts %}{% endblock %}</xsl:text>
-            <!--<xsl:text>{% include('UnistraProfetesBundle:Default:googleAnalytics.html.twig') %}</xsl:text>-->
         </body>
     </xsl:template>
 
@@ -55,9 +54,16 @@
         <!-- lien sans slash initial..., corriger -->
         <xsl:attribute name="href">/<xsl:value-of select="."/></xsl:attribute>
     </xsl:template>
-    
+
+    <xsl:template match="comment()" priority="2">
+        <xsl:if test="starts-with(., '[if')">
+            <xsl:copy>
+                <xsl:apply-templates select="@* | node()"/>
+            </xsl:copy>
+        </xsl:if>
+    </xsl:template>
+
     <!-- On supprime les éléments suivants -->
-    <xsl:template match="comment()" priority="2"/>
     <xsl:template match="meta[@name = 'generator'] | meta[@name = 'date']"/>
     <xsl:template match="script[contains(@src, 'anchor.js')]"/>
 
