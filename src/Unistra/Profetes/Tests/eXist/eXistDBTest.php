@@ -20,6 +20,7 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
     private $username = 'username';
     private $password = 'password';
     private $collection = 'collection-name';
+    private $codeRne = 'FR_0673021V_OR';
     private $path = '%collection%/rest-of-path';
     private $soapReturn;
 
@@ -43,7 +44,7 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
             ->method('getResource')
             ->willReturn($this->soapReturn);
 
-        $db = new eXistDB($soapClient, $this->username, $this->password, $this->collection);
+        $db = new eXistDB($soapClient, $this->username, $this->password, $this->collection, $this->codeRne);
         $this->assertSame('result of getResource', $db->getResource($this->path));
     }
 
@@ -60,7 +61,7 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
             ->with($getResourceParams)
             ->willReturn($this->soapReturn);
 
-        $db = new eXistDB($soapClient, $this->username, $this->password, $this->collection);
+        $db = new eXistDB($soapClient, $this->username, $this->password, $this->collection, $this->codeRne);
         $db->getResource($this->path);
     }
 
@@ -78,7 +79,7 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
             ->method('getResource')
             ->willThrowException(new \SoapFault(null, 'not found'));
 
-        $db = new eXistDB($soapClient, $this->username, $this->password, $this->collection);
+        $db = new eXistDB($soapClient, $this->username, $this->password, $this->collection, $this->codeRne);
         $db->getResource($this->path);
     }
 
@@ -95,7 +96,7 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
             ->method('connect')
             ->willThrowException(new \SoapFault(null, null));
 
-        $db = new eXistDB($soapClient, $username, $password, $this->collection);
+        $db = new eXistDB($soapClient, $username, $password, $this->collection, $this->codeRne);
         $db->getResource($this->path);
     }
 
@@ -119,7 +120,7 @@ class eXistDBTest extends \PHPUnit_Framework_TestCase
             ->method('retrieve')
             ->willReturn($retrieveObject);
 
-        $db = new eXistDB($soapClient, $this->username, $this->password, $this->collection);
+        $db = new eXistDB($soapClient, $this->username, $this->password, $this->collection, $this->codeRne);
         $result = $db->xquery($xquery, $withProlog);
         $this->assertEquals($expectedReturnValue, $result);
     }

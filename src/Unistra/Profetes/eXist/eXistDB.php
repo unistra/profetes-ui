@@ -23,6 +23,8 @@ class eXistDB
 
     private $collection;
 
+    private $codeRne;
+
     private $connectionId;
 
     /**
@@ -30,13 +32,15 @@ class eXistDB
      * @param string      $username   eXist-db server username
      * @param string      $password   eXist-db server password
      * @param string      $collection the eXist-db collection name
+     * @param string      $codeRne
      */
-    public function __construct(\SoapClient $soapClient, $username, $password, $collection)
+    public function __construct(\SoapClient $soapClient, $username, $password, $collection, $codeRne)
     {
         $this->soapClient = $soapClient;
         $this->username = $username;
         $this->password = $password;
         $this->collection = $collection;
+        $this->codeRne = $codeRne;
     }
 
     /**
@@ -86,6 +90,7 @@ class eXistDB
     public function xquery($xquery, $addXmlProlog = true)
     {
         $xquery = $this->replaceCollection($xquery);
+        $xquery = $this->replaceCodeRne($xquery);
 
         $xml = '';
         if ($addXmlProlog) {
@@ -154,5 +159,12 @@ class eXistDB
         $path = str_replace('%collection%', $this->collection, $path);
 
         return $path;
+    }
+
+    private function replaceCodeRne($xquery)
+    {
+        $xquery = str_replace('%code_rne%', $this->codeRne, $xquery);
+
+        return $xquery;
     }
 }

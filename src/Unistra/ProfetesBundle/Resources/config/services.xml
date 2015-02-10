@@ -24,6 +24,7 @@
             <argument>%unistra.profetes.username%</argument>
             <argument>%unistra.profetes.password%</argument>
             <argument>%unistra.profetes.collection%</argument>
+            <argument>%unistra.profetes.code_rne_etablissement%</argument>
         </service>
 
         <service id="unistra.profetes.repository.profetes_repository" class="Unistra\Profetes\Repository\ProfeteseXistRepository" public="false">

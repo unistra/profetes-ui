@@ -3,5 +3,6 @@ parameters:
     unistra.profetes.username: username
     unistra.profetes.password: password
     unistra.profetes.collection: /db/CDM-2009
+    unistra.profetes.code_rne_etablissement: FR_RNE_0673021V_OR
     unistra.profetes.cache.program.ttl: 86400
     unistra.profetes.cache.query.ttl: 259200
