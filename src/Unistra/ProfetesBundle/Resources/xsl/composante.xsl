@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     version="1.0">
+    <!--
+        Copyright Université de Strasbourg (2015)
+
+        Daniel Bessey <daniel.bessey@unistra.fr>
+
+        This software is a computer program whose purpose is to display course information
+        extracted from a Profetes database on a website.
+
+        See LICENSE for more details.
+    -->
 
     <xsl:output encoding="UTF-8" method="html" omit-xml-declaration="yes" indent="yes" />
 

@@ -2,6 +2,16 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:cdm="http://cdm-fr.fr/2006/CDM-frSchema"
     version="1.0" exclude-result-prefixes="cdm">
+    <!--
+        Copyright Université de Strasbourg (2015)
+
+        Daniel Bessey <daniel.bessey@unistra.fr>
+
+        This software is a computer program whose purpose is to display course information
+        extracted from a Profetes database on a website.
+
+        See LICENSE for more details.
+    -->
 
     <xsl:output method="html" indent="no" omit-xml-declaration="yes" />
 
@@ -51,7 +61,7 @@
             </div>
 
             <xsl:apply-templates select="cdm:formOfTeaching"/>
-        </div> 
+        </div>
     </xsl:template>
 
 
@@ -74,23 +84,23 @@
         <nav id="menu-onglets">
             <ul class="nav nav-tabs">
                 <xsl:if test="/cdm:CDM/cdm:program/cdm:programDescription/cdm:subBlock[not(@userDefined = 'DES' and @blocLang = 'fr-FR')]">
-                    <li class="active"><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:programDescription/cdm:subBlock[not(@userDefined = 'DES') and @blockLang = 'fr-FR'])"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:programDescription/cdm:subBlock[not(@userDefined = 'DES') and @blockLang = 'fr-FR'])}"><span>Présentation et objectifs</span></a></li>                    
+                    <li class="active"><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:programDescription/cdm:subBlock[not(@userDefined = 'DES') and @blockLang = 'fr-FR'])"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:programDescription/cdm:subBlock[not(@userDefined = 'DES') and @blockLang = 'fr-FR'])}"><span>Présentation et objectifs</span></a></li>
                 </xsl:if>
 
                 <xsl:if test="/cdm:CDM/cdm:program/cdm:learningObjectives/cdm:subBlock">
-                    <li><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:learningObjectives/cdm:subBlock)"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:learningObjectives/cdm:subBlock)}"><span>Savoir-faire et compétences</span></a></li>    
+                    <li><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:learningObjectives/cdm:subBlock)"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:learningObjectives/cdm:subBlock)}"><span>Savoir-faire et compétences</span></a></li>
                 </xsl:if>
 
                 <xsl:if test="/cdm:CDM/cdm:program/cdm:formalPrerequisites/cdm:subBlock[@blockLang = 'fr-FR']">
-                    <li><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:formalPrerequisites/cdm:subBlock[@blockLang='fr-FR'])"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:formalPrerequisites/cdm:subBlock[@blockLang='fr-FR'])}"><span>Conditions d'accès et pré-requis</span></a></li>    
+                    <li><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:formalPrerequisites/cdm:subBlock[@blockLang='fr-FR'])"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:formalPrerequisites/cdm:subBlock[@blockLang='fr-FR'])}"><span>Conditions d'accès et pré-requis</span></a></li>
                 </xsl:if>
 
                 <xsl:if test="/cdm:CDM/cdm:program/cdm:qualification/cdm:studyQualification/cdm:subBlock[@blockLang = 'fr-FR']">
-                    <li><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:qualification/cdm:studyQualification/cdm:subBlock[@blockLang = 'fr-FR'])"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:qualification/cdm:studyQualification/cdm:subBlock[@blockLang = 'fr-FR'])}"><span>Poursuite d'études</span></a></li>    
+                    <li><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:qualification/cdm:studyQualification/cdm:subBlock[@blockLang = 'fr-FR'])"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:qualification/cdm:studyQualification/cdm:subBlock[@blockLang = 'fr-FR'])}"><span>Poursuite d'études</span></a></li>
                 </xsl:if>
 
                 <xsl:if test="/cdm:CDM/cdm:program/cdm:regulations/cdm:subBlock[@blockLang = 'fr-FR']">
-                    <li><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:regulations/cdm:subBlock[@blockLang = 'fr-FR'])"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:regulations/cdm:subBlock[@blockLang = 'fr-FR'])}"><span>Contrôle des connaissances</span></a></li>    
+                    <li><xsl:attribute name="id">profetes-<xsl:value-of select="generate-id(/cdm:CDM/cdm:program/cdm:regulations/cdm:subBlock[@blockLang = 'fr-FR'])"/></xsl:attribute><a href="#profetes-bloc-{generate-id(/cdm:CDM/cdm:program/cdm:regulations/cdm:subBlock[@blockLang = 'fr-FR'])}"><span>Contrôle des connaissances</span></a></li>
                 </xsl:if>
 
                 <xsl:if test="/cdm:CDM/cdm:program/cdm:qualification/cdm:profession/cdm:subBlock[@blockLang = 'fr-FR']">
@@ -210,19 +220,19 @@
     </xsl:template>
 
     <xsl:template match="cdm:listItem"><li><xsl:apply-templates/></li></xsl:template>
-    
+
     <xsl:template match="cdm:br"><br/></xsl:template>
-    
+
     <xsl:template match="cdm:emphasis"><em><xsl:apply-templates/></em></xsl:template>
-    
+
     <xsl:template match="cdm:strong"><strong><xsl:apply-templates/></strong></xsl:template>
-    
+
     <xsl:template match="cdm:subscript"><sub><xsl:apply-templates/></sub></xsl:template>
-    
+
     <xsl:template match="cdm:superscript"><sup><xsl:apply-templates/></sup></xsl:template>
-    
+
     <xsl:template match="cdm:altLangBlock"><span xml:lang="{@blockLang}" lang="{@blockLang}"><xsl:apply-templates/></span></xsl:template>
-    
+
     <xsl:template match="cdm:webLink">
         <xsl:choose>
             <xsl:when test="@userDefined != ''">
@@ -257,11 +267,11 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="cdm:subBlock[@blockLang = 'fr-FR']/cdm:header">
         <h3><xsl:apply-templates/></h3>
     </xsl:template>
-    
+
     <xsl:template match="cdm:subBlock[@blockLang = 'fr-FR']/cdm:subBlock">
         <xsl:choose>
             <xsl:when test="@userDefined"/>
@@ -273,7 +283,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="cdm:subBlock[@blockLang = 'fr-FR']/cdm:subBlock/cdm:list">
         <xsl:choose>
             <xsl:when test="@listType = 'numbered'">
@@ -284,7 +294,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="cdm:list">
         <xsl:choose>
             <xsl:when test="@listType = 'numbered'">
@@ -295,9 +305,9 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
-    
+
     <xsl:template match="cdm:listItem"><li><xsl:apply-templates/></li></xsl:template>
-    
+
     <xsl:template match="/cdm:CDM/cdm:person">
         <p><strong><xsl:value-of select="cdm:name/cdm:given"/>&#160;<xsl:value-of select="cdm:name/cdm:family"/></strong></p>
         <xsl:if test="cdm:contactData/cdm:adr/cdm:street">
@@ -311,7 +321,7 @@
         </xsl:if>
         <xsl:if test="cdm:contactData/cdm:email"><p><xsl:apply-templates select="cdm:contactData/cdm:email"></xsl:apply-templates></p></xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="cdm:email">
         <a><xsl:attribute name="href">mailto:<xsl:value-of select="."/></xsl:attribute>
             <xsl:attribute name="title">Envoyer un courriel à <xsl:value-of select="."/></xsl:attribute>Contacter par courriel</a>
