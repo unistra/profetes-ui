@@ -1,0 +1,35 @@
+unistra_profetes_homepage:
+    path:       /
+    defaults:
+        _controller:    FrameworkBundle:Redirect:urlRedirect
+        path:           'http://www.unistra.fr/index.php?id=etudes'
+        permanent:      true
+
+unistra_profetes_fiche:
+    path:       /diplome/{id}.{_format}
+    defaults:   { _controller: UnistraProfetesBundle:Fiche:index, _format: html }
+    requirements:
+        id:     ^fr-rne-06\d{5}[a-z]-pr-\w+-\w+$
+        _format:    html|xml
+
+_unistra_profetes_repertoire_fiche:
+    path:       /diplome/
+    defaults:   { _controller: UnistraProfetesBundle:Fiche:repertoireFiche }
+
+unistra_profetes_composante:
+    path:       /composante/{id}
+    defaults:   { _controller: UnistraProfetesBundle:XQuery:composante }
+    requirements:
+        id:     ^fr-rne-06\d{5}[a-z]-or-\w{3}$
+
+unistra_profetes_par_type_diplome:
+    path:       /type-diplome/{typeDeDiplome}
+    defaults:   { _controller: UnistraProfetesBundle:XQuery:parTypeDeDiplome }
+
+unistra_profetes_par_secteur_activite:
+    path:       /secteur-activite/{secteurActivite}
+    defaults:   { _controller: UnistraProfetesBundle:XQuery:parSecteurActivite }
+
+unistra_profetes_recherche_assistee:
+    prefix:     /recherche-assistee
+    resource:   "@UnistraProfetesBundle/Resources/config/routing-rech-assistee.yml"

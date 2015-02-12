@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Formations par type de diplôme{% endblock %}
+{% block breadcrumb %}Par type de diplôme{% endblock %}
+
+
+{% block menu %}
+    <div class="bloc menu-int">
+        <ul>
+            <li>
+                <a href="/index.php?id=14669"><i class="icon-circle-arrow-right icon-large"></i>Découvrir nos formations</a>
+                <ul>
+                    <li>
+                        <a class="bloc" href="/index.php?id=18690"><i class="icon-chevron-right"></i>Moteur de recherche libre</a>
+                    </li>
+                    <li>
+                        <a class="bloc" href="/index.php?id=18689"><i class="icon-chevron-right"></i>Moteur de recherche assistée</a>
+                    </li>
+                    <li>
+                        <a class="bloc active" href="/index.php?id=16390"><i class="icon-chevron-right"></i>Par types de diplômes</a>
+                    </li>
+                    <li>
+                        <a class="bloc" href="/index.php?id=16389"><i class="icon-chevron-right"></i>Par secteurs d'activité</a>
+                    </li>
+                    <li>
+                        <a class="bloc" href="/index.php?id=15824"><i class="icon-chevron-right"></i>Par facultés, écoles, instituts</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div id="content-mapping">
+        <div class="csc-default">
+            <h2>{{ typeDeDiplome }}</h2>
+            {{ formations | xslt_transform(xsl, { 'path': path }) | raw }}
+        </div>
+    </div>
+{% endblock %}

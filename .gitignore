@@ -1,0 +1,15 @@
+/src/Unistra/ProfetesBundle/Resources/config/parameters.yml
+/web/bundles/
+/app/bootstrap*
+/app/cache/*
+/app/logs/*
+/app/Resources/views/*html.twig
+/app/Resources/views/checksums.json
+/app/config/parameters.yml
+/docs/api/*
+/vendor/
+cache/
+/bin/
+*.min.js
+*.min.css
+.php_cs.cache

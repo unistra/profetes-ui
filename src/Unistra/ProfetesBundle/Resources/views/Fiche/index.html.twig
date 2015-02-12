@@ -1,0 +1,11 @@
+{% extends '::fiche.html.twig' %}
+
+{% block title %}{{ program.programName }}{% endblock %}
+
+{% block meta_keywords %}<meta name="keywords" content="{{ program.searchwords|join(", ") }}">{% endblock %}
+
+{% block body %}{{ program.xml|xslt_transform(xsl)|raw }}{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://www.unistra.fr/fileadmin/templates/unistra/scripts/onglets.js"></script>
+{% endblock %}

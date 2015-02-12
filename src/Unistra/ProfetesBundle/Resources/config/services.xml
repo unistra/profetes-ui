@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <!-- les paramètres sont définis dans ./parameters.yml -->
+
+    <services>
+        <service id="unistra.profetes.soap_client" class="SoapClient" public="false">
+            <argument>%unistra.profetes.wsdl%</argument>
+            <argument type="collection">
+                <argument key="exceptions">true</argument>
+            </argument>
+        </service>
+
+        <service id="unistra.profetes.doctrine_cache" class="Doctrine\Common\Cache\PhpFileCache">
+            <argument>%kernel.cache_dir%/profetes</argument>
+            <argument>cache</argument>
+        </service>
+
+        <service id="unistra.profetes.exist.existdb" class="Unistra\Profetes\eXist\eXistDB" public="false">
+            <argument type="service" id="unistra.profetes.soap_client"/>
+            <argument>%unistra.profetes.username%</argument>
+            <argument>%unistra.profetes.password%</argument>
+            <argument>%unistra.profetes.collection%</argument>
+            <argument>%unistra.profetes.code_rne_etablissement%</argument>
+        </service>
+
+        <service id="unistra.profetes.repository.profetes_repository" class="Unistra\Profetes\Repository\ProfeteseXistRepository" public="false">
+            <argument type="service" id="unistra.profetes.exist.existdb"/>
+            <argument type="service" id="unistra.profetes.doctrine_cache"/>
+            <argument>%unistra.profetes.cache.program.ttl%</argument>
+            <argument>%unistra.profetes.cache.query.ttl%</argument>
+        </service>
+
+        <service id="profetes_repository" alias="unistra.profetes.repository.profetes_repository"/>
+
+        <service id="twig.extension.unistra_xslt_extension" class="Unistra\ProfetesBundle\Twig\Extension\XsltExtension">
+            <tag name="twig.extension"/>
+        </service>
+
+    </services>
+
+</container>

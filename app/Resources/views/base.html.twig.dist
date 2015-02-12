@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="fr-FR"><head><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Université de Strasbourg : {% block title %}l'offre de formation{% endblock %}</title>{% block meta_keywords %}{% endblock %}{% block meta_description %}{% endblock %}<link rel="stylesheet" type="text/css" href="/typo3temp/stylesheet_08acb5afa7.css?1371043869" media="all"><link rel="stylesheet" type="text/css" href="/fileadmin/templates/unistra-v2/styles/styles-fonts.css?1374241942" media="all"><link rel="stylesheet" type="text/css" href="/fileadmin/templates/unistra-v2/bootstrap/css/bootstrap.min.css?1372236779" media="all"><link rel="stylesheet" type="text/css" href="/fileadmin/templates/unistra-v2/bootstrap/css/bootstrap-responsive.min.css?1372236780" media="all"><link rel="stylesheet" type="text/css" href="/fileadmin/templates/unistra-v2/font-awesome/css/font-awesome.min.css?1374241073" media="all"><link rel="stylesheet" type="text/css" href="/fileadmin/templates/unistra-v2/styles/styles.css?1385548205" media="all"><link rel="stylesheet" type="text/css" href="/fileadmin/templates/unistra-v2/styles/styles-responsive.css?1382710263" media="all"><link rel="stylesheet" type="text/css" href="/fileadmin/templates/unistra-v2/styles/styles-hd.css?1374241942" media="screen"><link rel="stylesheet" type="text/css" href="/fileadmin/templates/unistra-v2/plugins/scrollup/scrollup.css?1372412632" media="screen"><link rel="stylesheet" type="text/css" href="/fileadmin/templates/unistra-v2/styles/styles-formation.css?1380871201" media="all"><link rel="shortcut icon" href="/fileadmin/templates/unistra/images/uds_ico.ico"><link rel="alternate" type="application/rss+xml" title="Flux RSS de l'université : toutes les actualités formation" href="/index.php?id=flux_rss_formation&amp;type=100"><link rel="alternate" type="application/rss+xml" title="Flux RSS de l'université : agenda" href="/index.php?id=agenda_unistra&amp;type=100">{% block stylesheets %}{% endblock %}</head><body>
+<div style="left:-4489px; top:-6686px; position:absolute">
+..
+</div>
+
+
+
+<header><div class="container">
+    <div id="logo"> <a href="http://www.unistra.fr" title="Université de Strasbourg"><img src="/fileadmin/templates/unistra-v2/images/logo.png" alt="Université de Strasbourg" class="hd" width="222" height="100"></a> </div>
+    <nav id="langues"><ul class="nav nav-pills"><li><a href="/index.php?id=accueil">FR</a></li><li><a href="/index.php?id=homepage">EN</a></li><li><a href="/index.php?id=startseite">DE</a></li></ul></nav><nav id="acces-direct" class="btn-group"><button class="btn btn-info dropdown-toggle" data-toggle="dropdown">Accès direct <span class="caret"></span></button>
+      <ul class="dropdown-menu"><li><a href="/index.php?id=etudes"><i class="icon-chevron-right"></i><span>Formations</span></a></li><li><a href="/index.php?id=facultes-ecoles-instituts"><i class="icon-chevron-right"></i><span>Facultés, Écoles, Instituts</span></a></li><li><a href="/index.php?id=recherche"><i class="icon-chevron-right"></i><span>Unités de recherche</span></a></li><li><a href="/index.php?id=16793"><i class="icon-chevron-right"></i><span>Services de l'université</span></a></li><li><a href="/index.php?id=15826"><i class="icon-chevron-right"></i><span>Bibliothèques</span></a></li><li><a href="/index.php?id=19479"><i class="icon-chevron-right"></i><span>Média et presse</span></a></li></ul></nav><nav id="raccourcis"><div class="navbar">
+        <div class="navbar-inner"><ul class="nav"><li><a href="/index.php?id=actualites_unistra"><i class="icon-perso-actus"></i><span>Actualités</span></a></li><li><a href="/index.php?id=agenda_unistra"><i class="icon-perso-agenda"></i><span>Agenda</span></a></li><li><a href="/index.php?id=15821"><i class="icon-perso-annuaire"></i><span>Annuaire</span></a></li><li><a href="/index.php?id=15822"><i class="icon-perso-ent"></i><span>E.N.T.</span></a></li><li><a href="/index.php?id=20207"><i class="icon-perso-envelope"></i><span>Messagerie</span></a></li><li><a href="/index.php?id=18343"><i class="icon-perso-bibliotheques"></i><span>Bibliothèques</span></a></li><li><a title="plan" alt="plan" href="http://www.unistra.fr/plans/index_intranet.html" class="bloc popup_plan"><i class="icon-perso-plan-campus"></i><span>Plan des campus</span></a></li></ul></div>
+      </div>
+    </nav></div>
+</header><nav id="menu"><div class="container">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-menu"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+        <div class="nav-collapse nav-menu collapse"><ul class="nav"><li class="first hidden-phone"><a class="dropdown-toggle" href="http://www.unistra.fr/"><span>Accueil</span></a></li><li class="etudier dropdown active"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Formation</span></a><ul class="dropdown-menu"><li><a href="/index.php?id=etudes"><i class="icon-chevron-right"></i><span>Nos formations</span></a></li><li><a href="/index.php?id=14804"><i class="icon-chevron-right"></i><span>Inscription et scolarité</span></a></li><li><a href="/index.php?id=17046"><i class="icon-chevron-right"></i><span>Orientation, stage, emploi</span></a></li><li><a href="/index.php?id=16865"><i class="icon-chevron-right"></i><span>Financer ses études</span></a></li><li><a href="/index.php?id=16932"><i class="icon-chevron-right"></i><span>Parcours d'étudiants</span></a></li><li><a href="/index.php?id=17084"><i class="icon-chevron-right"></i><span>Partir à l'étranger</span></a></li><li><a href="/index.php?id=sfc"><i class="icon-chevron-right"></i><span>Formation continue</span></a></li><li><a href="/index.php?id=14741"><i class="icon-chevron-right"></i><span>Validation des acquis de l'expérience</span></a></li><li><a href="/index.php?id=facultes-ecoles-instituts"><i class="icon-chevron-right"></i><span>Facultés, Écoles, Instituts</span></a></li><li class="vignette">
+	
+		<div id="c84560" class="csc-default">
+		
+			<a href="http://www.unistra.fr/index.php?id=19769&amp;tx_ttnews%5Btt_news%5D=8629&amp;cHash=b3b9f93770f1d16ee6301724bd86518f"><img alt="DU tremplin réussite : inscriptions ouvertes jusqu'au 26 janvier" src="http://www.unistra.fr/fileadmin/upload/unistra/focus_menu/formation/DU_tremplin_reussite_PS.jpg"><span>DU tremplin réussite : inscriptions ouvertes jusqu'au 26 janvier</span></a>
+		
+			</div>
+	
+		</li></ul></li><li class="recherche dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Recherche</span></a><ul class="dropdown-menu"><li><a href="/index.php?id=recherche"><i class="icon-chevron-right"></i><span>Unités de recherche</span></a></li><li><a href="/index.php?id=19884"><i class="icon-chevron-right"></i><span>Colloques et manifestations</span></a></li><li><a href="/index.php?id=16452"><i class="icon-chevron-right"></i><span>Publications</span></a></li><li><a href="/index.php?id=16468"><i class="icon-chevron-right"></i><span>Doctorat</span></a></li><li><a href="/index.php?id=16484"><i class="icon-chevron-right"></i><span>Habilitation à diriger des recherches</span></a></li><li><a href="/index.php?id=valorisation"><i class="icon-chevron-right"></i><span>Services aux chercheurs / valorisation</span></a></li><li><a href="/index.php?id=16500"><i class="icon-chevron-right"></i><span>Financement sur projets</span></a></li><li class="vignette">
+	
+		<div id="c84561" class="csc-default">
+		
+			<a href="http://www.unistra.fr/index.php?id=19773&amp;tx_ttnews%5Btt_news%5D=8651&amp;cHash=b62fde5f757dd2ebdfd36732e7638d3f"><img alt="Forum européen de bioéthique - Connaître le cerveau, maîtriser les comportements" src="http://www.unistra.fr/fileadmin/upload/unistra/focus_menu/recherche/forum_bioethique.JPG"><span>Forum européen de bioéthique - Connaître le cerveau, maîtriser les comportements</span></a>
+		
+			</div>
+	
+		</li></ul></li><li class="campus dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Vie des campus</span></a><ul class="dropdown-menu"><li><a href="/index.php?id=17124"><i class="icon-chevron-right"></i><span>Culture, sciences et société</span></a></li><li><a href="/index.php?id=18535"><i class="icon-chevron-right"></i><span>Sports</span></a></li><li><a href="/index.php?id=vie-pratique"><i class="icon-chevron-right"></i><span>Vie pratique</span></a></li><li><a href="/index.php?id=20426"><i class="icon-chevron-right"></i><span>Hébergement</span></a></li><li><a href="/index.php?id=16881"><i class="icon-chevron-right"></i><span>Accompagnement du handicap</span></a></li><li><a href="/index.php?id=19383"><i class="icon-chevron-right"></i><span>Jobs étudiants</span></a></li><li><a href="/index.php?id=bibliotheques"><i class="icon-chevron-right"></i><span>Bibliothèques</span></a></li><li><a href="/index.php?id=17002"><i class="icon-chevron-right"></i><span>Espaces de travail</span></a></li><li class="vignette">
+	
+		<div id="c92298" class="csc-default">
+		
+			<a href="https://sport.unistra.fr/suaps/actualites/actualite/article/jeu-concours-filme-ton-suaps/"><img src="http://www.unistra.fr/fileadmin/upload/unistra/focus_menu/vie_campus/filme_ton_suaps_affiche.jpg" alt="Jeu-Concours Filme ton SUAPS"><span>Jeu-Concours "Filme ton SUAPS"</span></a>
+		
+			</div>
+	
+		</li></ul></li><li class="universite dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>Université</span></a><ul class="dropdown-menu"><li><a href="/index.php?id=16781"><i class="icon-chevron-right"></i><span>Fonctionnement</span></a></li><li><a href="/index.php?id=universite"><i class="icon-chevron-right"></i><span>Nous connaître</span></a></li><li><a href="/index.php?id=18852"><i class="icon-chevron-right"></i><span>Nos atouts</span></a></li><li><a href="/index.php?id=grands-projets"><i class="icon-chevron-right"></i><span>Grands projets</span></a></li><li><a href="/index.php?id=international"><i class="icon-chevron-right"></i><span>International</span></a></li><li><a href="/index.php?id=16813"><i class="icon-chevron-right"></i><span>Soutenir l'Université</span></a></li><li><a href="/index.php?id=recrutement"><i class="icon-chevron-right"></i><span>Travailler à l'Université</span></a></li><li><a href="/index.php?id=16829"><i class="icon-chevron-right"></i><span>Boutique</span></a></li><li><a href="/index.php?id=19479"><i class="icon-chevron-right"></i><span>Média et presse</span></a></li><li class="vignette">
+	
+		<div id="c89992" class="csc-default">
+		
+			<a href="http://www.unistra.fr/index.php?id=19540#c92899"><img src="http://www.unistra.fr/fileadmin/upload/unistra/focus_menu/universite/Menu_Univ_Voeux_president_2014.jpg" alt="Les vœux du président Alain Beretz pour 2014"><span>Les vœux du président Alain Beretz pour 2014</span></a>
+		
+			</div>
+	
+		</li></ul></li></ul><form action="/index.php?id=moteur_de_recherche" method="get" class="navbar-search pull-right"><input type="text" name="tx_solr[q]" placeholder="Rechercher" class="search-query"><input type="hidden" name="id" value="19880"></form></div>
+      </div>
+    </div>
+  </div>
+</nav><nav id="profils"><div class="container">
+    <div class="navbar pull-right">
+      <div class="navbar-inner"><a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-profils"> <i class="icon-user"></i> </a>
+        <div class="nav-collapse nav-profils collapse"> <span class="brand">Vous êtes <i class="icon-perso-puce-04"></i></span>
+          <ul class="nav"><li><a href="/index.php?id=15695"><i class="icon-ok"></i> Lycéen</a></li><li><a href="/index.php?id=14657"><i class="icon-ok"></i> Étudiant / chercheur étrangers</a></li><li><a href="/index.php?id=entreprise-partenaire"><i class="icon-ok"></i> Entreprise / partenaire</a></li><li><a href="/index.php?id=14659"><i class="icon-ok"></i> Alumni</a></li></ul></div>
+      </div>
+    </div>
+  </div>
+</nav><div id="content">
+  <div class="container">
+    <div id="content-header">
+      <div id="breadcrumb"><ul class="breadcrumb"><li>Nos formations<span class="divider">›</span></li><li>Découvrir nos formations<span class="divider">›</span></li><li class="active">{% block breadcrumb %}{% endblock %}</li></ul></div>
+      <h1 id="page-title">{{ block('title') }}</h1>
+    </div>
+    <div id="main-content" class="row-fluid">
+      <div class="span9">
+        
+        {% block body %}{% endblock %}
+        
+        <div class="share">
+          <ul class="pull-right"><li><a class="popup_socialnetworks" href="/fileadmin/upload/unistra/feedback/feedback.php?id=14669" title="Votre avis nous intéresse"><i class="icon-comment-alt"></i><span>Votre avis nous intéresse</span></a></li><li><a class="popup_socialnetworks" title="Envoyer la page à un ami" href="/fileadmin/upload/unistra/courriel/courriel.php?id=14669"><i class="icon-envelope-alt"></i><span>Envoyer la page à un ami</span></a></li>
+<li><a href="http://twitter.com/share?url=http%3A%2F%2Fwww.unistra.fr%2Findex.php%3Fid%3Detudes&amp;via=unistra&amp;text=Nos%20formations" title="Partager cette page sur twitter" class="popup_socialnetworks"><i class="icon-twitter"></i></a></li><li><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.unistra.fr%2Findex.php%3Fid%3Detudes" title="Partager cette page sur facebook" class="popup_socialnetworks"><i class="icon-facebook"></i></a></li><li><a href="https://plus.google.com/share?url=http%3A%2F%2Fwww.unistra.fr%2Findex.php%3Fid%3Detudes" title="Partager cette page sur google-plus" class="popup_socialnetworks"><i class="icon-google-plus"></i></a></li>
+</ul></div>
+      </div>
+      <div id="sidebar" class="span3">{% block menu %}{% endblock %}
+        
+	
+		
+	
+		
+        
+	
+		<div id="c89068" class="csc-default">
+		
+			
+
+
+
+
+
+
+		
+			</div>
+	
+		
+        <div class="bloc contacts">
+	
+		<div id="c82800" class="csc-default">
+		
+			
+
+
+	
+	<div class="tx-lumophpinclude-pi1">
+		<br><h2 class="bloc-title">Contacts<span class="contact_reseaux-sociaux"></span> </h2><strong>Direction des Etudes et de la Scolarité</strong><br>22 Rue RENE DESCARTES<br>67084 STRASBOURG CEDEX<br><br><p></p>
+<p><a class="bloc" href="index.php?id=18755" title="Présentation de la structure" alt="Présentation de la structure"><i class="icon-perso-puce-06"></i>Présentation de la structure</a></p><p><a class="bloc popup_plan" href="http://www.unistra.fr/plans/centre/61/2459/index_intranet.html" alt="plan" title="plan"><i class="icon-perso-puce-06"></i>Localisation</a></p>
+	</div>
+	
+	
+
+	
+		
+			</div>
+	
+		</div>
+        
+	
+		<div id="c87859" class="csc-default"><div class="bloc documentation">
+          <h2 class="bloc-title"><i class="icon-perso-documentation-bright"></i> Documentation</h2>
+          <p><a href="/fileadmin/upload/unistra/documentation/Offre_formation_2013-2014_v2.pdf"><img src="/typo3temp/_processed_/csm_offredeformation_01_12c940bbce.jpg" width="90" height="127" border="0" alt=""></a>
+          <a href="/fileadmin/upload/unistra/documentation/Offre_formation_2013-2014_v2.pdf" class="bloc"><i class="icon-chevron-right"></i>Offre de formation</a>
+          <a href="/fileadmin/upload/unistra/documentation/Formations_en_partenariat_international_catalogue.pdf" class="bloc"><i class="icon-chevron-right"></i>Formations en partenariat international</a>
+          <a href="/fileadmin/upload/unistra/documentation/Calendrier_2013-2014.pdf" class="bloc"><i class="icon-chevron-right"></i>Calendrier universitaire</a></p>
+        </div></div>
+	
+		
+        
+	
+		<div id="c87639" class="csc-default"><div class="bloc liens">
+          <h2 class="bloc-title"><i class="icon-perso-liens-bright"></i> Liens utiles</h2>
+          <p><a href="http://www.unistra.fr/index.php?id=19396#c86987" class="bloc"><i class="icon-chevron-right"></i>Centres de langues</a><a href="/index.php?id=19517" class="bloc"><i class="icon-chevron-right"></i>Stages en entreprise</a></p>
+        </div></div>
+	
+		
+      </div>
+    </div>
+    <div id="contact" class="container">
+	
+		<div id="c82802" class="csc-default">
+		
+			      <div class="contact-inner">
+        <div class="row-fluid">
+          <div class="span5 logos">
+            <div class="logo"><a title="Fondation Unistra" href="http://fondation.unistra.fr"><img alt="Fondation Unistra" src="/fileadmin/templates/unistra-v2/images/logo-fondation.png"></a></div>
+            <div class="logo"><a title="Investissements d'Avenir" href="http://www.unistra.fr/index.php?id=16798"><img alt="Investissements d'Avenir" src="/fileadmin/templates/unistra-v2/images/logo-ia.png"></a></div>
+            <div class="logo"><a title="LERU" href="http://www.leru.org"><img alt="LERU" src="/fileadmin/templates/unistra-v2/images/logo-leru.png"></a></div>
+            <div class="logo"><a title="EUCOR" href="http://www.eucor-uni.org"><img alt="Eucor" src="/fileadmin/templates/unistra-v2/images/logo-eucor.png"></a></div>
+          </div>
+          <div class="span5 lactu">
+            <h3>Restons en contact</h3>
+            <p>Inscrivez-vous à notre journal électronique L'Actu.</p>
+            <form class="form-inline" method="post" action="https://listes.u-strasbg.fr/sympa/unistra.fr">
+              <input type="text" name="email" placeholder="Votre email" class="input-large input-lactu"><input type="hidden" value="l-actu" name="list"><input type="hidden" value="subrequest" name="action"><input type="hidden" value="1" name="via_subrequest"><button class="btn btn-primary alt btn-lactu" type="submit" name="action_subrequest"><i class="icon-perso-edit"></i> S'inscrire</button>
+            </form>
+          </div>
+    <div class="span2 social">
+            <div class="social-logo"><a title="L'Unistra sur Facebook" href="http://www.facebook.com/unistra"><i class="icon-facebook-sign"></i><span>Facebook</span></a></div>
+            <div class="social-logo"><a title="L'Unistra sur Twitter" href="http://twitter.com/#!/unistra"><i class="icon-twitter-sign"></i><span>Twitter</span></a></div>
+            <div class="social-logo"><a title="L'Unistra sur Google+" href="https://plus.google.com/+unistra/"><i class="icon-google-plus-sign"></i><span>Google+</span></a></div>
+          </div>
+        </div>
+      </div>
+
+		
+			</div>
+	
+		</div>
+  </div>
+</div>
+<footer><div class="container">
+    <div id="sceau"><a href="http://www.unistra.fr" title="Université de Strasbourg"><img src="/fileadmin/templates/unistra-v2/images/sceau.png" alt="Sceau historique de l'Université de Strasbourg"></a></div>
+    <div id="menu-footer" class="hidden-phone"><div class="row-fluid"><div class="span2"><h3>Formation</h3><ul><li><a href="/index.php?id=etudes">Nos formations</a></li><li><a href="/index.php?id=14804">Inscription et scolarité</a></li><li><a href="/index.php?id=17046">Orientation, stage, emploi</a></li><li><a href="/index.php?id=16865">Financer ses études</a></li><li><a href="/index.php?id=16932">Parcours d'étudiants</a></li><li><a href="/index.php?id=17084">Partir à l'étranger</a></li><li><a href="/index.php?id=sfc">Formation continue</a></li><li><a href="/index.php?id=14741">Validation des acquis de l'expérience</a></li><li><a href="/index.php?id=facultes-ecoles-instituts">Facultés, Écoles, Instituts</a></li></ul></div><div class="span2"><h3>Recherche</h3><ul><li><a href="/index.php?id=recherche">Unités de recherche</a></li><li><a href="/index.php?id=19884">Colloques et manifestations</a></li><li><a href="/index.php?id=16452">Publications</a></li><li><a href="/index.php?id=16468">Doctorat</a></li><li><a href="/index.php?id=16484">Habilitation à diriger des recherches</a></li><li><a href="/index.php?id=valorisation">Services aux chercheurs / valorisation</a></li><li><a href="/index.php?id=16500">Financement sur projets</a></li></ul></div><div class="span2"><h3>Vie des campus</h3><ul><li><a href="/index.php?id=17124">Culture, sciences et société</a></li><li><a href="/index.php?id=18535">Sports</a></li><li><a href="/index.php?id=vie-pratique">Vie pratique</a></li><li><a href="/index.php?id=20426">Hébergement</a></li><li><a href="/index.php?id=16881">Accompagnement du handicap</a></li><li><a href="/index.php?id=19383">Jobs étudiants</a></li><li><a href="/index.php?id=bibliotheques">Bibliothèques</a></li><li><a href="/index.php?id=17002">Espaces de travail</a></li></ul></div><div class="span2"><h3>Université</h3><ul><li><a href="/index.php?id=16781">Fonctionnement</a></li><li><a href="/index.php?id=universite">Nous connaître</a></li><li><a href="/index.php?id=18852">Nos atouts</a></li><li><a href="/index.php?id=grands-projets">Grands projets</a></li><li><a href="/index.php?id=international">International</a></li><li><a href="/index.php?id=16813">Soutenir l'Université</a></li><li><a href="/index.php?id=recrutement">Travailler à l'Université</a></li><li><a href="/index.php?id=16829">Boutique</a></li><li><a href="/index.php?id=19479">Média et presse</a></li></ul></div><div class="span2"><h3>Ressources</h3><ul><li><a href="/index.php?id=actualites_unistra">Actualités</a></li><li><a href="/index.php?id=agenda_unistra">Agenda</a></li><li><a href="/index.php?id=15821">Annuaire</a></li><li><a href="/index.php?id=15822">E.N.T.</a></li><li><a href="/index.php?id=20207">Messagerie</a></li><li><a href="/index.php?id=18343">Bibliothèques</a></li></ul></div><div class="span2"><h3>Accès directs</h3><ul><li><a href="/index.php?id=etudes">Formations</a></li><li><a href="/index.php?id=facultes-ecoles-instituts">Facultés, Écoles, Instituts</a></li><li><a href="/index.php?id=recherche">Unités de recherche</a></li><li><a href="/index.php?id=16793">Services de l'université</a></li><li><a href="/index.php?id=15826">Bibliothèques</a></li><li><a href="/index.php?id=19479">Média et presse</a></li></ul></div></div></div>
+    <div id="mentions">
+      <div class="row-fluid"><div class="span3"><form action="/index.php?id=moteur_de_recherche" method="get" class="form-search"><input type="text" name="tx_solr[q]" placeholder="Rechercher" class="search-query"><input type="hidden" name="id" value="19880"></form></div><div class="span9 mentions">Université de Strasbourg – Tous droits réservés 2009-2013 - <a href="/index.php?id=20050">Contacts</a> - <a href="/index.php?id=15833">Crédits et mentions légales</a></div></div>
+    </div>
+  </div>
+</footer><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script><script src="https://www.unistra.fr/fileadmin/templates/unistra-v2/bootstrap/js/bootstrap.min.js" type="text/javascript"></script><script src="https://www.unistra.fr/fileadmin/templates/unistra-v2/plugins/carouFredSel/jquery.carouFredSel-6.2.1-packed.js" type="text/javascript"></script><script src="https://www.unistra.fr/fileadmin/templates/unistra-v2/js/effects.js" type="text/javascript"></script><script src="https://www.unistra.fr/fileadmin/templates/unistra-v2/plugins/scrollup/scrollup.js" type="text/javascript"></script><script src="https://www.unistra.fr/fileadmin/templates/unistra-v2/plugins/popupWindow/jquery.popupWindow.js" type="text/javascript"></script><script src="/typo3temp/javascript_b000bafada.js?1380175949" type="text/javascript"></script>{% block javascripts %}{% endblock %}</body></html>

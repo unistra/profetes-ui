@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<types-diplomes>
+    <type-diplome order="1">Licence</type-diplome>
+    <type-diplome order="2">Master</type-diplome>
+    <type-diplome order="3">Doctorat</type-diplome>
+    <type-diplome order="4">Habilitation à diriger des recherches</type-diplome>
+    <type-diplome order="5">Diplôme d'études universitaires scientifiques et techniques</type-diplome>
+    <type-diplome order="6">Diplôme universitaire de technologie</type-diplome>
+    <type-diplome order="7">Licence professionnelle</type-diplome>
+    <type-diplome order="12">Diplôme d'ingénieurs</type-diplome>
+    <type-diplome order="14">Diplôme d'institut d'études politiques</type-diplome>
+    <type-diplome order="15">Diplôme d'université</type-diplome>
+    <type-diplome order="16">Diplôme d'établissement</type-diplome>
+    <type-diplome order="18">Doctorat en pharmacie</type-diplome>
+    <type-diplome order="22">Diplôme d'université du secteur santé</type-diplome>
+    <type-diplome order="25">Diplôme d'études spécialisées du secteur santé</type-diplome>
+    <type-diplome order="30">Première année santé</type-diplome>
+    <type-diplome order="31">Préparation aux concours de l'administration et formations juridiques</type-diplome>
+    <type-diplome order="32">Préparation aux concours de l'enseignement et formations des enseignants</type-diplome>
+    <type-diplome order="33">Capacité en droit</type-diplome>
+    <type-diplome order="34">Diplôme d'accès aux études universitaires</type-diplome>
+</types-diplomes>

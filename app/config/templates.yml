@@ -1,0 +1,18 @@
+templates:
+    fiche:
+        url:    http://www.unistra.fr/index.php?id=etudes
+        xsl:    %kernel.root_dir%/../src/Unistra/ProfetesBundle/Resources/xsl/templates/fiche.xsl
+        output: %kernel.root_dir%/Resources/views/fiche.html.twig
+    base:
+        url:    http://www.unistra.fr/index.php?id=etudes
+        xsl:    %kernel.root_dir%/../src/Unistra/ProfetesBundle/Resources/xsl/templates/base.xsl
+        output: %kernel.root_dir%/Resources/views/base.html.twig
+checks:
+    xpath:
+        - '//h1[@id="page-title"]'
+        - '//div[@id="breadcrumb"]/ul/li'
+        - '//div[@id="main-content"]'
+        - '//nav[@id="menu"]//ul[@class="nav"]/li'
+        - '//nav[@id="acces-direct"]/ul[@class="dropdown-menu"]'
+
+checksumsFile: %kernel.root_dir%/Resources/views/checksums.json

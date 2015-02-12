@@ -1,0 +1,39 @@
+unistra_profetes_ra_index:
+    path:       /
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:index }
+
+unistra_profetes_ra_types_diplomes:
+    path:       /types-diplomes
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:listeTypesDiplomes }
+
+unistra_profetes_ra_disc_par_type_diplome:
+    path:       /t/{typeDeDiplome}/disciplines
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:disciplinesParTypeDeDiplome }
+    requirements:
+        typeDeDiplome:  \d+
+
+unistra_profetes_ra_disc_et_type_diplome:
+    path:       /t/{typeDeDiplome}/d/{discipline}
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:parDisciplineEtTypeDeDiplome }
+    requirements:
+        typeDeDiplome:  \d+
+
+unistra_profetes_ra_disciplines:
+    path:       /disciplines
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:listeDisciplines }
+
+unistra_profetes_ra_types_diplomes_par_discipline:
+    path:       /d/{discipline}/types-diplomes
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:typesDiplomesParDiscipline }
+
+unistra_profetes_ra_objectifs_professionnels:
+    path:       /objectifs-professionnels
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:listeObjectifsProfessionnels }
+
+unistra_profetes_ra_types_diplomes_par_objectif_professionnel:
+    path:       /o/{objectifProfessionnel}/types-diplomes
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:typesDiplomesParObjPro }
+
+unistra_profetes_ra_obj_pro_et_type_diplome:
+    path:       /o/{objectifProfessionnel}/t/{typeDeDiplome}
+    defaults:   { _controller: UnistraProfetesBundle:Scenario:parObjectifProfessionnelEtTypeDeDiplome }
